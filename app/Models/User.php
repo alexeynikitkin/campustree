@@ -62,5 +62,8 @@ class User extends Authenticatable
     public function notifications(){
         return $this->belongsTo(Notification::class, 'user_id');
     }
+    public function sexes(){
+        return $this->belongsToMany(Sex::class, 'user_id');
+    }
 
 }

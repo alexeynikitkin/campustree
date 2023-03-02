@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Friend;
 use App\Models\Post;
+use App\Models\Sex;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -107,8 +108,12 @@ class CampusHomeController extends Controller
 
     public function allUsers(){
         $users = User::paginate(4);
+        $cats = Category::all();
+        $sexes = Sex::all();
         return view('campustree.users', [
-            'users' => $users
+            'users' => $users,
+            'sexes' => $sexes,
+            'cats' => $cats
         ]);
     }
 

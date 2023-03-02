@@ -131,31 +131,13 @@
                                             <div class="col-sm-6">
                                                 <p class="paragraph paragraph-medium">Sex</p>
                                                 <fieldset class="fieldset" data-fieldset-list="people-sex">
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="male" class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Male</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="female" class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Female</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="Non-binary" class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Non-binary</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="Prefer not to say" class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Prefer not to say</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="Other" class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Other</span>
-                                                    </label>
+                                                    @foreach($sexes as $sex)
+                                                        <label class="input-container">
+                                                            <input type="radio" name="sex" value="{{ $sex->slug }}" class="input input-radio">
+                                                            <span class="input-radio-icon"></span>
+                                                            <span class="input-radio-title">{{ $sex->title }}</span>
+                                                        </label>
+                                                    @endforeach
                                                 </fieldset>
                                                 <p class="paragraph paragraph-medium">Faculty</p>
                                                 <fieldset class="fieldset" data-fieldset-list="people-faculty">
@@ -185,69 +167,6 @@
 																	</svg>
 																</span>
                                                         <span class="input-checkbox-title">Computer Science and Cybernetics</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Economics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Economics</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Geography" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Geography</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="History" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">History</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Law" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Law</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Mechanics and Mathematics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Mechanics and Mathematics</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Philosophy" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Philosophy</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Physics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Physics</span>
                                                     </label>
                                                 </fieldset>
                                             </div>
@@ -320,60 +239,17 @@
 														</span>
                                                         <span class="input-checkbox-title">All</span>
                                                     </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Greek Life" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
+                                                    @foreach($cats as $cat)
+                                                        <label class="input-container">
+                                                            <input type="checkbox" value="{{ $cat->id }}" class="input input-checkbox">
+                                                            <span class="input-checkbox-icon">
 																	<svg class="svg svg__16">
 																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
 																	</svg>
 																</span>
-                                                        <span class="input-checkbox-title color-greek-life-dark">Greek Life</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Alumni" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-alumni">Alumni</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Local" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-local">Local</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Events" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-events">Events</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Majors" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-majors">Majors</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Clubs" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-clubs">Clubs</span>
-                                                    </label>
+                                                            <span class="input-checkbox-title color-greek-life-dark">{{ $cat->title }}</span>
+                                                        </label>
+                                                    @endforeach
                                                 </fieldset>
                                             </div>
                                         </div>
