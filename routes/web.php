@@ -46,4 +46,6 @@ Route::middleware('role:admin')->prefix('admin_panel')->group(function (){
     ]);
 });
 
+Route::post('/save-data', [CampusHomeController::class, 'saveData'])->name('saveUser');
+
 

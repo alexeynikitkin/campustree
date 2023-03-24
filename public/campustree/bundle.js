@@ -8153,8 +8153,17 @@
                                 var t = document.querySelector("#registration-step-3-form");
                                 if (t) {
                                     var e = new (vc())(t, {classTo: "input-container", errorClass: "has-error"});
-                                    t.addEventListener("submit", (function (t) {
-                                        e.validate() || t.preventDefault()
+                                    // t.addEventListener("submit", (function (t) {
+                                    //     e.validate() || t.preventDefault()
+                                    // }))
+                                    t.addEventListener("submit", (function (i) {
+                                        if (i.preventDefault(), e.validate()) {
+                                            for (var r = t.querySelectorAll("[name]"), n = [], s = 0; s < r.length; s++) {
+                                                var a = r[s], o = {name: a.name, value: a.value};
+                                                n.push(o), vh("registration-step-3", n)
+                                            }
+                                            fc(3)
+                                        }
                                     }))
                                 }
                             }(), function () {

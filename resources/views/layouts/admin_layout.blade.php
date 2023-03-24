@@ -182,7 +182,7 @@
 <script src="{{ asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('admin/dist/js/jquery.colorbox-min.js') }}"></script>
 <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
-
+@yield('')
 <script src="https://cdn.tiny.cloud/1/s2wox67b49yyyur1t1ibqrqc1zrjb0lniiry5tb3bkcdmg58/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="{{ asset('admin/plugins/admin.js') }}"></script>
 <!-- AdminLTE App -->

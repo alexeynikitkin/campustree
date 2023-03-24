@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CampusHomeController extends Controller
 {
@@ -122,6 +123,21 @@ class CampusHomeController extends Controller
         return view('campustree.friends', [
             'users' => $users,
         ]);
+    }
+
+    public function saveData(Request $request) {
+        $user = new User;
+        $user->name = $request->fname. ' '.$request->lname;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->user_bio = $request->description;
+        $user->user_birth = $request->birthday;
+//        $user->user_img = $request->user_img;
+//        $user->cat_id = $request->cat_id;
+//        $user->faculty_id = $request->cat_id;
+        $user->sex_id = $request->sex;
+        $user->save();
+        $user->assignRole('user');
     }
 
 

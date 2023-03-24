@@ -1314,22 +1314,12 @@
                                                             <span
                                                                 class="input-message __error">This field is required!</span>
                                                         </label>
-                                                        <label class="input-container">
-                                                            <input name="phone" placeholder="Phone Number" type="number"
-                                                                   class="input" required>
-                                                            <span
-                                                                class="input-message __error">This field is required!</span>
-                                                        </label>
-                                                        <div class="input-container input-container-select">
-                                                            <select name="test" class="select" required>
-                                                                <option value="1">1 test</option>
-                                                                <option value="2">2 test</option>
-                                                                <option value="3">3 test</option>
-                                                                <option value="4">4 test</option>
-                                                            </select>
-                                                            <span
-                                                                class="input-message __error">This field is required!</span>
-                                                        </div>
+{{--                                                        <label class="input-container">--}}
+{{--                                                            <input name="phone" placeholder="Phone Number" type="number"--}}
+{{--                                                                   class="input" required>--}}
+{{--                                                            <span--}}
+{{--                                                                class="input-message __error">This field is required!</span>--}}
+{{--                                                        </label>--}}
                                                         <div class="input-container input-container-select">
                                                             <select name="sex" class="select" required>
                                                                 <option value="1">Male</option>
@@ -1359,7 +1349,7 @@
                                     </form>
                                 </div>
                                 <div data-register-step="3" class="steps-content">
-                                    <form id="registration-step-3-form" action="/" method="POST">
+                                    <form id="registration-step-3-form" action="/save-data" method="POST">
                                         @csrf
                                         <div class="steps-content-wrapper">
                                             <div class="section-title">
@@ -1388,13 +1378,13 @@
                                             </div>
                                             <div class="steps-inputs">
                                                 <label class="input-container">
-                                                    <textarea class="textarea" placeholder="About yourself"
+                                                    <textarea name="description" class="textarea" placeholder="About yourself"
                                                               required></textarea>
                                                     <span class="input-message __error">This field is required!</span>
                                                 </label>
                                                 <label class="input-container input-container-file">
                                                   <span class="upload-file">
-                                                    <input type="file" class="input" hidden required>
+                                                    <input type="file" class="input" hidden>
                                                     <span class="person-thumb">
                                                       <img src="" alt="Joey Tribbiani">
                                                       <span class="person-thumb-upload">
@@ -1407,22 +1397,9 @@
                                                     <span class="upload-text h-4">Upload a photo</span>
                                                     <span class="input-message __error">This field is required!</span>
                                                 </label>
-                                                <div class="input-tags input-container">
-                                                    <ul class="input-tags-results"></ul>
-                                                    <input class="input-tags-text" type="text" name="fruit" id="objects"
-                                                           placeholder="Text">
-                                                    <div class="input-tags-suggestions">
-                                                        <ul class="input-tags-body">
-                                                            <li>potato</li>
-                                                            <li>tomato</li>
-                                                            <li>orange</li>
-                                                            <li>apple</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
                                                 <div class="steps-inputs-wrapper">
                                                     <label class="input-container">
-                                                        <input placeholder="Password" type="password" class="input"
+                                                        <input name="password" placeholder="Password" type="password" class="input"
                                                                data-validate="password" required>
                                                         <span class="input-container-icon __right __click-trigger __16">
                               <svg class="svg svg__16">
@@ -1433,7 +1410,7 @@
                                                             class="input-message __error">This field is required!</span>
                                                     </label>
                                                     <label class="input-container">
-                                                        <input placeholder="Password" type="password" class="input"
+                                                        <input name="password" placeholder="Password" type="password" class="input"
                                                                data-validate="password" required>
                                                         <span class="input-container-icon __right __click-trigger __16">
 				                      <svg class="svg svg__16">
@@ -1499,11 +1476,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="steps-buttons">
-                                        <button class="btn">
-                                            <span class="btn-title">I did’t got email</span>
-                                        </button>
-                                    </div>
+{{--                                    <div class="steps-buttons">--}}
+{{--                                        <button class="btn">--}}
+{{--                                            <span class="btn-title">I did’t got email</span>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -1519,15 +1496,34 @@
 
     <!-- Submit last step -->
     <script>
-        $('#registration-step-3-form').on('submit', function (e) {
+        $(document).on('submit', '#registration-step-3-form', function (e) {
             e.preventDefault();
             setTimeout(() => {
                 $('.steps-content.active').removeClass('active');
                 $('[data-register-step="4"]').addClass('active');
             }, 1000);
+            const items = {...localStorage};
+            var a = [...JSON.parse(items['registration-step-0']),...JSON.parse(items['registration-step-1']),...JSON.parse(items['registration-step-2']), ...JSON.parse(items['registration-step-3'])];
+            console.log(a);
+            var data = a;
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('saveUser') }}',
+                data: data,
+                success: function(response) {
+                    console.log('Дані збережено успішно!');
+                },
+                error: function(xhr, status, error) {
+                    console.log('Сталася помилка: ' + error);
+                }
+            });
         });
-        const items = {...localStorage};
-        console.log(items);
+
+
+
+
+
+        // Відправити дані на сервер
 
     </script>
 

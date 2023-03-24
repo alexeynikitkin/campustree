@@ -30,9 +30,11 @@
 
     <script defer="defer" src="/campustree/bundle.js"></script><link href="/campustree/styles.css" rel="stylesheet"></head>
 <body>
-<main class="wrapper-sign-in" id="wrapper">
+{{--<main class="wrapper-sign-in" id="wrapper">--}}
             @yield('content')
-</main>
+{{--</main>--}}
+<script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+@yield('custom-js')
 <script src="/campustree/pristine.min.js"></script>
 <script src="/campustree/validation.js"></script>
 </body>
