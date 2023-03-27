@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Friend;
+use App\Models\Participation;
 use App\Models\Post;
 use App\Models\Sex;
 use Illuminate\Http\Request;
@@ -86,8 +87,20 @@ class CampusHomeController extends Controller
     {
         $userId = Auth::id();
         $currentuser = User::find($userId);
+        $partIDs = Participation::where('user_id', $userId)->get();
+        $arr = [];
+        foreach ($partIDs as $id) {
+            $arr[] = $id->leaf_id;
+        }
+        $postsArr = [];
+        foreach ($arr as $a) {
+            $postsArr[] = Post::where('id', $a)->first();
+        }
+        $branches = Category::paginate(6);
         return view('campustree.personal_page' , [
-            'user' => $currentuser
+            'user' => $currentuser,
+            'leaves' => $postsArr,
+            'branches' => $branches
         ]);
     }
 

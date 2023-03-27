@@ -68,9 +68,9 @@
                                                     </svg>
                                                 </a>
                                             </div>
-                                            <a href="events-on-review.html" class="btn btn-md">
-                                                <span class="btn-title">Events on review</span>
-                                            </a>
+{{--                                            <a href="events-on-review.html" class="btn btn-md">--}}
+{{--                                                <span class="btn-title">Events on review</span>--}}
+{{--                                            </a>--}}
                                         </div>
                                     </div>
                                     <div class="leaves personal-box">
@@ -156,366 +156,36 @@
                                                     <div class="box-body splide">
                                                         <div class="scroll-wrap splide__track">
                                                             <div class="splide__list">
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="1">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.pexels.com/photos/2381596/pexels-photo-2381596.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Silent DJ">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">AEPI</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-alumni">Alumni</p>
+                                                                @php
+                                                                $count = 1;
+                                                                @endphp
+                                                                @foreach($leaves as $leaf)
+                                                                    <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
+                                                                        <div class="event-thumb">
+                                                                            <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">
                                                                         </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
+                                                                        <div class="event-description">
+                                                                            <p class="event-description-title">{{ $leaf->title }}</p>
+                                                                            @if(isset($leaf->category->title ))
+                                                                                <div class="event-description-categories">
+                                                                                    <p class="tag tag-alumni">{{ $leaf->category->title }}</p>
+                                                                                </div>
+                                                                            @endif
+                                                                            <div class="event-description-date date">
+                                                                                <div class="date-icon">
+                                                                                    <svg class="svg svg__16">
+                                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
+                                                                                    </svg>
+                                                                                </div>
+                                                                                <div class="date-label">{{ $leaf->created_at }}</div>
                                                                             </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
+                                                                            <p class="event-description-item paragraph-md">{{ strip_tags($leaf->text) }}</p>
                                                                         </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="2">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.pexels.com/photos/9638689/pexels-photo-9638689.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">AXA</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-alumni">Alumni</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="3">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZXZlbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">BYOB</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-alumni">Alumni</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="4">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZXZlbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Taco Tuesday</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-local">Local</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="5">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Movie Theatre Showing</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-local">Local</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="6">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1472653431158-6364773b2a56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Drive in Movie</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-local">Local</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="7">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Interships</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-greek-life">Greek life</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="8">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1550177977-ad69e8f3cae0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Q&A</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-greek-life">Greek life</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="9">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1550305080-4e029753abcf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Drive in Movie</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-greek-life">Greek life</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="10">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1560439450-57df7ac6dbef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTV8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Drive in Movie</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-events">Events</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="11">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1604169693131-371f68bc8c00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTh8fGV2ZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Silent DJ</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-events">Events</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="12">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1526979118433-63c7344f06f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRqfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Silent DJ</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-events">Events</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="13">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFuY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Dance</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-clubs">Clubs</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="14">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmluYW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Finance</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-clubs">Clubs</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="15">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZpbmFuY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Rowing</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-clubs">Clubs</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="16">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZpbmFuY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Business</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-majors">Majors</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="17">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1534951009808-766178b47a4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGZpbmFuY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">English</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-majors">Majors</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
-                                                                <a href="leaf.html" class="event splide__slide" data-event-id="18">
-                                                                    <div class="event-thumb">
-                                                                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZpbmFuY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="AEPI">
-                                                                    </div>
-                                                                    <div class="event-description">
-                                                                        <p class="event-description-title">Mathematics</p>
-                                                                        <div class="event-description-categories">
-                                                                            <p class="tag tag-majors">Majors</p>
-                                                                        </div>
-                                                                        <div class="event-description-date date">
-                                                                            <div class="date-icon">
-                                                                                <svg class="svg svg__16">
-                                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
-                                                                                </svg>
-                                                                            </div>
-                                                                            <div class="date-label">20 Feb 2022 05:30 PM</div>
-                                                                        </div>
-                                                                        <p class="event-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews</p>
-                                                                    </div>
-                                                                </a>
+                                                                    </a>
+                                                                    @php
+                                                                    $count++;
+                                                                    @endphp
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
@@ -535,62 +205,26 @@
                                         <h1 class="h-1">My Personal Tree</h1>
                                     </div>
                                     <div class="tree-categories">
-                                        <a href="branch.html?branch=1" class="tree-categories-item">
-                                            <svg class="svg svg__32">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
-                                            </svg>
-                                            Alumni
-                                        </a>
-                                        <a href="branch.html?branch=2" class="tree-categories-item">
-                                            <svg class="svg svg__32">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
-                                            </svg>
-                                            Local
-                                        </a>
-                                        <a href="branch.html?branch=3" class="tree-categories-item">
-                                            <svg class="svg svg__32">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
-                                            </svg>
-                                            Greek life
-                                        </a>
-                                        <a href="branch.html?branch=4" class="tree-categories-item">
-                                            <svg class="svg svg__32">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
-                                            </svg>
-                                            Events
-                                        </a>
-                                        <a href="branch.html?branch=5" class="tree-categories-item">
-                                            <svg class="svg svg__32">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
-                                            </svg>
-                                            Clubs
-                                        </a>
-                                        <a href="branch.html?branch=6" class="tree-categories-item">
-                                            <svg class="svg svg__32">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
-                                            </svg>
-                                            Majors
-                                        </a>
+                                        @foreach($branches as $branch)
+                                            <a href="{{ route('showBranch', $branch->id) }}" class="tree-categories-item">
+                                                <svg class="svg svg__32">
+                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
+                                                </svg>
+                                                {{ $branch->title }}
+                                            </a>
+                                        @endforeach
                                     </div>
                                     <div class="tree-events">
-                                        <p class="tree-events-item leaf-scroll" data-event-id="1"><span class="leaf-title">AEPI</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="2"><span class="leaf-title">AXA</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="3"><span class="leaf-title">BYOB</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="4"><span class="leaf-title">Taco Tuesday</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="5"><span class="leaf-title">Movie Theatre Showing</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="6"><span class="leaf-title">Drive in Movie</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="7"><span class="leaf-title">Interships</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="8"><span class="leaf-title">Q&A</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="9"><span class="leaf-title">Drive in Movie</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="10"><span class="leaf-title">Drive in Movie</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="11"><span class="leaf-title">Silent DJ</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="12"><span class="leaf-title">Silent DJ</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="13"><span class="leaf-title">Dance</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="14"><span class="leaf-title">Finance</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="15"><span class="leaf-title">Rowing</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="16"><span class="leaf-title">Business</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="17"><span class="leaf-title">English</span></p>
-                                        <p class="tree-events-item leaf-scroll" data-event-id="18"><span class="leaf-title">Mathematics</span></p>
+                                        @php
+                                            $count = 1;
+                                        @endphp
+                                        @foreach($leaves as $leaf)
+                                            <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
+                                            @php
+                                                $count++;
+                                            @endphp
+                                            @if($count == 19) @break @endif
+                                        @endforeach
                                     </div>
                                     <svg viewBox="0 0 892 701" class="tree-svg" fill="none">
                                         <!--				Stem					-->

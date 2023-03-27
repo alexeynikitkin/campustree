@@ -304,6 +304,9 @@
                                     <a href="index.html" data-transition="pagination" id="pagination-link"></a>
                                 </div>
                                 <div class="people" data-empty-label="You search was not successful!" data-view-mode="list">
+                                    @php
+                                    $thisUserId = Auth::user()->id;
+                                    @endphp
                                     @foreach($users as $user)
                                         @if($user->id != Auth::user()->id)
                                             <div class="people-row">
@@ -320,8 +323,12 @@
                                                 </div>
                                                 <div class="people-row-item">
                                                     <div class="person-action" data-user-id="{{ $user->id }}">
+                                                        @php
+                                                            var_dump(\App\Models\Friend::where('friend_id', $user->id)->get()->friend_id);
+                                                            var_dump($thisUserId);
+                                                        @endphp
                                                         @if(isset(\App\Models\Friend::where('friend_id', $user->id)->first()->friend_id))
-                                                            @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id )
+                                                            @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id && \App\Models\Friend::where('friend_id', $user->id)->first()->user_id == $thisUserId)
                                                                 <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -333,6 +340,20 @@
                                                                     </svg>
                                                                 </span>
                                                                         <span class="link-title">Delete from friends</span>
+                                                                    </button>
+                                                                </form>
+                                                            @else
+                                                                <form action="{{ route('addFriends', $user->id) }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="{{ $user->id }}" name="friend_id">
+                                                                    <button class="link add-to-friends">
+                                                                <span class="link-icon">
+                                                                    <svg class="svg svg__24">
+                                                                        <use
+                                                                            xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
+                                                                    </svg>
+                                                                </span>
+                                                                        <span class="link-title">Add to friends</span>
                                                                     </button>
                                                                 </form>
                                                             @endif
@@ -430,7 +451,7 @@
                                 </div>
                                 <div class="person-action" data-user-id="{{ $user->id }}">
                                     @if(isset(\App\Models\Friend::where('friend_id', $user->id)->first()->friend_id))
-                                        @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id )
+                                        @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id)
                                             <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
