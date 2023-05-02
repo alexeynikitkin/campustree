@@ -68,7 +68,9 @@ class CommentsController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('admin.comments.edit', [
+            'comment' => $comment
+        ]);
     }
 
     /**
@@ -80,7 +82,9 @@ class CommentsController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->text = $request->text;
+        $comment->save();
+        return redirect()->back()->withSuccess('Comment was successfully edited');
     }
 
     /**

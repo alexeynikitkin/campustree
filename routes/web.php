@@ -70,7 +70,8 @@ Route::middleware('role:admin')->prefix('admin_panel')->group(function (){
     Route::resources([
         'category' => CategoryController::class,
         'post' => PostController::class,
-        'comment' => CommentsController::class
+        'comment' => CommentsController::class,
+        'user' => \App\Http\Controllers\Admin\UserController::class
     ]);
 });
 

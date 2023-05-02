@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'All Comments')
+@section('title', 'All Users')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
 
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">All Comments</h1>
+                    <h1 class="m-0">All Users</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
             @if(session('success'))
@@ -33,17 +33,20 @@
                             <table class="table table-striped projects">
                                 <thead>
                                 <tr>
-                                    <th style="width: 20%">
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th style="width: 20%">
-                                        Comment Text
-                                    </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 15%">
                                         User Name
                                     </th>
-                                    <th style="width: 20%">
-                                        Leaf Name
+                                    <th style="width: 15%">
+                                        User Email
+                                    </th>
+                                    <th style="width: 15%">
+                                        Bio
+                                    </th>
+                                    <th style="width: 15%">
+                                        Sex
                                     </th>
                                     <th style="width: 20%">
 
@@ -51,34 +54,37 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($comments as $comment)
+                                @foreach($users as $user)
                                     <tr>
                                         <td>
-                                            {{$comment->id}}
+                                            {{$user->id}}
                                         </td>
                                         <td>
-                                                {{$comment->text}}
+                                            {{$user->name}}
                                             <br/>
                                             <small>
-                                                {{$comment->created_at}}
+                                                {{$user->created_at}}
                                             </small>
                                         </td>
                                         <td>
-                                            {{ $comment->user->name }}
+                                            {{ $user->email }}
+                                        </td>
+                                        <td>
+                                            {{ $user->user_bio }}
                                         </td>
                                         <td>
                                             @php
-                                            $leaf = \App\Models\Post::find($comment->leaf_id);
-                                            @endphp
-                                            {{ $leaf->title }}
+                                            $sex = \App\Models\Sex::find($user->sex_id)->title;
+                                             @endphp
+                                            {{ $sex }}
                                         </td>
                                         <td class="project-actions text-right d-flex">
-                                            <a class="btn btn-info btn-sm" href="{{ route('comment.edit', $comment->id) }}">
+                                            <a class="btn btn-info btn-sm" href="{{ route('user.edit', $user->id) }}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit
                                             </a>
-                                            <form action="{{ route('comment.destroy', $comment->id) }}" method="POST">
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm delete-btn">

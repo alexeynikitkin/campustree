@@ -86,7 +86,7 @@ class CampusHomeController extends Controller
     public function personal($id)
     {
         $userId = Auth::id();
-        $currentuser = User::find($userId);
+        $currentuser = User::find($id);
         $partIDs = Participation::where('user_id', $userId)->get();
         $arr = [];
         foreach ($partIDs as $id) {

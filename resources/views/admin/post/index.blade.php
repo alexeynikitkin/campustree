@@ -57,7 +57,7 @@
                                             {{$post->id}}
                                         </td>
                                         <td>
-                                            <a href="{{ route('post.show', $post->id) }}">
+                                            <a href="{{ route('showLeaf', $post->id) }}" target="_blank">
                                                 {{$post->title}}
                                             </a>
                                             <br/>
