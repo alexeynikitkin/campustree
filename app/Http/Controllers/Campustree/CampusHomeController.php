@@ -34,7 +34,11 @@ class CampusHomeController extends Controller
     {
         if(Auth::user()) {
             $friends = Auth::user()->friends()->get();
-            $participation = Auth::user()->participations()->where('leaf_id', $id)->first();
+            $participation = Participation::where([
+                'leaf_id' => $id,
+                'user_id' => Auth::user()->id
+            ])->first();
+//            $participation = Auth::user()->participations()->where('leaf_id', $id)->get();
             $comments = Comment::where('leaf_id', $id)->get();
             $leaf = Post::where('id', $id)->firstOrFail();
             return view('campustree.leaf', [

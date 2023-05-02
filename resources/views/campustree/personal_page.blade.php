@@ -161,7 +161,7 @@
                                                                 @foreach($leaves as $leaf)
                                                                     <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
                                                                         <div class="event-thumb">
-                                                                            <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">
+                                                                            <img src="\{{ $leaf->img }}" alt="{{ $leaf->title }}">
                                                                         </div>
                                                                         <div class="event-description">
                                                                             <p class="event-description-title">{{ $leaf->title }}</p>

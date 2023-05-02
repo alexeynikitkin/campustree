@@ -47,7 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function post() {
-        $this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function friends()
@@ -63,7 +63,7 @@ class User extends Authenticatable
         return $this->belongsTo(Notification::class, 'user_id');
     }
     public function sexes(){
-        return $this->belongsToMany(Sex::class, 'user_id');
+        return $this->belongsTo(Sex::class, 'user_id');
     }
 
 }

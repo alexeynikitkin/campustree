@@ -272,7 +272,7 @@
                                             <div class="tree-modal">
                                                 <div class="box">
                                                     <div class="box-thumb">
-                                                        <img src="{{ $post->img }}" alt="Event Name">
+                                                        <img src="\{{ $post->img }}" alt="Event Name">
                                                     </div>
                                                     <div class="box-body">
                                                         <div class="event-description">
