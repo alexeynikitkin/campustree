@@ -139,36 +139,6 @@
                                                         </label>
                                                     @endforeach
                                                 </fieldset>
-                                                <p class="paragraph paragraph-medium">Faculty</p>
-                                                <fieldset class="fieldset" data-fieldset-list="people-faculty">
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="all" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">All</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Chemistry" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Chemistry</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Computer Science and Cybernetics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Computer Science and Cybernetics</span>
-                                                    </label>
-                                                </fieldset>
                                             </div>
                                             <div class="col-sm-6">
                                                 <p class="paragraph paragraph-medium">Years</p>
@@ -260,45 +230,45 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-8">
-                            <div class="tags">
-                                <div class="tags-list">
-                                    <div class="tags-item tag tag-events enable-remove">
-                                        Events
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="tags-item tag tag-majors enable-remove">
-                                        majors
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="tags-item tag tag-clubs enable-remove">
-                                        Clubs
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="tags-item tag enable-remove">
-                                        Joey
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="tags-item tag clear-tags">
-                                    <svg viewBox="0 0 8 8" fill="none">
-                                        <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    Clear tags
-                                </div>
-                            </div>
+{{--                            <div class="tags">--}}
+{{--                                <div class="tags-list">--}}
+{{--                                    <div class="tags-item tag tag-events enable-remove">--}}
+{{--                                        Events--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="tags-item tag tag-majors enable-remove">--}}
+{{--                                        majors--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="tags-item tag tag-clubs enable-remove">--}}
+{{--                                        Clubs--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="tags-item tag enable-remove">--}}
+{{--                                        Joey--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="tags-item tag clear-tags">--}}
+{{--                                    <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                        <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                    </svg>--}}
+{{--                                    Clear tags--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="tree">
                                 <div class="tree-links">
                                     <a href="index.html" data-transition="pagination" id="pagination-link"></a>
@@ -308,7 +278,7 @@
                                     $thisUserId = Auth::user()->id;
                                     @endphp
                                     @foreach($users as $user)
-                                        @if($user->id != Auth::user()->id)
+                                        @if($user->id != $thisUserId)
                                             <div class="people-row">
                                                 <div class="people-row-item">
                                                     <div class="person-header">
@@ -324,21 +294,22 @@
                                                 <div class="people-row-item">
                                                     <div class="person-action" data-user-id="{{ $user->id }}">
                                                         @php
-                                                            var_dump(\App\Models\Friend::where('friend_id', $user->id)->get()->friend_id);
-                                                            var_dump($thisUserId);
+                                                        $friendtouser = \App\Models\Friend::where('friend_id', $user->id)->first();
+//                                                        $usertofriend = \App\Models\Friend::where('user_id', $user->id)->first();
+
                                                         @endphp
-                                                        @if(isset(\App\Models\Friend::where('friend_id', $user->id)->first()->friend_id))
-                                                            @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id && \App\Models\Friend::where('friend_id', $user->id)->first()->user_id == $thisUserId)
+{{--                                                        @foreach($friends_collection as $friend)--}}
+                                                            @if($friendtouser)
                                                                 <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <input type="hidden" value="{{ $user->id }}" name="friend_id">
                                                                     <button class="link color-alumni-hover delete-from-friends">
-                                                                <span class="link-icon">
-                                                                    <svg class="svg svg__24 color-alumni">
-                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#remove-circle"></use>
-                                                                    </svg>
-                                                                </span>
+                                                                        <span class="link-icon">
+                                                                            <svg class="svg svg__24 color-alumni">
+                                                                                <use xlink:href="/campustree/images/sprite/sprite.svg#remove-circle"></use>
+                                                                            </svg>
+                                                                        </span>
                                                                         <span class="link-title">Delete from friends</span>
                                                                     </button>
                                                                 </form>
@@ -347,31 +318,17 @@
                                                                     @csrf
                                                                     <input type="hidden" value="{{ $user->id }}" name="friend_id">
                                                                     <button class="link add-to-friends">
-                                                                <span class="link-icon">
-                                                                    <svg class="svg svg__24">
-                                                                        <use
-                                                                            xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
-                                                                    </svg>
-                                                                </span>
+                                                            <span class="link-icon">
+                                                                <svg class="svg svg__24">
+                                                                    <use
+                                                                        xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
+                                                                </svg>
+                                                            </span>
                                                                         <span class="link-title">Add to friends</span>
                                                                     </button>
                                                                 </form>
                                                             @endif
-                                                        @else
-                                                            <form action="{{ route('addFriends', $user->id) }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" value="{{ $user->id }}" name="friend_id">
-                                                                <button class="link add-to-friends">
-                                                                <span class="link-icon">
-                                                                    <svg class="svg svg__24">
-                                                                        <use
-                                                                            xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
-                                                                    </svg>
-                                                                </span>
-                                                                    <span class="link-title">Add to friends</span>
-                                                                </button>
-                                                            </form>
-                                                        @endif
+{{--                                                        @endforeach--}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -381,19 +338,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mt-5 d-flex justify-content-between align-items-center">
-                                <div class="pagination" data-total-count="35" data-visible-count="8">
-                                    <div class="pagination-list">
-                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                        <div class="pagination-list-numbers"></div>
-                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <div class="mt-5 d-flex justify-content-between align-items-center">--}}
+{{--                                <div class="pagination" data-total-count="35" data-visible-count="8">--}}
+{{--                                    <div class="pagination-list">--}}
+{{--                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                        <div class="pagination-list-numbers"></div>--}}
+{{--                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </section>
         </div>
@@ -437,50 +394,55 @@
                                     <p class="paragraph paragraph-medium">Birth Date</p>
                                     <p class="paragraph paragraph-md">{{ $user->user_birth }}</p>
                                 </div>
-                                <div class="mb-3">
-                                    <p class="paragraph paragraph-medium">Faculty</p>
-                                    <p class="paragraph paragraph-md">Philology</p>
-                                </div>
-                                <p class="paragraph paragraph-medium">Tags</p>
-                                <div class="tags">
-                                    <div class="tags-list">
-                                        <div class="tags-item tag tag-events">Events</div>
-                                        <div class="tags-item tag tag-majors">Majors</div>
-                                        <div class="tags-item tag tag-clubs">Clubs</div>
-                                    </div>
-                                </div>
+{{--                                <div class="mb-3">--}}
+{{--                                    <p class="paragraph paragraph-medium">Faculty</p>--}}
+{{--                                    <p class="paragraph paragraph-md">Philology</p>--}}
+{{--                                </div>--}}
+{{--                                <p class="paragraph paragraph-medium">Tags</p>--}}
+{{--                                <div class="tags">--}}
+{{--                                    <div class="tags-list">--}}
+{{--                                        <div class="tags-item tag tag-events">Events</div>--}}
+{{--                                        <div class="tags-item tag tag-majors">Majors</div>--}}
+{{--                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="person-action" data-user-id="{{ $user->id }}">
-                                    @if(isset(\App\Models\Friend::where('friend_id', $user->id)->first()->friend_id))
-                                        @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id)
-                                            <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="hidden" value="{{ $user->id }}" name="friend_id">
-                                                <button class="link color-alumni-hover delete-from-friends">
-                                                                <span class="link-icon">
-                                                                    <svg class="svg svg__24 color-alumni">
-                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#remove-circle"></use>
-                                                                    </svg>
-                                                                </span>
-                                                    <span class="link-title">Delete from friends</span>
-                                                </button>
-                                            </form>
-                                        @endif
+                                    @php
+                                        $friendtouser = \App\Models\Friend::where('friend_id', $user->id)->first();
+//                                                        $usertofriend = \App\Models\Friend::where('user_id', $user->id)->first();
+
+                                    @endphp
+                                    {{--                                                        @foreach($friends_collection as $friend)--}}
+                                    @if($friendtouser)
+                                        <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" value="{{ $user->id }}" name="friend_id">
+                                            <button class="link color-alumni-hover delete-from-friends">
+                                                                        <span class="link-icon">
+                                                                            <svg class="svg svg__24 color-alumni">
+                                                                                <use xlink:href="/campustree/images/sprite/sprite.svg#remove-circle"></use>
+                                                                            </svg>
+                                                                        </span>
+                                                <span class="link-title">Delete from friends</span>
+                                            </button>
+                                        </form>
                                     @else
                                         <form action="{{ route('addFriends', $user->id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" value="{{ $user->id }}" name="friend_id">
                                             <button class="link add-to-friends">
-                                                                <span class="link-icon">
-                                                                    <svg class="svg svg__24">
-                                                                        <use
-                                                                            xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
-                                                                    </svg>
-                                                                </span>
+                                                            <span class="link-icon">
+                                                                <svg class="svg svg__24">
+                                                                    <use
+                                                                        xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
+                                                                </svg>
+                                                            </span>
                                                 <span class="link-title">Add to friends</span>
                                             </button>
                                         </form>
                                     @endif
+                                    {{--                                                        @endforeach--}}
                                 </div>
                             </div>
                         </div>

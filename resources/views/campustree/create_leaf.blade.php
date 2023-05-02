@@ -165,26 +165,26 @@
 {{--                                        </div>--}}
                                         <div class="col-12">
                                             <div class="upload-container">
-                                                <label class="input-container input-container-file">
-                                                    <span class="upload-file">
-                                                        <input name="img" type="file" class="input" hidden required>
-                                                        <span class="person-thumb __event">
-                                                            <img src="https://images.unsplash.com/photo-1651158600074-27309fd0d793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="Joey Tribbiani">
-                                                            <span class="person-thumb-upload">
-                                                                <svg class="svg svg__16">
-                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
-                                                                </svg>
-                                                            </span>
-                                                        </span>
-                                                    </span>
+{{--                                                <label class="input-container input-container-file">--}}
+{{--                                                    <span class="upload-file">--}}
+{{--                                                        <input name="img" type="file" class="input" hidden required>--}}
+{{--                                                        <span class="person-thumb __event">--}}
+{{--                                                            <img src="https://images.unsplash.com/photo-1651158600074-27309fd0d793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="Joey Tribbiani">--}}
+{{--                                                            <span class="person-thumb-upload">--}}
+{{--                                                                <svg class="svg svg__16">--}}
+{{--                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>--}}
+{{--                                                                </svg>--}}
+{{--                                                            </span>--}}
+{{--                                                        </span>--}}
+{{--                                                    </span>--}}
 
-                                                    <span class="upload-text h-4">Upload a photo</span>
-                                                    <span class="input-message __error">This field is required!</span>
-                                                </label>
+{{--                                                    <span class="upload-text h-4">Upload a photo</span>--}}
+{{--                                                    <span class="input-message __error">This field is required!</span>--}}
+{{--                                                </label>--}}
                                                 <div class="form-group">
                                                     <label for="feature_image">Leaf Image</label>
                                                     <img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
-                                                    <input class="form-control"  type="text" id="feature_image" name="img" value="" readonly>
+                                                    <input class="form-control"  type="hidden" id="feature_image" name="img" value="" readonly>
                                                     <a href="" class="popup_selector btn btn-primary mt-2" data-inputid="feature_image">Select Image</a>
                                                 </div>
 {{--                                                <label class="input-container input-container-checkbox">--}}
@@ -201,7 +201,7 @@
                                 <div class="col-12">
                                     <div class="group group-buttons">
                                         <button class="btn">
-                                            <span class="btn-title">Save and send for review</span>
+                                            <span class="btn-title">Create</span>
                                         </button>
                                         <a href="{{ route('campus.home') }}" class="btn btn-outline">
                                             <span class="btn-title">Cancel</span>

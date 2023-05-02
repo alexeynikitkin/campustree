@@ -27,12 +27,12 @@
                         <div class="inner">
                             <h3>{{ $posts_count }}</h3>
 
-                            <p>Posts</p>
+                            <p>Leafs</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{ route('post.index') }}" class="small-box-footer">All Posts <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('post.index') }}" class="small-box-footer">All Leafs <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -42,12 +42,12 @@
                         <div class="inner">
                             <h3>{{ $category_count }}</h3>
 
-                            <p>Categories</p>
+                            <p>Branches</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ route('category.index') }}" class="small-box-footer">All Categories <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('category.index') }}" class="small-box-footer">All Branches <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

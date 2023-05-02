@@ -264,9 +264,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        {{ $branches->appends(request()->query())->links('pagination.index') }}
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        {{ $branches->appends(request()->query())->links('pagination.index') }}--}}
+{{--                    </div>--}}
                     <div class="row">
                         <div class="col-12">
                             <div class="d-md-none text-center mt-3" data-tab-content="0" data-tab-segment="0">

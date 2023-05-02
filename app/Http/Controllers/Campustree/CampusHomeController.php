@@ -140,7 +140,7 @@ class CampusHomeController extends Controller
 
     public function saveData(Request $request) {
         $user = new User;
-        $user->name = $request->fname. ' '.$request->lname;
+        $user->name = $request->fname. ' ' .$request->lname;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->user_bio = $request->description;
@@ -153,7 +153,13 @@ class CampusHomeController extends Controller
         $user->assignRole('user');
     }
 
-
-
-
+//    public function search(){
+//        // Check for search input
+//        if (request('search')) {
+//            $leaves = Post::where('title', 'like', '%' . request('search') . '%')->get();
+//        } else {
+//            $leaves = Post::all();
+//        }
+//        return view('campustree.home')->with('searchLeaves', $leaves);
+//    }
 }

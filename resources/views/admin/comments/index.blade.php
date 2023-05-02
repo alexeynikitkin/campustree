@@ -70,6 +70,11 @@
                                             {{ $comment->leaf_id }}
                                         </td>
                                         <td class="project-actions text-right d-flex">
+                                            <a class="btn btn-info btn-sm" href="{{ route('comment.edit', $comment->id) }}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
                                             <form action="{{ route('comment.destroy', $comment->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

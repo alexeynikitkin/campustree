@@ -40,6 +40,8 @@
 </head>
 <body>
 <main id="wrapper">
+
+{{--    <x-header />--}}
     <header class="header">
         <div class="container">
             <div class="header-panel">
@@ -51,7 +53,7 @@
                 <div class="header-panel-search">
                     <div class="search">
                         <label class="input-container dropdown">
-                            <input type="text" class="input input-transparent">
+                            <input type="text" class="input input-transparent input-search">
                             <span class="input-container-icon">
 								<svg class="svg svg__24">
 									<use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
@@ -60,10 +62,11 @@
                             <span class="dropdown-body">
 								<span class="dropdown-body-item">
 									<span class="list">
-										<a href="search-result.html" class="list-item">Mathpapa</a>
-										<a href="search-result.html" class="list-item">Mathway</a>
-										<a href="search-result.html" class="list-item">Mathematica</a>
-										<a href="search-result.html" class="list-item">Math games</a>
+{{--                                     @forelse($searchLeaves as $leaf)--}}
+{{--                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="list-item">{{ $leaf->title }}</a>--}}
+{{--                                        @empty--}}
+{{--                                            <li class="list-group-item list-group-item-danger">{{ $request }}</li>--}}
+{{--                                        @endforelse--}}
 									</span>
 								</span>
 							</span>
@@ -72,14 +75,14 @@
                 </div>
                 <div class="header-panel-nav">
                     @if(Auth::user())
-                    <a data-router-disabled href="{{ route('allUsers') }}" class="link">
+                        <a data-router-disabled href="{{ route('allUsers') }}" class="link">
 						<span class="link-icon">
 							<svg class="svg svg__24">
 								<use xlink:href="/campustree/images/sprite/sprite.svg#friends"></use>
 							</svg>
 						</span>
-                        <span class="link-title">My friends</span>
-                    </a>
+                            <span class="link-title">My friends</span>
+                        </a>
                     @endif
                 </div>
                 <div class="header-panel-action">
@@ -155,7 +158,7 @@
                             @csrf
                             @method('POST')
                         </form>
-                        @else
+                    @else
                         <a data-router-disabled href="{{ route('login') }}" class="link d-none d-xl-inline-flex">
 						<span class="link-icon">
 							<svg class="svg svg__24">
@@ -165,18 +168,18 @@
                             <span class="link-title">Log In</span>
                         </a>
                     @endif
-                        @if(Auth::user())
-                            @if( Auth::user()->hasRole('admin') )
-                                <a data-router-disabled href="{{ route('createLeaf') }}" class="btn d-none d-md-inline-flex">
+                    @if(Auth::user())
+                        @if( Auth::user()->hasRole('admin') )
+                            <a data-router-disabled href="{{ route('createLeaf') }}" class="btn d-none d-md-inline-flex">
                             <span class="btn-icon">
                                 <svg class="svg svg__32">
                                     <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
                                 </svg>
                             </span>
-                                    <span class="btn-title">Create a leaf</span>
-                                </a>
-                            @endif
+                                <span class="btn-title">Create a leaf</span>
+                            </a>
                         @endif
+                    @endif
 
                     <div class="burger">
                         <div class="burger-box">
@@ -639,30 +642,30 @@
 						</span>
                         <span class="link-title">Create a leaf</span>
                     </a>
-                    <a href="editor.html" class="link">
-						<span class="link-icon">
-							<svg class="svg svg__24">
-								<use xlink:href="/campustree/images/sprite/sprite.svg#shield"></use>
-							</svg>
-						</span>
-                        <span class="link-title">Privacy Policy</span>
-                    </a>
-                    <a href="faq.html" class="link">
-						<span class="link-icon">
-							<svg class="svg svg__24">
-								<use xlink:href="/campustree/images/sprite/sprite.svg#faq"></use>
-							</svg>
-						</span>
-                        <span class="link-title">FAQ</span>
-                    </a>
-                    <button class="link" data-popup-trigger="#support">
-						<span class="link-icon">
-							<svg class="svg svg__24">
-								<use xlink:href="/campustree/images/sprite/sprite.svg#support"></use>
-							</svg>
-						</span>
-                        <span class="link-title">Support</span>
-                    </button>
+                    {{--                    <a href="editor.html" class="link">--}}
+                    {{--						<span class="link-icon">--}}
+                    {{--							<svg class="svg svg__24">--}}
+                    {{--								<use xlink:href="/campustree/images/sprite/sprite.svg#shield"></use>--}}
+                    {{--							</svg>--}}
+                    {{--						</span>--}}
+                    {{--                        <span class="link-title">Privacy Policy</span>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="faq.html" class="link">--}}
+                    {{--						<span class="link-icon">--}}
+                    {{--							<svg class="svg svg__24">--}}
+                    {{--								<use xlink:href="/campustree/images/sprite/sprite.svg#faq"></use>--}}
+                    {{--							</svg>--}}
+                    {{--						</span>--}}
+                    {{--                        <span class="link-title">FAQ</span>--}}
+                    {{--                    </a>--}}
+                    {{--                    <button class="link" data-popup-trigger="#support">--}}
+                    {{--						<span class="link-icon">--}}
+                    {{--							<svg class="svg svg__24">--}}
+                    {{--								<use xlink:href="/campustree/images/sprite/sprite.svg#support"></use>--}}
+                    {{--							</svg>--}}
+                    {{--						</span>--}}
+                    {{--                        <span class="link-title">Support</span>--}}
+                    {{--                    </button>--}}
                     <button class="link link-absolute">
 						<span class="link-icon">
 							<svg class="svg svg__24">
@@ -683,30 +686,30 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <div class="footer-copyright">
                         <p class="paragraph">&copy; Campus Tree 2022</p>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="footer-nav">
-                        <a href="faq.html" class="link link-sm">
-							<span class="link-icon">
-								<svg class="svg svg__16">
-									<use xlink:href="/campustree/images/sprite/sprite.svg#faq"></use>
-								</svg>
-							</span>
-                            <span class="link-title">FAQ</span>
-                        </a>
-                        <button class="link link-sm" data-popup-trigger="#support">
-							<span class="link-icon">
-								<svg class="svg svg__16">
-									<use xlink:href="/campustree/images/sprite/sprite.svg#support"></use>
-								</svg>
-							</span>
-                            <span class="link-title">Support</span>
-                        </button>
-                    </div>
+{{--                <div class="col-6">--}}
+{{--                    <div class="footer-nav">--}}
+{{--                        <a href="faq.html" class="link link-sm">--}}
+{{--							<span class="link-icon">--}}
+{{--								<svg class="svg svg__16">--}}
+{{--									<use xlink:href="/campustree/images/sprite/sprite.svg#faq"></use>--}}
+{{--								</svg>--}}
+{{--							</span>--}}
+{{--                            <span class="link-title">FAQ</span>--}}
+{{--                        </a>--}}
+{{--                        <button class="link link-sm" data-popup-trigger="#support">--}}
+{{--							<span class="link-icon">--}}
+{{--								<svg class="svg svg__16">--}}
+{{--									<use xlink:href="/campustree/images/sprite/sprite.svg#support"></use>--}}
+{{--								</svg>--}}
+{{--							</span>--}}
+{{--                            <span class="link-title">Support</span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="row">
@@ -1161,6 +1164,23 @@
 <script src="{{ asset('admin/dist/js/jquery.colorbox-min.js') }}"></script>
 <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
 @yield('custom-js')
+<script>
+    // $('.input-search').on('change keyup paste',function () {
+    //     let thisVal = $(this).val();
+    //     console.log(thisVal);
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/search',
+    //         data: thisVal,
+    //         success: function(response) {
+    //             console.log('Дані збережено успішно!');
+    //         },
+    //         error: function(xhr, status, error) {
+    //             console.log('Сталася помилка: ' + error);
+    //         }
+    //     });
+    // });
+</script>
 <script src="https://cdn.tiny.cloud/1/s2wox67b49yyyur1t1ibqrqc1zrjb0lniiry5tb3bkcdmg58/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </body>
 </html>

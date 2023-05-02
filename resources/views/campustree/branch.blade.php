@@ -431,13 +431,13 @@
                                     </defs>
                                 </svg>
                             </div>
-                            <div class="pagination" data-total-count="230" data-visible-count="13">
-                                <div class="pagination-list">
-                                    <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                    <div class="pagination-list-numbers"></div>
-                                    <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                </div>
-                            </div>
+{{--                            <div class="pagination" data-total-count="230" data-visible-count="13">--}}
+{{--                                <div class="pagination-list">--}}
+{{--                                    <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                    <div class="pagination-list-numbers"></div>--}}
+{{--                                    <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>

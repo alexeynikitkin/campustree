@@ -20,7 +20,7 @@
                             <div class="tabs tabs-md tabs-inline">
                                 <a data-router-disabled href="{{ route('allUsers') }}" class="tabs-item" data-transition="pagination">User List</a>
                                 <a data-router-disabled href="{{ route('allFriends') }}" class="tabs-item is-active" data-transition="pagination">My friends</a>
-                                <a data-router-disabled href="friends-requests.html" class="tabs-item" data-transition="pagination">Friend’s requests</a>
+{{--                                <a data-router-disabled href="friends-requests.html" class="tabs-item" data-transition="pagination">Friend’s requests</a>--}}
                             </div>
                         </div>
                     </div>
@@ -157,99 +157,99 @@
                                                         <span class="input-radio-title">Other</span>
                                                     </label>
                                                 </fieldset>
-                                                <p class="paragraph paragraph-medium">Faculty</p>
-                                                <fieldset class="fieldset" data-fieldset-list="people-faculty">
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="all" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">All</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Chemistry" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Chemistry</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Computer Science and Cybernetics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Computer Science and Cybernetics</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Economics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Economics</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Geography" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Geography</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="History" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">History</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Law" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Law</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Mechanics and Mathematics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Mechanics and Mathematics</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Philosophy" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Philosophy</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Physics" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                        <span class="input-checkbox-title">Physics</span>
-                                                    </label>
-                                                </fieldset>
+{{--                                                <p class="paragraph paragraph-medium">Faculty</p>--}}
+{{--                                                <fieldset class="fieldset" data-fieldset-list="people-faculty">--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="all" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">All</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Chemistry" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Chemistry</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Computer Science and Cybernetics" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Computer Science and Cybernetics</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Economics" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Economics</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Geography" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Geography</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="History" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">History</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Law" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Law</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Mechanics and Mathematics" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Mechanics and Mathematics</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Philosophy" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Philosophy</span>--}}
+{{--                                                    </label>--}}
+{{--                                                    <label class="input-container">--}}
+{{--                                                        <input type="checkbox" value="Physics" class="input input-checkbox">--}}
+{{--                                                        <span class="input-checkbox-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																	<use xlink:href="../images/sprite/sprite.svg#check"></use>--}}
+{{--																</svg>--}}
+{{--															</span>--}}
+{{--                                                        <span class="input-checkbox-title">Physics</span>--}}
+{{--                                                    </label>--}}
+{{--                                                </fieldset>--}}
                                             </div>
                                             <div class="col-sm-6">
                                                 <p class="paragraph paragraph-medium">Years</p>
@@ -384,45 +384,45 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-8">
-                            <div class="tags">
-                                <div class="tags-list">
-                                    <div class="tags-item tag tag-greek-life enable-remove">
-                                        Greek Life
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="tags-item tag tag-alumni enable-remove">
-                                        Alumni
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="tags-item tag tag-local enable-remove">
-                                        Local
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="tags-item tag enable-remove">
-                                        Joey
-                                        <svg viewBox="0 0 8 8" fill="none">
-                                            <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="tags-item tag clear-tags">
-                                    <svg viewBox="0 0 8 8" fill="none">
-                                        <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    Clear tags
-                                </div>
-                            </div>
+{{--                            <div class="tags">--}}
+{{--                                <div class="tags-list">--}}
+{{--                                    <div class="tags-item tag tag-greek-life enable-remove">--}}
+{{--                                        Greek Life--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="tags-item tag tag-alumni enable-remove">--}}
+{{--                                        Alumni--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="tags-item tag tag-local enable-remove">--}}
+{{--                                        Local--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="tags-item tag enable-remove">--}}
+{{--                                        Joey--}}
+{{--                                        <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                            <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                            <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="tags-item tag clear-tags">--}}
+{{--                                    <svg viewBox="0 0 8 8" fill="none">--}}
+{{--                                        <path d="M6 2L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                        <path d="M2 2L6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>--}}
+{{--                                    </svg>--}}
+{{--                                    Clear tags--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="tree">
                                 <div class="tree-links">
                                     <a href="index.html" data-transition="pagination" id="pagination-link"></a>
@@ -484,19 +484,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mt-5 d-flex justify-content-between align-items-center">
-                                <div class="pagination" data-total-count="35" data-visible-count="8">
-                                    <div class="pagination-list">
-                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                        <div class="pagination-list-numbers"></div>
-                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <div class="mt-5 d-flex justify-content-between align-items-center">--}}
+{{--                                <div class="pagination" data-total-count="35" data-visible-count="8">--}}
+{{--                                    <div class="pagination-list">--}}
+{{--                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                        <div class="pagination-list-numbers"></div>--}}
+{{--                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </section>
         </div>
@@ -538,18 +538,18 @@
                                     <p class="paragraph paragraph-medium">Birth Date</p>
                                     <p class="paragraph paragraph-md">{{ $user->user_birth }}</p>
                                 </div>
-                                <div class="mb-3">
-                                    <p class="paragraph paragraph-medium">Faculty</p>
-                                    <p class="paragraph paragraph-md">Philology</p>
-                                </div>
-                                <p class="paragraph paragraph-medium">Tags</p>
-                                <div class="tags">
-                                    <div class="tags-list">
-                                        <div class="tags-item tag tag-events">Events</div>
-                                        <div class="tags-item tag tag-majors">Majors</div>
-                                        <div class="tags-item tag tag-clubs">Clubs</div>
-                                    </div>
-                                </div>
+{{--                                <div class="mb-3">--}}
+{{--                                    <p class="paragraph paragraph-medium">Faculty</p>--}}
+{{--                                    <p class="paragraph paragraph-md">Philology</p>--}}
+{{--                                </div>--}}
+{{--                                <p class="paragraph paragraph-medium">Tags</p>--}}
+{{--                                <div class="tags">--}}
+{{--                                    <div class="tags-list">--}}
+{{--                                        <div class="tags-item tag tag-events">Events</div>--}}
+{{--                                        <div class="tags-item tag tag-majors">Majors</div>--}}
+{{--                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="person-action" data-user-id="{{ $user->id }}">
                                     @if(isset(\App\Models\Friend::where('friend_id', $user->id)->first()->friend_id))
                                         @if( \App\Models\Friend::where('friend_id', $user->id)->first()->friend_id == $user->id )

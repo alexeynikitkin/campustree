@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="box-banner">
-                                <img data-src="{{ $leaf->img }}" alt="English Leaf">
+                                <img data-src="\{{ $leaf->img }}" alt="English Leaf">
                             </div>
                         </div>
                     </div>
@@ -25,15 +25,15 @@
                                         <div class="date-label-lg">{{ $leaf->created_at }}</div>
                                     </div>
                                 </div>
-                                <div class="event-description-location location"
-                                     data-calendar-location="Instytuts'ka St, 11, Khmelnytskyi, KNU">
-                                    <div class="location-icon">
-                                        <svg class="svg svg__24">
-                                            <use xlink:href="/campustree/images/sprite/sprite.svg#location"></use>
-                                        </svg>
-                                    </div>
-                                    <div class="location-label">Instytuts'ka St, 11, Khmelnytskyi, KNU</div>
-                                </div>
+{{--                                <div class="event-description-location location"--}}
+{{--                                     data-calendar-location="Instytuts'ka St, 11, Khmelnytskyi, KNU">--}}
+{{--                                    <div class="location-icon">--}}
+{{--                                        <svg class="svg svg__24">--}}
+{{--                                            <use xlink:href="/campustree/images/sprite/sprite.svg#location"></use>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="location-label">Instytuts'ka St, 11, Khmelnytskyi, KNU</div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <div class="col-12 d-md-none">
@@ -50,7 +50,7 @@
                                     <div class="box-header-row align-items-start phone-block">
                                         <div class="event event-open">
                                             <div class="event-thumb">
-                                                <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">
+                                                <img src="\{{ $leaf->img }}" alt="{{ $leaf->title }}">
                                             </div>
                                             <div class="event-description">
                                                 <div class="event-description-type">

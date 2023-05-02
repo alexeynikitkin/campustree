@@ -43,35 +43,34 @@
                                                         <svg class="svg svg__16 color-greek-life">
                                                             <use xlink:href="/campustree/images/sprite/sprite.svg#lamp"></use>
                                                         </svg>
-                                                        Student Creator
+                                                        {{ $user->getRoleNames()[0] }}
                                                     </div>
                                                     <p class="person-description-title h-3">{{ $user->name }}</p>
-                                                    <p class="person-description-subtitle paragraph paragraph-md">{{ $user->getRoleNames()[0] }}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="personal-header-action">
-                                            <div class="social">
-                                                <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">
-                                                    <svg class="svg svg__24">
-                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>
-                                                    </svg>
-                                                </a>
-                                                <a href="https://www.instagram.com/" target="_blank" class="social-link">
-                                                    <svg class="svg svg__24">
-                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>
-                                                    </svg>
-                                                </a>
-                                                <a href="https://www.instagram.com/" target="_blank" class="social-link">
-                                                    <svg class="svg svg__24">
-                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
+{{--                                        <div class="personal-header-action">--}}
+{{--                                            <div class="social">--}}
+{{--                                                <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">--}}
+{{--                                                    <svg class="svg svg__24">--}}
+{{--                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>--}}
+{{--                                                    </svg>--}}
+{{--                                                </a>--}}
+{{--                                                <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
+{{--                                                    <svg class="svg svg__24">--}}
+{{--                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>--}}
+{{--                                                    </svg>--}}
+{{--                                                </a>--}}
+{{--                                                <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
+{{--                                                    <svg class="svg svg__24">--}}
+{{--                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>--}}
+{{--                                                    </svg>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
 {{--                                            <a href="events-on-review.html" class="btn btn-md">--}}
 {{--                                                <span class="btn-title">Events on review</span>--}}
 {{--                                            </a>--}}
-                                        </div>
+{{--                                        </div>--}}
                                     </div>
                                     <div class="leaves personal-box">
                                         <div class="box box-bg">
@@ -97,59 +96,59 @@
                                                                 <p class="paragraph paragraph-medium">Birth Date</p>
                                                                 <p class="paragraph paragraph-md">{{ $user->user_birth }}</p>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <p class="paragraph paragraph-medium">Faculty</p>
-                                                                <p class="paragraph paragraph-md">Philology</p>
-                                                            </div>
+{{--                                                            <div class="mb-3">--}}
+{{--                                                                <p class="paragraph paragraph-medium">Faculty</p>--}}
+{{--                                                                <p class="paragraph paragraph-md">Philology</p>--}}
+{{--                                                            </div>--}}
                                                             <div class="mb-3">
                                                                 <p class="paragraph paragraph-medium">E-mail</p>
                                                                 <p class="paragraph paragraph-md">{{ $user->email }}</p>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <p class="paragraph paragraph-medium">Socials Networks</p>
-                                                                <div class="social">
-                                                                    <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">
-                                                                        <svg class="svg svg__24">
-                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>
-                                                                        </svg>
-                                                                    </a>
-                                                                    <a href="https://www.instagram.com/" target="_blank" class="social-link">
-                                                                        <svg class="svg svg__24">
-                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>
-                                                                        </svg>
-                                                                    </a>
-                                                                    <a href="https://www.instagram.com/" target="_blank" class="social-link">
-                                                                        <svg class="svg svg__24">
-                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>
-                                                                        </svg>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <p class="paragraph paragraph-medium">Tags</p>
-                                                                <div class="tags">
-                                                                    <div class="tags-list">
-                                                                        <div class="tags-item tag tag-events">Events</div>
-                                                                        <div class="tags-item tag tag-majors">Majors</div>
-                                                                        <div class="tags-item tag tag-clubs">Clubs</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <p class="paragraph paragraph-medium">Password</p>
-                                                                <p class="paragraph paragraph-md password-mask">userPassword1234</p>
-                                                            </div>
+{{--                                                            <div class="mb-3">--}}
+{{--                                                                <p class="paragraph paragraph-medium">Socials Networks</p>--}}
+{{--                                                                <div class="social">--}}
+{{--                                                                    <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">--}}
+{{--                                                                        <svg class="svg svg__24">--}}
+{{--                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>--}}
+{{--                                                                        </svg>--}}
+{{--                                                                    </a>--}}
+{{--                                                                    <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
+{{--                                                                        <svg class="svg svg__24">--}}
+{{--                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>--}}
+{{--                                                                        </svg>--}}
+{{--                                                                    </a>--}}
+{{--                                                                    <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
+{{--                                                                        <svg class="svg svg__24">--}}
+{{--                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>--}}
+{{--                                                                        </svg>--}}
+{{--                                                                    </a>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="mb-3">--}}
+{{--                                                                <p class="paragraph paragraph-medium">Tags</p>--}}
+{{--                                                                <div class="tags">--}}
+{{--                                                                    <div class="tags-list">--}}
+{{--                                                                        <div class="tags-item tag tag-events">Events</div>--}}
+{{--                                                                        <div class="tags-item tag tag-majors">Majors</div>--}}
+{{--                                                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="mb-3">--}}
+{{--                                                                <p class="paragraph paragraph-medium">Password</p>--}}
+{{--                                                                <p class="paragraph paragraph-md password-mask">userPassword1234</p>--}}
+{{--                                                            </div>--}}
                                                         </div>
-                                                        <div class="box-body-action">
-                                                            <a href="personal-tree-edit.html" class="btn btn-outline btn-md">
-															<span class="btn-icon">
-																<svg class="svg svg__16">
-																		<use xlink:href="/campustree/images/sprite/sprite.svg#edit"></use>
-																	</svg>
-															</span>
-                                                                <span class="btn-title">Edit</span>
-                                                            </a>
-                                                        </div>
+{{--                                                        <div class="box-body-action">--}}
+{{--                                                            <a href="personal-tree-edit.html" class="btn btn-outline btn-md">--}}
+{{--															<span class="btn-icon">--}}
+{{--																<svg class="svg svg__16">--}}
+{{--																		<use xlink:href="/campustree/images/sprite/sprite.svg#edit"></use>--}}
+{{--																	</svg>--}}
+{{--															</span>--}}
+{{--                                                                <span class="btn-title">Edit</span>--}}
+{{--                                                            </a>--}}
+{{--                                                        </div>--}}
                                                     </div>
                                                 </div>
                                                 <div class="tabs-content-item" data-tab-content="1" data-tab-segment="0">
@@ -394,17 +393,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xl-8 col-12">
-                                <div class="pagination" data-total-count="161" data-visible-count="18" data-tab-content="2" data-tab-segment="1">
-                                    <div class="pagination-list">
-                                        <a href="index.html" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                        <div class="pagination-list-numbers"></div>
-                                        <a href="index.html" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="row">--}}
+{{--                            <div class="col-xl-8 col-12">--}}
+{{--                                <div class="pagination" data-total-count="161" data-visible-count="18" data-tab-content="2" data-tab-segment="1">--}}
+{{--                                    <div class="pagination-list">--}}
+{{--                                        <a href="index.html" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                        <div class="pagination-list-numbers"></div>--}}
+{{--                                        <a href="index.html" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="row">
                             <div class="col-12">
                                 <div class="d-md-none text-center mt-3" data-tab-content="2" data-tab-segment="1">
