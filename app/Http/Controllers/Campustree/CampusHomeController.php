@@ -125,20 +125,68 @@ class CampusHomeController extends Controller
     }
 
     public function allUsers(){
-        $users = User::paginate(4);
+//        $thisUser = User::find(Auth::user()->id);
+//        $friends_arr = [];
+//        $accept_arr = [];
+//        foreach ($thisUser->friendsReceiver as $item) {
+//            array_push($friends_arr, $item->user_id);
+//        }
+        $users = User::all();
         $cats = Category::all();
         $sexes = Sex::all();
         return view('campustree.users', [
             'users' => $users,
             'sexes' => $sexes,
-            'cats' => $cats
+            'cats' => $cats,
+
+//            'friends_arr' => $friends_arr,
+//            'accept_arr' => $accept_arr,
         ]);
     }
 
     public function allFriends(){
-        $users = Auth::user()->friends()->get();
+        $friends1 = Friend::where('accepted', 1)
+            ->where(function ($query){
+                $query->where('user_id', User::find(Auth::user()->id)->id )
+                    ->orWhere('friend_id', User::find(Auth::user()->id)->id );
+            })->get();
+        $resultIds = [];
+        foreach($friends1 as $friend) {
+            $resultId = $friend->user_id;
+            if($friend->user_id == Auth::user()->id) {
+                $resultId = $friend->friend_id;
+            }
+            array_push($resultIds, $resultId);
+        }
+        $friends = User::all();
         return view('campustree.friends', [
-            'users' => $users,
+            'resultIds' => $resultIds,
+            'friends' => $friends
+        ]);
+    }
+
+    public function friendsRequest(){
+        $user_id = Friend::where('friend_id', Auth::user()->id)->first();
+//        dd($user_id);
+        $friends1 = [];
+        if(Auth::user() != $user_id) {
+            $friends1 = Friend::where('accepted', 0)
+                ->where(function ($query){
+                    $query->where('friend_id', User::find(Auth::user()->id)->id );
+                })->get();
+        }
+        $resultIds = [];
+        foreach($friends1 as $friend) {
+            $resultId = $friend->user_id;
+            if($friend->user_id == Auth::user()->id) {
+                $resultId = $friend->friend_id;
+            }
+            array_push($resultIds, $resultId);
+        }
+        $friends = User::all();
+        return view('campustree.friends_request', [
+            'resultIds' => $resultIds,
+            'friends' => $friends
         ]);
     }
 
@@ -157,13 +205,7 @@ class CampusHomeController extends Controller
         $user->assignRole('user');
     }
 
-//    public function search(){
-//        // Check for search input
-//        if (request('search')) {
-//            $leaves = Post::where('title', 'like', '%' . request('search') . '%')->get();
-//        } else {
-//            $leaves = Post::all();
-//        }
-//        return view('campustree.home')->with('searchLeaves', $leaves);
-//    }
+    public function search(){
+        return view('campustree.search');
+    }
 }

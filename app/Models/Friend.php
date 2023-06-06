@@ -14,4 +14,9 @@ class Friend extends Model
     public function notifications(){
         return $this->belongsTo(Notification::class, 'friend_id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'friend_id', 'id');
+    }
 }

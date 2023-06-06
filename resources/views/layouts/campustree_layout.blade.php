@@ -59,17 +59,17 @@
 									<use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
 								</svg>
 							</span>
-                            <span class="dropdown-body">
-								<span class="dropdown-body-item">
-									<span class="list">
+{{--                            <span class="dropdown-body">--}}
+{{--								<span class="dropdown-body-item">--}}
+{{--									<span class="list">--}}
 {{--                                     @forelse($searchLeaves as $leaf)--}}
 {{--                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="list-item">{{ $leaf->title }}</a>--}}
 {{--                                        @empty--}}
 {{--                                            <li class="list-group-item list-group-item-danger">{{ $request }}</li>--}}
 {{--                                        @endforelse--}}
-									</span>
-								</span>
-							</span>
+{{--									</span>--}}
+{{--								</span>--}}
+{{--							</span>--}}
                         </label>
                     </div>
                 </div>
