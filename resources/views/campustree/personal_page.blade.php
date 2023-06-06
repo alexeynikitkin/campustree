@@ -24,21 +24,9 @@
                                         <div class="personal-header-info">
                                             <div class="person-header">
                                                 <div class="person-thumb __80" data-thumb-title="{{ $user->name }}">
-                                                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBlb3BsZXxlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="{{ $user->name }}">
+                                                    <img src="/{{ $user->user_img }}" alt="{{ $user->name }}">
                                                 </div>
                                                 <div>
-                                                    <!--												<div class="person-description-status">-->
-                                                    <!--													<svg class="svg svg__16 color-alumni">-->
-                                                    <!--														<use xlink:href="/campustree/images/sprite/sprite.svg#crown"></use>-->
-                                                    <!--													</svg>-->
-                                                    <!--													Administrator-->
-                                                    <!--												</div>-->
-                                                    <!--												<div class="person-description-status">-->
-                                                    <!--													<svg class="svg svg__16 color-primary">-->
-                                                    <!--														<use xlink:href="/campustree/images/sprite/sprite.svg#graduation-cap"></use>-->
-                                                    <!--													</svg>-->
-                                                    <!--													Student-->
-                                                    <!--												</div>-->
                                                     <div class="person-description-status">
                                                         <svg class="svg svg__16 color-greek-life">
                                                             <use xlink:href="/campustree/images/sprite/sprite.svg#lamp"></use>

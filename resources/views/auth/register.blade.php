@@ -1382,21 +1382,26 @@
                                                               required></textarea>
                                                     <span class="input-message __error">This field is required!</span>
                                                 </label>
-                                                <label class="input-container input-container-file">
-                                                  <span class="upload-file">
-                                                    <input type="file" class="input" hidden>
-                                                    <span class="person-thumb">
-                                                      <img src="" alt="Joey Tribbiani">
-                                                      <span class="person-thumb-upload">
-                                                        <svg class="svg svg__16">
-                                                          <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
-                                                        </svg>
-                                                      </span>
-                                                    </span>
-                                                  </span>
-                                                    <span class="upload-text h-4">Upload a photo</span>
-                                                    <span class="input-message __error">This field is required!</span>
-                                                </label>
+{{--                                                <label class="input-container input-container-file">--}}
+{{--                                                  <span class="upload-file">--}}
+{{--                                                    <input type="file" class="input" hidden>--}}
+{{--                                                    <span class="person-thumb">--}}
+{{--                                                      <img src="" alt="Joey Tribbiani">--}}
+{{--                                                      <span class="person-thumb-upload">--}}
+{{--                                                        <svg class="svg svg__16">--}}
+{{--                                                          <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>--}}
+{{--                                                        </svg>--}}
+{{--                                                      </span>--}}
+{{--                                                    </span>--}}
+{{--                                                  </span>--}}
+{{--                                                    <span class="upload-text h-4">Upload a photo</span>--}}
+{{--                                                    <span class="input-message __error">This field is required!</span>--}}
+{{--                                                </label>--}}
+                                                <div class="form-group">
+                                                    <label for="feature_image">User Image</label>
+                                                    <input class="form-control"  type="text" id="feature_image" name="user_img" value="" readonly>
+                                                    <a href="" class="popup_selector" data-inputid="feature_image"><img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/></a>
+                                                </div>
                                                 <div class="steps-inputs-wrapper">
                                                     <label class="input-container">
                                                         <input name="password" placeholder="Password" type="password" class="input"

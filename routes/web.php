@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Campustree\FriendsController;
 use App\Http\Controllers\Campustree\CampusHomeController;
 use App\Http\Controllers\Campustree\CommentsController;
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,27 +26,31 @@ Route::get('/', [CampusHomeController::class, 'index'])->name('campus.home');
 
 // Leaf Page
 
-Route::get('/events/{leaf}', [CampusHomeController::class, 'showLeaf'])->name('showLeaf');
-Route::post('/events/{leaf}', [CampusHomeController::class, 'addLeafToUser'])->name('addLeafToUser');
-Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser');
+Route::get('/events/{leaf}', [CampusHomeController::class, 'showLeaf'])->name('showLeaf')->middleware('auth');
+Route::post('/events/{leaf}', [CampusHomeController::class, 'addLeafToUser'])->name('addLeafToUser')->middleware('auth');
+Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser')->middleware('auth');
 
 // Branch Page
 
-Route::get('/branch/{id}', [CampusHomeController::class, 'showBranch'])->name('showBranch');
+Route::get('/branch/{id}', [CampusHomeController::class, 'showBranch'])->name('showBranch')->middleware('auth');
 
 // Users and Friends
-Route::get('/users', [CampusHomeController::class, 'allUsers'])->name('allUsers');
-Route::get('/friends', [CampusHomeController::class, 'allFriends'])->name('allFriends');
-Route::post('/users', [FriendsController::class, 'store'])->name('addFriends');
-Route::delete('/users', [FriendsController::class, 'destroy'])->name('deleteFriends');
+Route::get('/users', [CampusHomeController::class, 'allUsers'])->name('allUsers')->middleware('auth');
+Route::get('/friends', [CampusHomeController::class, 'allFriends'])->name('allFriends')->middleware('auth');
+Route::get('/friends_request', [CampusHomeController::class, 'friendsRequest'])->name('friendsRequest')->middleware('auth');
+Route::post('/users', [FriendsController::class, 'store'])->name('addFriends')->middleware('auth');
+Route::delete('/users', [FriendsController::class, 'destroy'])->name('deleteFriends')->middleware('auth');
+
+Route::post('/friends_request', [FriendsController::class, 'acceptFriend'])->name('acceptFriend')->middleware('auth');
+Route::delete('/friends_request', [FriendsController::class, 'declineFriend'])->name('declineFriend')->middleware('auth');
 
 // Create Events
-Route::middleware('role:admin')->group(function (){
+Route::middleware(['role:admin', 'auth'])->group(function (){
     Route::get('/create', [CampusHomeController::class, 'createLeaf'])->name('createLeaf');
     Route::post('/events', [CampusHomeController::class, 'storeLeaf'])->name('storeLeaf');
 });
 
-
+Route::get('/search', [CampusHomeController::class, 'search']);
 // Create Comments in events pages
 
 Route::post('/', [CommentsController::class, 'store'])->name('commentCreate')->middleware('auth');
@@ -71,7 +76,7 @@ Route::middleware('role:admin')->prefix('admin_panel')->group(function (){
         'category' => CategoryController::class,
         'post' => PostController::class,
         'comment' => CommentsController::class,
-        'user' => \App\Http\Controllers\Admin\UserController::class
+        'user' => UserController::class
     ]);
 });
 

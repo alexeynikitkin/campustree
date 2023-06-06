@@ -51,30 +51,424 @@
                     </a>
                 </div>
                 <div class="header-panel-search">
-                    <div class="search">
-                        <label class="input-container dropdown">
-                            <input type="text" class="input input-transparent input-search">
-                            <span class="input-container-icon">
-								<svg class="svg svg__24">
-									<use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
-								</svg>
-							</span>
-{{--                            <span class="dropdown-body">--}}
-{{--								<span class="dropdown-body-item">--}}
-{{--									<span class="list">--}}
-{{--                                     @forelse($searchLeaves as $leaf)--}}
-{{--                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="list-item">{{ $leaf->title }}</a>--}}
-{{--                                        @empty--}}
-{{--                                            <li class="list-group-item list-group-item-danger">{{ $request }}</li>--}}
-{{--                                        @endforelse--}}
-{{--									</span>--}}
-{{--								</span>--}}
-{{--							</span>--}}
-                        </label>
-                    </div>
+                    <form action="/search" method="GET">
+                        @csrf
+                        <div class="search">
+                            <label class="input-container dropdown">
+                                <input type="text" class="input input-transparent input-search" name="search">
+                                    <span class="input-container-icon">
+                                    <svg class="svg svg__24">
+                                        <use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="header-panel-filters">
+                            <div class="filters">
+                                <div class="filters-item">
+                                    <div class="link" id="toggle-header-mobile-filters">
+                                        <div class="link-icon">
+                                            <svg class="svg svg__24">
+                                                <use xlink:href="/campustree/images/sprite/sprite.svg#filter"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="link-title">Filters</div>
+                                    </div>
+                                </div>
+                                <div class="filters-item d-none d-xl-flex">
+                                    <div class="dropdown">
+                                        <input type="text" data-fieldset-trigger="filter-branches" name="filter-branches"
+                                               hidden>
+                                        <p class="dropdown-trigger-label">Branches</p>
+                                        <p class="dropdown-trigger dropdown-trigger-title" data-fieldset-label="filter-branches"
+                                           data-label="Select branch">Select branch</p>
+                                        <div class="dropdown-body">
+                                            <div class="dropdown-body-item">
+                                                <fieldset class="fieldset" data-fieldset-list="filter-branches">
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="all" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">All</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="1" data-value="Greek Life"
+                                                               class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Greek Life</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="1" data-value="Alumni"
+                                                               class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Alumni</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="2" data-value="Local"
+                                                               class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Local</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="3" data-value="Events"
+                                                               class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Events</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="4" data-value="Majors"
+                                                               class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Majors</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="5" data-value="Clubs"
+                                                               class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Clubs</span>
+                                                    </label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filters-item d-none d-xl-flex">
+                                    <div class="dropdown">
+                                        <input type="text" data-fieldset-trigger="filter-interests" name="filter-branches"
+                                               hidden>
+                                        <p class="dropdown-trigger-label">Interests</p>
+                                        <p class="dropdown-trigger dropdown-trigger-title"
+                                           data-fieldset-label="filter-interests" data-label="Select interest">Select
+                                            interest</p>
+                                        <div class="dropdown-body">
+                                            <div class="dropdown-body-item">
+                                                <fieldset class="fieldset" data-fieldset-list="filter-interests">
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="all" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">All</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Greek Life" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Greek Life</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Alumni" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Alumni</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Local" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Local</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Events" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Events</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Majors" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Majors</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Clubs" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Clubs</span>
+                                                    </label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filters-item d-none d-xl-flex">
+                                    <label class="input-container">
+                                        <input type="checkbox" class="input input-checkbox input-checkbox-sm">
+                                        <span class="input-checkbox-icon">
+									<svg class="svg svg__16">
+										<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+									</svg>
+								</span>
+                                        <span class="input-checkbox-title">Only with my friends</span>
+                                    </label>
+                                </div>
+                                <div class="filters-item">
+                                    <div class="link close-filters">
+                                        <div class="link-icon">
+                                            <svg class="svg svg__16">
+                                                <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-panel-filters __mobile" id="header-mobile-filters">
+                            <div class="row pb-4">
+                                <div class="col-6 d-flex align-items-center">
+                                    <label class="input-container">
+                                        <input type="checkbox" class="input input-checkbox input-checkbox-sm">
+                                        <span class="input-checkbox-icon">
+									<svg class="svg svg__16">
+										<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+									</svg>
+								</span>
+                                        <span class="input-checkbox-title">Only with my friends</span>
+                                    </label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn reset-btn" data-reset-box="#header-mobile-filters">
+                                            <span class="btn-title">Reset filter</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border"></div>
+                            <div class="row pt-4">
+                                <div class="col-12 d-flex">
+                                    <div class="dropdown dropdown-static">
+                                        <p class="dropdown-trigger-label">Branches</p>
+                                        <p class="dropdown-trigger dropdown-trigger-title"
+                                           data-fieldset-label="filter-branches-mobile" data-label="Select branch">Select
+                                            branch</p>
+                                        <div class="dropdown-body">
+                                            <div class="dropdown-body-item">
+                                                <fieldset class="fieldset" data-fieldset-list="filter-branches-mobile">
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="all" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">All</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Greek Life" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Greek Life</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Alumni" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Alumni</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Local" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Local</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Events" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Events</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Majors" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Majors</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Clubs" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Clubs</span>
+                                                    </label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown dropdown-static">
+                                        <p class="dropdown-trigger-label">Interests</p>
+                                        <p class="dropdown-trigger dropdown-trigger-title"
+                                           data-fieldset-label="filter-interests-mobile" data-label="Select interest">Select
+                                            interest</p>
+                                        <div class="dropdown-body">
+                                            <div class="dropdown-body-item">
+                                                <fieldset class="fieldset" data-fieldset-list="filter-interests-mobile">
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="all" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">All</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Greek Life" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Greek Life</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Alumni" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Alumni</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Local" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Local</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Events" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Events</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Majors" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Majors</span>
+                                                    </label>
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="Clubs" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">Clubs</span>
+                                                    </label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="header-panel-nav">
-                    @if(Auth::user())
                         <a data-router-disabled href="{{ route('allUsers') }}" class="link">
 						<span class="link-icon">
 							<svg class="svg svg__24">
@@ -83,18 +477,18 @@
 						</span>
                             <span class="link-title">My friends</span>
                         </a>
-                    @endif
                 </div>
                 <div class="header-panel-action">
-                    @if(Auth::user())
-                        <a data-router-disabled href="{{ route('personal', Auth::user()->id) }}" class="link personal-tree d-none d-xl-inline-flex">
-						<span class="link-icon">
-							<svg class="svg svg__64">
-								<use xlink:href="/campustree/images/sprite/sprite.svg#tree"></use>
-							</svg>
-						</span>
-                            <span class="link-title">My personal tree</span>
-                        </a>
+                        @if(Auth::user())
+                            <a data-router-disabled href="{{ route('personal', Auth::user()->id) }}" class="link personal-tree d-none d-xl-inline-flex">
+                                <span class="link-icon">
+                                    <svg class="svg svg__64">
+                                        <use xlink:href="/campustree/images/sprite/sprite.svg#tree"></use>
+                                    </svg>
+                                </span>
+                                <span class="link-title">My personal tree</span>
+                            </a>
+                        @endif
                         <div class="dropdown dropdown-lg">
                             @php
                                 $notifications = \App\Models\Notification::where('friend_id', Auth::id())->get();
@@ -139,7 +533,6 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
 
 
                     @if(Auth::user())
@@ -189,408 +582,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="header-panel-filters">
-                    <div class="filters">
-                        <div class="filters-item">
-                            <div class="link" id="toggle-header-mobile-filters">
-                                <div class="link-icon">
-                                    <svg class="svg svg__24">
-                                        <use xlink:href="/campustree/images/sprite/sprite.svg#filter"></use>
-                                    </svg>
-                                </div>
-                                <div class="link-title">Filters</div>
-                            </div>
-                        </div>
-                        <div class="filters-item d-none d-xl-flex">
-                            <div class="dropdown">
-                                <input type="text" data-fieldset-trigger="filter-branches" name="filter-branches"
-                                       hidden>
-                                <p class="dropdown-trigger-label">Branches</p>
-                                <p class="dropdown-trigger dropdown-trigger-title" data-fieldset-label="filter-branches"
-                                   data-label="Select branch">Select branch</p>
-                                <div class="dropdown-body">
-                                    <div class="dropdown-body-item">
-                                        <fieldset class="fieldset" data-fieldset-list="filter-branches">
-                                            <label class="input-container">
-                                                <input type="checkbox" value="all" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">All</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="1" data-value="Greek Life"
-                                                       class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Greek Life</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="1" data-value="Alumni"
-                                                       class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Alumni</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="2" data-value="Local"
-                                                       class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Local</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="3" data-value="Events"
-                                                       class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Events</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="4" data-value="Majors"
-                                                       class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Majors</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="5" data-value="Clubs"
-                                                       class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Clubs</span>
-                                            </label>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filters-item d-none d-xl-flex">
-                            <div class="dropdown">
-                                <input type="text" data-fieldset-trigger="filter-interests" name="filter-branches"
-                                       hidden>
-                                <p class="dropdown-trigger-label">Interests</p>
-                                <p class="dropdown-trigger dropdown-trigger-title"
-                                   data-fieldset-label="filter-interests" data-label="Select interest">Select
-                                    interest</p>
-                                <div class="dropdown-body">
-                                    <div class="dropdown-body-item">
-                                        <fieldset class="fieldset" data-fieldset-list="filter-interests">
-                                            <label class="input-container">
-                                                <input type="checkbox" value="all" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">All</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Greek Life" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Greek Life</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Alumni" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Alumni</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Local" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Local</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Events" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Events</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Majors" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Majors</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Clubs" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Clubs</span>
-                                            </label>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filters-item d-none d-xl-flex">
-                            <label class="input-container">
-                                <input type="checkbox" class="input input-checkbox input-checkbox-sm">
-                                <span class="input-checkbox-icon">
-									<svg class="svg svg__16">
-										<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-									</svg>
-								</span>
-                                <span class="input-checkbox-title">Only with my friends</span>
-                            </label>
-                        </div>
-                        <div class="filters-item">
-                            <div class="link close-filters">
-                                <div class="link-icon">
-                                    <svg class="svg svg__16">
-                                        <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-panel-filters __mobile" id="header-mobile-filters">
-                    <div class="row pb-4">
-                        <div class="col-6 d-flex align-items-center">
-                            <label class="input-container">
-                                <input type="checkbox" class="input input-checkbox input-checkbox-sm">
-                                <span class="input-checkbox-icon">
-									<svg class="svg svg__16">
-										<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-									</svg>
-								</span>
-                                <span class="input-checkbox-title">Only with my friends</span>
-                            </label>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex justify-content-end">
-                                <button class="btn reset-btn" data-reset-box="#header-mobile-filters">
-                                    <span class="btn-title">Reset filter</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border"></div>
-                    <div class="row pt-4">
-                        <div class="col-12 d-flex">
-                            <div class="dropdown dropdown-static">
-                                <p class="dropdown-trigger-label">Branches</p>
-                                <p class="dropdown-trigger dropdown-trigger-title"
-                                   data-fieldset-label="filter-branches-mobile" data-label="Select branch">Select
-                                    branch</p>
-                                <div class="dropdown-body">
-                                    <div class="dropdown-body-item">
-                                        <fieldset class="fieldset" data-fieldset-list="filter-branches-mobile">
-                                            <label class="input-container">
-                                                <input type="checkbox" value="all" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">All</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Greek Life" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Greek Life</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Alumni" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Alumni</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Local" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Local</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Events" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Events</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Majors" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Majors</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Clubs" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Clubs</span>
-                                            </label>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown dropdown-static">
-                                <p class="dropdown-trigger-label">Interests</p>
-                                <p class="dropdown-trigger dropdown-trigger-title"
-                                   data-fieldset-label="filter-interests-mobile" data-label="Select interest">Select
-                                    interest</p>
-                                <div class="dropdown-body">
-                                    <div class="dropdown-body-item">
-                                        <fieldset class="fieldset" data-fieldset-list="filter-interests-mobile">
-                                            <label class="input-container">
-                                                <input type="checkbox" value="all" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">All</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Greek Life" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Greek Life</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Alumni" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Alumni</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Local" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Local</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Events" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Events</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Majors" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Majors</span>
-                                            </label>
-                                            <label class="input-container">
-                                                <input type="checkbox" value="Clubs" class="input input-checkbox">
-                                                <span class="input-checkbox-icon">
-													<svg class="svg svg__16">
-														<use
-                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-													</svg>
-												</span>
-                                                <span class="input-checkbox-title">Clubs</span>
-                                            </label>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="border"></div>
         </div>

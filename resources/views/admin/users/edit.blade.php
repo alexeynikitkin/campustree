@@ -53,6 +53,11 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="feature_image">User Image</label>
+                                    <input class="form-control"  type="text" id="feature_image" name="user_img" value="{{ $user->user_img }}" readonly>
+                                    <a href="" class="popup_selector" data-inputid="feature_image"><img src="{{ asset($user->user_img) }}" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/></a>
+                                </div>
 {{--                                <div class="form-group">--}}
 {{--                                    <label for="feature_image">Leaf Image</label>--}}
 {{--                                    <input class="form-control"  type="text" id="feature_image" name="img" value="{{ $post->img }}" readonly>--}}

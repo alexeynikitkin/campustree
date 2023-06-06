@@ -125,12 +125,8 @@ class CampusHomeController extends Controller
     }
 
     public function allUsers(){
-//        $thisUser = User::find(Auth::user()->id);
-//        $friends_arr = [];
-//        $accept_arr = [];
-//        foreach ($thisUser->friendsReceiver as $item) {
-//            array_push($friends_arr, $item->user_id);
-//        }
+        $user_friend = Auth::user()->friends;
+        $friend_user = Auth::user()->friendsReceiver;
         $users = User::all();
         $cats = Category::all();
         $sexes = Sex::all();
@@ -138,9 +134,8 @@ class CampusHomeController extends Controller
             'users' => $users,
             'sexes' => $sexes,
             'cats' => $cats,
-
-//            'friends_arr' => $friends_arr,
-//            'accept_arr' => $accept_arr,
+            'user_friend' => $user_friend,
+            'friend_user' => $friend_user
         ]);
     }
 

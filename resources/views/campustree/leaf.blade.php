@@ -225,7 +225,7 @@
                                                     <div class="scroll-wrap">
                                                         @if(Auth::user())
                                                             @foreach($friends as $friend)
-                                                                @foreach(\App\Models\User::find($friend->id)->participations as $item)
+{{--                                                                @foreach(\App\Models\User::find($friend->id)->participations as $item)--}}
                                                                     <div class="person">
                                                                         <div class="person-checkbox">
                                                                             <label
@@ -241,19 +241,19 @@
                                                                             </label>
                                                                         </div>
                                                                         <div class="person-thumb"
-                                                                             data-thumb-title="{{ $item->name }}">
+                                                                             data-thumb-title="{{ $friend->name }}">
                                                                             <img
                                                                                 src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                                                                                alt="{{ $item->name }}">
+                                                                                alt="{{ $friend->name }}">
                                                                         </div>
                                                                         <div class="person-description">
                                                                             <p class="person-description-title paragraph-medium">
-                                                                                {{ $item->name }}</p>
+                                                                                {{ $friend->name }}</p>
                                                                             <p class="person-description-item paragraph-md">
-                                                                                {{ $item->user_bio }}</p>
+                                                                                {{ $friend->user_bio }}</p>
                                                                         </div>
                                                                     </div>
-                                                                @endforeach
+{{--                                                                @endforeach--}}
 
 
                                                             @endforeach

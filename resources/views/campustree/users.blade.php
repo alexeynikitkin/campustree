@@ -20,7 +20,7 @@
                             <div class="tabs tabs-md tabs-inline">
                                 <a data-router-disabled href="{{ route('allUsers') }}" class="tabs-item is-active" data-transition="pagination">User List</a>
                                 <a data-router-disabled href="{{ route('allFriends') }}" class="tabs-item" data-transition="pagination">My friends</a>
-                                <a data-router-disabled href="friends-requests.html" class="tabs-item" data-transition="pagination">Friend’s requests</a>
+                                <a data-router-disabled href="{{ route('friendsRequest') }}" class="tabs-item" data-transition="pagination">Friend’s requests</a>
                             </div>
                         </div>
                     </div>
@@ -275,31 +275,35 @@
                                 </div>
                                 <div class="people" data-empty-label="You search was not successful!" data-view-mode="list">
                                     @php
-                                    $thisUserId = Auth::user()->id;
+                                    $id = [];
                                     @endphp
                                     @foreach($users as $user)
-                                        @if($user->id != $thisUserId)
-                                            <div class="people-row">
-                                                <div class="people-row-item">
-                                                    <div class="person-header">
-                                                        <div class="person-thumb person-toggle-modal" data-thumb-title="{{ $user->name }}" data-popup-trigger="#{{ str_replace(' ', '-', strtolower($user->name)) }}">
-                                                            <img src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg" alt="{{ $user->name }}">
+                                        @if($user->id != Auth::user()->id)
+                                            @foreach($user_friend as $item)
+                                                @php
+                                                    array_push($id , $item->friend_id);
+                                                @endphp
+                                            @endforeach
+                                            @foreach($friend_user as $item)
+                                                @php
+                                                    array_push($id , $item->user_id);
+                                                @endphp
+                                            @endforeach
+                                                <div class="people-row">
+                                                    <div class="people-row-item">
+                                                        <div class="person-header">
+                                                            <div class="person-thumb person-toggle-modal" data-thumb-title="{{ $user->name }}" data-popup-trigger="#{{ str_replace(' ', '-', strtolower($user->name)) }}">
+                                                                <img src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg" alt="{{ $user->name }}">
+                                                            </div>
+                                                            <p class="person-description-title paragraph-medium person-toggle-modal" data-popup-trigger="#{{ str_replace(' ', '-', strtolower($user->name)) }}">{{ $user->name }}</p>
                                                         </div>
-                                                        <p class="person-description-title paragraph-medium person-toggle-modal" data-popup-trigger="#{{ str_replace(' ', '-', strtolower($user->name)) }}">{{ $user->name }}</p>
                                                     </div>
-                                                </div>
-                                                <div class="people-row-item">
-                                                    <p class="person-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews. Similar events are "mobile clubbing"</p>
-                                                </div>
-                                                <div class="people-row-item">
-                                                    <div class="person-action" data-user-id="{{ $user->id }}">
-                                                        @php
-                                                        $friendtouser = \App\Models\Friend::where('friend_id', $user->id)->first();
-//                                                        $usertofriend = \App\Models\Friend::where('user_id', $user->id)->first();
-
-                                                        @endphp
-{{--                                                        @foreach($friends_collection as $friend)--}}
-                                                            @if($friendtouser)
+                                                    <div class="people-row-item">
+                                                        <p class="person-description-item paragraph-md">Silent discos are popular at music festivals as they allow dancing to continue past noise curfews. Similar events are "mobile clubbing"</p>
+                                                    </div>
+                                                    <div class="people-row-item">
+                                                        <div class="person-action" data-user-id="{{ $user->id }}">
+                                                            @if(in_array($user->id, $id))
                                                                 <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -314,24 +318,26 @@
                                                                     </button>
                                                                 </form>
                                                             @else
+
                                                                 <form action="{{ route('addFriends', $user->id) }}" method="POST">
                                                                     @csrf
                                                                     <input type="hidden" value="{{ $user->id }}" name="friend_id">
                                                                     <button class="link add-to-friends">
-                                                            <span class="link-icon">
-                                                                <svg class="svg svg__24">
-                                                                    <use
-                                                                        xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
-                                                                </svg>
-                                                            </span>
+                                                                <span class="link-icon">
+                                                                    <svg class="svg svg__24">
+                                                                        <use
+                                                                            xlink:href="/campustree/images/sprite/sprite.svg#plus-circle"></use>
+                                                                    </svg>
+                                                                </span>
                                                                         <span class="link-title">Add to friends</span>
                                                                     </button>
                                                                 </form>
                                                             @endif
-{{--                                                        @endforeach--}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+{{--                                            @endif--}}
+
                                         @endif
                                     @endforeach
                                 </div>
@@ -362,58 +368,51 @@
     @foreach($users as $user)
         @if($user->id != Auth::user()->id)
             <div class="popup" id="{{ str_replace(' ', '-', strtolower($user->name)) }}">
-                <div class="popup-bg"></div>
-                <div class="popup-box">
-                    <div class="popup-box-close" data-popup-close></div>
-                    <div class="popup-box-item">
-                        <div class="box box-bg">
-                            <div class="box-header">
-                                <div class="box-header-row">
-                                    <div class="person-header">
-                                        <div class="person-thumb __80" data-thumb-title="{{ $user->name }}">
-                                            <img src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg"
-                                                 alt="Charmaine Delarosa">
+                    <div class="popup-bg"></div>
+                    <div class="popup-box">
+                        <div class="popup-box-close" data-popup-close></div>
+                        <div class="popup-box-item">
+                            <div class="box box-bg">
+                                <div class="box-header">
+                                    <div class="box-header-row">
+                                        <div class="person-header">
+                                            <div class="person-thumb __80" data-thumb-title="{{ $user->name }}">
+                                                <img src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg"
+                                                     alt="Charmaine Delarosa">
+                                            </div>
+                                            <p class="person-description-title paragraph-medium">{{ $user->name }}</p>
                                         </div>
-                                        <p class="person-description-title paragraph-medium">{{ $user->name }}</p>
-                                    </div>
-                                    <div class="link person-toggle-modal __close" data-popup-close>
-                                        <div class="link-icon">
-                                            <svg class="svg svg__16">
-                                                <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
-                                            </svg>
+                                        <div class="link person-toggle-modal __close" data-popup-close>
+                                            <div class="link-icon">
+                                                <svg class="svg svg__16">
+                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr class="hr">
-                            <div class="box-body">
-                                <div class="mb-3">
-                                    <p class="person-description-item paragraph-md">{{ $user->user_bio }}</p>
-                                </div>
-                                <div class="mb-3">
-                                    <p class="paragraph paragraph-medium">Birth Date</p>
-                                    <p class="paragraph paragraph-md">{{ $user->user_birth }}</p>
-                                </div>
-{{--                                <div class="mb-3">--}}
-{{--                                    <p class="paragraph paragraph-medium">Faculty</p>--}}
-{{--                                    <p class="paragraph paragraph-md">Philology</p>--}}
-{{--                                </div>--}}
-{{--                                <p class="paragraph paragraph-medium">Tags</p>--}}
-{{--                                <div class="tags">--}}
-{{--                                    <div class="tags-list">--}}
-{{--                                        <div class="tags-item tag tag-events">Events</div>--}}
-{{--                                        <div class="tags-item tag tag-majors">Majors</div>--}}
-{{--                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                <div class="person-action" data-user-id="{{ $user->id }}">
-                                    @php
-                                        $friendtouser = \App\Models\Friend::where('friend_id', $user->id)->first();
-//                                                        $usertofriend = \App\Models\Friend::where('user_id', $user->id)->first();
-
-                                    @endphp
-                                    {{--                                                        @foreach($friends_collection as $friend)--}}
-                                    @if($friendtouser)
+                                <hr class="hr">
+                                <div class="box-body">
+                                    <div class="mb-3">
+                                        <p class="person-description-item paragraph-md">{{ $user->user_bio }}</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="paragraph paragraph-medium">Birth Date</p>
+                                        <p class="paragraph paragraph-md">{{ $user->user_birth }}</p>
+                                    </div>
+                                    {{--                                <div class="mb-3">--}}
+                                    {{--                                    <p class="paragraph paragraph-medium">Faculty</p>--}}
+                                    {{--                                    <p class="paragraph paragraph-md">Philology</p>--}}
+                                    {{--                                </div>--}}
+                                    {{--                                <p class="paragraph paragraph-medium">Tags</p>--}}
+                                    {{--                                <div class="tags">--}}
+                                    {{--                                    <div class="tags-list">--}}
+                                    {{--                                        <div class="tags-item tag tag-events">Events</div>--}}
+                                    {{--                                        <div class="tags-item tag tag-majors">Majors</div>--}}
+                                    {{--                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
+                                    {{--                                    </div>--}}
+                                    {{--                                </div>--}}
+                                    <div class="person-action" data-user-id="{{ $user->id }}">
                                         <form action="{{ route('deleteFriends', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -427,7 +426,6 @@
                                                 <span class="link-title">Delete from friends</span>
                                             </button>
                                         </form>
-                                    @else
                                         <form action="{{ route('addFriends', $user->id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" value="{{ $user->id }}" name="friend_id">
@@ -441,14 +439,12 @@
                                                 <span class="link-title">Add to friends</span>
                                             </button>
                                         </form>
-                                    @endif
-                                    {{--                                                        @endforeach--}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         @endif
     @endforeach
 @endsection
