@@ -51,36 +51,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="filters-item">
-                                            <div class="dropdown __left-sm">
-                                                <p class="dropdown-trigger-label">Sort by</p>
-                                                <p class="dropdown-trigger dropdown-trigger-title" data-fieldset-label="filter-sort" data-label="Popular">New friends</p>
-                                                <div class="dropdown-body">
-                                                    <div class="dropdown-body-item">
-                                                        <fieldset class="fieldset" data-fieldset-list="filter-sort">
-                                                            <label class="input-container">
-                                                                <input type="radio" name="sort" value="New friends" class="input input-checkbox" checked="checked">
-                                                                <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                                <span class="input-checkbox-title">New friends</span>
-                                                            </label>
-                                                            <label class="input-container">
-                                                                <input type="radio" name="sort" value="New friends 2" class="input input-checkbox">
-                                                                <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                                <span class="input-checkbox-title">New friends 2</span>
-                                                            </label>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

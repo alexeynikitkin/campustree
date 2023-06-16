@@ -26,23 +26,29 @@ Route::get('/', [CampusHomeController::class, 'index'])->name('campus.home');
 
 // Leaf Page
 
-Route::get('/events/{leaf}', [CampusHomeController::class, 'showLeaf'])->name('showLeaf')->middleware('auth');
-Route::post('/events/{leaf}', [CampusHomeController::class, 'addLeafToUser'])->name('addLeafToUser')->middleware('auth');
-Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser')->middleware('auth');
+Route::get('/events/{leaf}', [CampusHomeController::class, 'showLeaf'])->name('showLeaf');
+Route::post('/events/{leaf}', [CampusHomeController::class, 'addLeafToUser'])->name('addLeafToUser');
+Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser');
 
 // Branch Page
 
-Route::get('/branch/{id}', [CampusHomeController::class, 'showBranch'])->name('showBranch')->middleware('auth');
+Route::get('/branch/{id}', [CampusHomeController::class, 'showBranch'])->name('showBranch');
+
+//Route::get('/branch/{id}', [CampusHomeController::class, 'showBranchFilter']);
+
 
 // Users and Friends
-Route::get('/users', [CampusHomeController::class, 'allUsers'])->name('allUsers')->middleware('auth');
-Route::get('/friends', [CampusHomeController::class, 'allFriends'])->name('allFriends')->middleware('auth');
-Route::get('/friends_request', [CampusHomeController::class, 'friendsRequest'])->name('friendsRequest')->middleware('auth');
-Route::post('/users', [FriendsController::class, 'store'])->name('addFriends')->middleware('auth');
-Route::delete('/users', [FriendsController::class, 'destroy'])->name('deleteFriends')->middleware('auth');
 
-Route::post('/friends_request', [FriendsController::class, 'acceptFriend'])->name('acceptFriend')->middleware('auth');
-Route::delete('/friends_request', [FriendsController::class, 'declineFriend'])->name('declineFriend')->middleware('auth');
+Route::middleware(['role:admin', 'auth'])->group(function () {
+    Route::get('/users', [CampusHomeController::class, 'allUsers'])->name('allUsers');
+    Route::get('/friends', [CampusHomeController::class, 'allFriends'])->name('allFriends');
+    Route::get('/friends_request', [CampusHomeController::class, 'friendsRequest'])->name('friendsRequest');
+    Route::post('/users', [FriendsController::class, 'store'])->name('addFriends');
+    Route::delete('/users', [FriendsController::class, 'destroy'])->name('deleteFriends');
+
+    Route::post('/friends_request', [FriendsController::class, 'acceptFriend'])->name('acceptFriend');
+    Route::delete('/friends_request', [FriendsController::class, 'declineFriend'])->name('declineFriend');
+});
 
 // Create Events
 Route::middleware(['role:admin', 'auth'])->group(function (){
@@ -53,7 +59,7 @@ Route::middleware(['role:admin', 'auth'])->group(function (){
 Route::get('/search', [CampusHomeController::class, 'search']);
 // Create Comments in events pages
 
-Route::post('/', [CommentsController::class, 'store'])->name('commentCreate')->middleware('auth');
+Route::post('/', [CommentsController::class, 'store'])->name('commentCreate');
 
 // Personal Page
 
@@ -70,7 +76,7 @@ Auth::routes();
 
 // Admin panel routes
 
-Route::middleware('role:admin')->prefix('admin_panel')->group(function (){
+Route::prefix('admin_panel')->group(function (){
     Route::get('/', [HomeController::class, 'index'])->name('homeAdmin');
     Route::resources([
         'category' => CategoryController::class,
@@ -79,6 +85,27 @@ Route::middleware('role:admin')->prefix('admin_panel')->group(function (){
         'user' => UserController::class
     ]);
 });
+
+
+// Show Register Create Form
+
+Route::get('/register1',[UserController::class, 'create'])->middleware('guest');
+
+// Create New User
+
+Route::post('/users1', [UserController::class, 'store']);
+
+// Log out User
+
+Route::post('/logout1', [UserController::class, 'logout'])->middleware('auth');
+
+// Show login Form
+
+//Route::get('/login1', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+// Login User
+
+Route::post('/users/authenticate1', [UserController::class, 'authenticate']);
 
 
 

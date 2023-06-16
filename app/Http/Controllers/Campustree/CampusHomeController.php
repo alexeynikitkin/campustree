@@ -32,7 +32,7 @@ class CampusHomeController extends Controller
 
     public function showLeaf($id)
     {
-        if(Auth::user()) {
+        if(auth()->user()) {
             $friends = Auth::user()->friends()->get();
             $participation = Participation::where([
                 'leaf_id' => $id,
@@ -54,16 +54,97 @@ class CampusHomeController extends Controller
             return view('campustree.leaf', [
                 'leaf' => $leaf,
                 'comments' => $comments,
+                'participation' => []
             ]);
         }
 
 
     }
 
-    public function showBranch($id)
+    public function showBranch($id, Request $request)
     {
+        $query = $request->get('query');
+        $arr = [];
+
+        if ($request->ajax()) {
+            parse_str( parse_url( $query, PHP_URL_QUERY), $arr );
+//            $data = DB::table('posts');
+//            if($arr['title']) {
+//                $data->where('title', 'LIKE', '%' . $arr['title'] . '%')
+//                    ->where('cat_id', $id)
+//                    ->limit(13)
+//                    ->get();
+//            }
+            if(!empty($arr)) {
+                $data = Post::where('cat_id', $id)
+                    ->where(function ($query) use ($arr) {
+                        if(!empty($arr['title'])) {
+                            $query->where('title', 'LIKE', '%' . $arr['title'] . '%');
+                        }
+                        if(!empty($arr['event_date'])) {
+                            $query->where('event_date', '>', date("Y-m-d", strtotime("-" . $arr['event_date'] )));
+                        }
+                    })
+                    ->get();
+            } else {
+                $data = Post::where('cat_id', $id)->get();
+                dd(1);
+            }
+
+
+
+
+            $output = '';
+            if (count($data) > 0) {
+            $count = 1;
+                foreach ($data as $post) {
+                    $output .= '<div class="tree-events-item tree-modal-toggle" data-event-id="'.$count.'">
+                                            <span class="leaf-title">'.$post->title .'</span>
+                                            <a href="'.route('showLeaf', $post->id).'" class="leaf-link"></a>
+                                            <div class="tree-modal">
+                                                <div class="box">
+                                                    <div class="box-thumb">
+                                                        <img src="\\'.$post->img.'" alt="'.$post->title.'">
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="event-description">
+                                                            <div>
+                                                                <p class="event-description-title h-3">'.$post->title .'</p>
+                                                                <div class="event-description-categories">
+                                                                    <p class="tag tag-events">'.$post->category->title .'</p>
+                                                                </div>
+                                                            </div>
+                                                            <p class="event-description-item paragraph-md">'.strip_tags($post->text) .'</p>
+                                                            <div class="event-description-date date">
+                                                                <div class="date-icon">
+                                                                    <svg class="svg svg__16">
+                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="date-label">'.$post->created_at .'</div>
+                                                            </div>
+                                                         </div>
+                                                    </div>
+                                                    <div class="box-action">
+                                                        <a href="'.route('showLeaf', $post->id).'" class="btn btn-outline fullwidth">
+												<span class="btn-icon">
+													<svg class="svg svg__32">
+														<use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
+													</svg>
+												</span>
+                                                            <span class="btn-title">Visit event</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                        $count++;
+                }
+            }
+            return $output;
+        }
         $branch = Category::where('id', $id)->firstOrFail();
-        $thisBranchPost = Post::where('cat_id', $id)->get();
+        $thisBranchPost = Post::where('cat_id', $id)->paginate(13);
         return view('campustree.branch', [
             'branch' => $branch,
             'posts' => $thisBranchPost
@@ -83,6 +164,7 @@ class CampusHomeController extends Controller
         $post->text = $request->text;
         $post->cat_id = $request->cat_id;
         $post->img = $request->img;
+        $post->status = 0;
         $post->save();
         return redirect()->back()->withSuccess('Post was successfully added');
     }
@@ -97,14 +179,19 @@ class CampusHomeController extends Controller
             $arr[] = $id->leaf_id;
         }
         $postsArr = [];
+        $branches1 = [];
         foreach ($arr as $a) {
             $postsArr[] = Post::where('id', $a)->first();
+            $branches1[] = Post::where('id', $a)->first()->category;
+
         }
+        $branches1 = array_unique($branches1);
+//        dd($branches1);
         $branches = Category::paginate(6);
         return view('campustree.personal_page' , [
             'user' => $currentuser,
             'leaves' => $postsArr,
-            'branches' => $branches
+            'branches' => $branches1
         ]);
     }
 
@@ -201,6 +288,14 @@ class CampusHomeController extends Controller
     }
 
     public function search(){
-        return view('campustree.search');
+        return view('campustree.search', [
+            'leaves' => Post::latest()->filter(request(['search']))->paginate(6)
+        ]);
+    }
+
+    public function orderby(){
+        return view('campustree.search', [
+            'leaves' => Post::latest()->filter(request(['orderby']))->get()
+        ]);
     }
 }

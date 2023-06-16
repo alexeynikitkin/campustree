@@ -476,9 +476,9 @@
                                                     <div class="tree-checkboxes-item" data-event-id="step-1-{{ $count }}">
                                                         <label class="input-container">
                                                             <input type="checkbox" name="event" value="{{ $post->title }}"
-                                                                   data-event-thumb="https://images.pexels.com/photos/2381596/pexels-photo-2381596.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                                                   data-event-category="clubs" data-event-modal-id="#leaves"
-                                                                   data-event-title="{{ $post->title }}" data-event-label="clubs"
+                                                                   data-event-thumb="{{ $post->img }}"
+                                                                   data-event-category="{{ $post->category->title }}" data-event-modal-id="#leaves"
+                                                                   data-event-title="{{ $post->title }}" data-event-label="{{ $post->category->title }}"
                                                                    class="input input-checkbox" id="step-1-{{ $count }}">
                                                                 <span class="input-checkbox-icon">
                                                                 <svg class="svg svg__16">
@@ -1364,7 +1364,7 @@
                                                             xlink:href="/campustree/images/sprite/sprite.svg#check"></use></svg></span>
                                                 <span class="active"><svg><use
                                                             xlink:href="/campustree/images/sprite/sprite.svg#check"></use></svg>
-                    </span>
+                                                </span>
                                             </div>
                                             <div class="steps-item">
                                                 <div class="steps-item-left">
@@ -1407,10 +1407,10 @@
                                                         <input name="password" placeholder="Password" type="password" class="input"
                                                                data-validate="password" required>
                                                         <span class="input-container-icon __right __click-trigger __16">
-                              <svg class="svg svg__16">
-                                <use xlink:href="/campustree/images/sprite/sprite.svg#eye"></use>
-                              </svg>
-                            </span>
+                                                          <svg class="svg svg__16">
+                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#eye"></use>
+                                                          </svg>
+                                                        </span>
                                                         <span
                                                             class="input-message __error">This field is required!</span>
                                                     </label>
@@ -1418,10 +1418,10 @@
                                                         <input name="password" placeholder="Password" type="password" class="input"
                                                                data-validate="password" required>
                                                         <span class="input-container-icon __right __click-trigger __16">
-				                      <svg class="svg svg__16">
-		                            <use xlink:href="/campustree/images/sprite/sprite.svg#eye"></use>
-				                      </svg>
-                            </span>
+                                                                  <svg class="svg svg__16">
+                                                                <use xlink:href="/campustree/images/sprite/sprite.svg#eye"></use>
+                                                                  </svg>
+                                                        </span>
                                                         <span
                                                             class="input-message __error">This field is required!</span>
                                                         <span class="input-message __password">Passwords must be the same!</span>
