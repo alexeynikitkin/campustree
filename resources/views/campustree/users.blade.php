@@ -293,7 +293,7 @@
                                                     <div class="people-row-item">
                                                         <div class="person-header">
                                                             <div class="person-thumb person-toggle-modal" data-thumb-title="{{ $user->name }}" data-popup-trigger="#{{ str_replace(' ', '-', strtolower($user->name)) }}">
-                                                                <img src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg" alt="{{ $user->name }}">
+                                                                <img src="{{ $user->user_img }}" alt="{{ $user->name }}">
                                                             </div>
                                                             <p class="person-description-title paragraph-medium person-toggle-modal" data-popup-trigger="#{{ str_replace(' ', '-', strtolower($user->name)) }}">{{ $user->name }}</p>
                                                         </div>

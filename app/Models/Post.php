@@ -19,14 +19,23 @@ class Post extends Model
 
 
     public function scopeFilter($query, array $filters) {
-//        if($filters['sort'] ?? false) {
-//            $query->orderBy('created_at', 'desc')
-//            ->orderBy('name', 'asc');
-//        }
         if($filters['search'] ?? false) {
             $query->where('title', 'LIKE', '%'. request('search') .'%');
-//                ->orWhere('description', 'LIKE', '%'. request('search') .'%')
-//                ->orWhere('tags', 'LIKE', '%'. request('search') .'%');
+        }
+        if($filters['filter-branches'] ?? false) {
+            $new = explode(', ',request('filter-branches'));
+            $query->whereIn('cat_id', $new);
+//            $count = 0;
+//            foreach($new as $i) {
+//                if($count == 0){
+//                    $query->where('cat_id', '=', $i);
+//                }
+//                else {
+//                    $query->orWhere('cat_id', '=', $i);
+//                }
+//                $count++;
+//            }
+
         }
     }
 }

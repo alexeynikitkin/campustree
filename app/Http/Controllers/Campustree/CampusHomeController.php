@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Friend;
+use App\Models\Notification;
 use App\Models\Participation;
 use App\Models\Post;
 use App\Models\Sex;
@@ -33,7 +34,20 @@ class CampusHomeController extends Controller
     public function showLeaf($id)
     {
         if(auth()->user()) {
-            $friends = Auth::user()->friends()->get();
+            $friends_accepted = Friend::where('accepted', 1)
+                ->where(function ($query){
+                    $query->where('user_id', User::find(Auth::user()->id)->id )
+                        ->orWhere('friend_id', User::find(Auth::user()->id)->id );
+                })->get();
+            $resultIds = [];
+            foreach($friends_accepted as $friend) {
+                $resultId = $friend->user_id;
+                if($friend->user_id == Auth::user()->id) {
+                    $resultId = $friend->friend_id;
+                }
+                array_push($resultIds, $resultId);
+            }
+            $friends = Friend::where('user_id', auth()->user()->id)->get();
             $participation = Participation::where([
                 'leaf_id' => $id,
                 'user_id' => Auth::user()->id
@@ -45,7 +59,8 @@ class CampusHomeController extends Controller
                 'leaf' => $leaf,
                 'comments' => $comments,
                 'friends' => $friends,
-                'participation' => $participation
+                'participation' => $participation,
+                'resultIds' => $resultIds
             ]);
         }
         else {
@@ -68,13 +83,6 @@ class CampusHomeController extends Controller
 
         if ($request->ajax()) {
             parse_str( parse_url( $query, PHP_URL_QUERY), $arr );
-//            $data = DB::table('posts');
-//            if($arr['title']) {
-//                $data->where('title', 'LIKE', '%' . $arr['title'] . '%')
-//                    ->where('cat_id', $id)
-//                    ->limit(13)
-//                    ->get();
-//            }
             if(!empty($arr)) {
                 $data = Post::where('cat_id', $id)
                     ->where(function ($query) use ($arr) {
@@ -83,6 +91,11 @@ class CampusHomeController extends Controller
                         }
                         if(!empty($arr['event_date'])) {
                             $query->where('event_date', '>', date("Y-m-d", strtotime("-" . $arr['event_date'] )));
+                        }
+                        if(!empty($arr['date'])) {
+                            $arr1 = explode('/', $arr['date']);
+                            $newDate = $arr1[2].'-'.$arr1[1].'-'.$arr1[0];
+                            $query->where('event_date', 'LIKE', $newDate);
                         }
                     })
                     ->get();
@@ -164,9 +177,13 @@ class CampusHomeController extends Controller
         $post->text = $request->text;
         $post->cat_id = $request->cat_id;
         $post->img = $request->img;
+        $post->event_time = $request->event_time;
+        $arr1 = explode('/', $request->event_date);
+        $newDate = $arr1[2].'-'.$arr1[1].'-'.$arr1[0];
+        $post->event_date = $newDate;
         $post->status = 0;
         $post->save();
-        return redirect()->back()->withSuccess('Post was successfully added');
+        return redirect('/')->withSuccess('Post was successfully added');
     }
 
     public function personal($id)
@@ -186,12 +203,12 @@ class CampusHomeController extends Controller
 
         }
         $branches1 = array_unique($branches1);
-//        dd($branches1);
         $branches = Category::paginate(6);
         return view('campustree.personal_page' , [
             'user' => $currentuser,
             'leaves' => $postsArr,
-            'branches' => $branches1
+            'branches' => $branches1,
+            'arr' => $arr
         ]);
     }
 
@@ -289,13 +306,22 @@ class CampusHomeController extends Controller
 
     public function search(){
         return view('campustree.search', [
-            'leaves' => Post::latest()->filter(request(['search']))->paginate(6)
+            'leaves' => Post::latest()->filter(request(['search', 'filter-branches']))->paginate(6),
+//            'branches' => Category::latest()->filter(request(['filter-branches']))->paginate(1)
         ]);
     }
 
-    public function orderby(){
-        return view('campustree.search', [
-            'leaves' => Post::latest()->filter(request(['orderby']))->get()
-        ]);
+    public function leaftofriend(Request $request){
+        $arr = explode(',',$request->ongoing);
+        foreach ($arr as $i) {
+            $notification = new Notification;
+            $notification->user_id = auth()->user()->id;
+            $notification->friend_id = intval($i);
+            $notification->leaf_id = intval($request->eventid);
+            $notification->type = 'add-to-leaf';
+            $notification->save();
+        }
+        return redirect()->back();
     }
+
 }

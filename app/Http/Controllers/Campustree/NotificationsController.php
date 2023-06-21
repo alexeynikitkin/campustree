@@ -81,8 +81,10 @@ class NotificationsController extends Controller
      * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notification $notification)
+    public function destroy(Request $request, $id)
     {
-        //
+        $not = Notification::find($id);
+        $not->deleteOrFail();
+        return redirect()->back()->withSuccess('Post was successfully deleted');
     }
 }

@@ -470,12 +470,11 @@
                                                 @php
                                                     $count = 1;
                                                     $this1 = \App\Models\Post::where('cat_id', 1)->get();
-                                                    $this2 = \App\Models\Post::where('cat_id', 2)->get();
                                                 @endphp
                                                 @foreach($this1 as $post)
                                                     <div class="tree-checkboxes-item" data-event-id="step-1-{{ $count }}">
                                                         <label class="input-container">
-                                                            <input type="checkbox" name="event" value="{{ $post->title }}"
+                                                            <input type="checkbox" name="event" value="{{ $post->id }}"
                                                                    data-event-thumb="{{ $post->img }}"
                                                                    data-event-category="{{ $post->category->title }}" data-event-modal-id="#leaves"
                                                                    data-event-title="{{ $post->title }}" data-event-label="{{ $post->category->title }}"
@@ -1024,11 +1023,11 @@
                                                 @foreach($this2 as $post)
                                                     <div class="tree-checkboxes-item" data-event-id="step-2-{{ $count }}">
                                                         <label class="input-container">
-                                                            <input type="checkbox" name="event" value="{{ $post->title }}"
-                                                                   data-event-thumb="https://images.pexels.com/photos/2381596/pexels-photo-2381596.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                                                   data-event-category="greek-life"
+                                                            <input type="checkbox" name="event" value="{{ $post->id }}"
+                                                                   data-event-thumb="{{ $post->img }}"
+                                                                   data-event-category="{{ $post->category->title }}"
                                                                    data-event-modal-id="#leavesnext"
-                                                                   data-event-title="{{ $post->title }}" data-event-label="greek-life"
+                                                                   data-event-title="{{ $post->title }}" data-event-label="{{ $post->category->title }}"
                                                                    class="input input-checkbox" id="step-2-{{ $count }}">
                                                             <span class="input-checkbox-icon">
 									            <svg class="svg svg__16">
@@ -1349,7 +1348,7 @@
                                     </form>
                                 </div>
                                 <div data-register-step="3" class="steps-content">
-                                    <form id="registration-step-3-form" action="/save-data" method="POST">
+                                    <form id="registration-step-3-form">
                                         @csrf
                                         <div class="steps-content-wrapper">
                                             <div class="section-title">
@@ -1382,30 +1381,22 @@
                                                               required></textarea>
                                                     <span class="input-message __error">This field is required!</span>
                                                 </label>
-{{--                                                <label class="input-container input-container-file">--}}
-{{--                                                  <span class="upload-file">--}}
-{{--                                                    <input type="file" class="input" hidden>--}}
-{{--                                                    <span class="person-thumb">--}}
-{{--                                                      <img src="" alt="Joey Tribbiani">--}}
-{{--                                                      <span class="person-thumb-upload">--}}
-{{--                                                        <svg class="svg svg__16">--}}
-{{--                                                          <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>--}}
-{{--                                                        </svg>--}}
-{{--                                                      </span>--}}
-{{--                                                    </span>--}}
-{{--                                                  </span>--}}
-{{--                                                    <span class="upload-text h-4">Upload a photo</span>--}}
-{{--                                                    <span class="input-message __error">This field is required!</span>--}}
-{{--                                                </label>--}}
-                                                <div class="form-group">
-                                                    <label for="feature_image">User Image</label>
-                                                    <input class="form-control"  type="text" id="feature_image" name="user_img" value="" readonly>
-                                                    <a href="" class="popup_selector" data-inputid="feature_image"><img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/></a>
-                                                </div>
+                                                <label class="input-container input-container-file">
+                                                    <input class="form-control"  type="hidden" id="feature_image1" name="user_img" value="" readonly required>
+                                                    <span class="person-thumb">
+                                                            <img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
+                                                            <span class="person-thumb-upload">
+                                                                <svg class="svg svg__16">
+                                                                  <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
+                                                                </svg>
+                                                              </span>
+                                                    </span>
+                                                    <a href="" class="popup_selector upload-text h-4" data-inputid="feature_image1">Upload a photo</a>
+                                                    <span class="input-message __error">This field is required!</span>
+                                                </label>
                                                 <div class="steps-inputs-wrapper">
                                                     <label class="input-container">
-                                                        <input name="password" placeholder="Password" type="password" class="input"
-                                                               data-validate="password" required>
+                                                        <input id="password" name="password" minlength="6" placeholder="Password" type="password" class="input" data-validate="password" data-pristine-min-message="Minimum 6 characters, at least one uppercase letter, one lowercase letter and one number" required>
                                                         <span class="input-container-icon __right __click-trigger __16">
                                                           <svg class="svg svg__16">
                                                             <use xlink:href="/campustree/images/sprite/sprite.svg#eye"></use>
@@ -1503,25 +1494,39 @@
     <script>
         $(document).on('submit', '#registration-step-3-form', function (e) {
             e.preventDefault();
-            setTimeout(() => {
-                $('.steps-content.active').removeClass('active');
-                $('[data-register-step="4"]').addClass('active');
-            }, 1000);
-            const items = {...localStorage};
-            var a = [...JSON.parse(items['registration-step-0']),...JSON.parse(items['registration-step-1']),...JSON.parse(items['registration-step-2']), ...JSON.parse(items['registration-step-3'])];
-            console.log(a);
-            var data = a;
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('saveUser') }}',
-                data: data,
-                success: function(response) {
-                    console.log('Дані збережено успішно!');
-                },
-                error: function(xhr, status, error) {
-                    console.log('Сталася помилка: ' + error);
-                }
-            });
+            const errors = $('#registration-step-3-form .has-error');
+            if (!errors.length) {
+                setTimeout(() => {
+                    $('.steps-content.active').removeClass('active');
+                    $('[data-register-step="4"]').addClass('active');
+                }, 1000);
+                const items = {...localStorage};
+                let one = JSON.parse(items['registration-step-0']);
+                let two = JSON.parse(items['registration-step-1']);
+                console.log(one);
+                let str = '';
+                one.forEach((i) => {
+                    str+=i.value + '-';
+                });
+                two.forEach((i) => {
+                    str+=i.value + '-';
+                });
+                var a = [ ...JSON.parse(items['registration-step-2']), ...JSON.parse(items['registration-step-3'])];
+                a.push({name: "leaves" , value: str});
+                console.log(a);
+                var data = a;
+                $.ajax({
+                    type: 'POST',
+                    url: '/users1',
+                    data: data,
+                    success: function(response) {
+                        console.log('Дані збережено успішно!');
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('Сталася помилка: ' + error);
+                    }
+                });
+            }
         });
 
 

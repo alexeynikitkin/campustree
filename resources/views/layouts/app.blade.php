@@ -28,14 +28,20 @@
     <link rel="preload" href="/campustree/fonts/ModernaSans-RegularIt.woff" as="font" type="font/woff" crossorigin="anonymous">
     <link rel="preload" href="/campustree/fonts/ModernaSans-RegularIt.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-    <script defer="defer" src="/campustree/bundle.js"></script><link href="/campustree/styles.css" rel="stylesheet"></head>
+
+    <script defer="defer" src="/campustree/bundle.js"></script>
+    <link href="/campustree/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/colorbox.css') }}">
 <body>
-{{--<main class="wrapper-sign-in" id="wrapper">--}}
-            @yield('content')
-{{--</main>--}}
+
+    @yield('content')
 <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+
 @yield('custom-js')
 <script src="/campustree/pristine.min.js"></script>
 <script src="/campustree/validation.js"></script>
+<script src="{{ asset('admin/dist/js/jquery.colorbox-min.js') }}"></script>
+<script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
+<script src="https://cdn.tiny.cloud/1/s2wox67b49yyyur1t1ibqrqc1zrjb0lniiry5tb3bkcdmg58/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </body>
 </html>

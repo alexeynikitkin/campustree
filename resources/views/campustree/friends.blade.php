@@ -373,7 +373,7 @@
                             {{--                            </div>--}}
                             <div class="tree">
                                 <div class="tree-links">
-                                    <a href="index.html" data-transition="pagination" id="pagination-link"></a>
+                                    <a href="/" data-transition="pagination" id="pagination-link"></a>
                                 </div>
                                 <div class="people" data-empty-label="You search was not successful!"
                                      data-view-mode="list">
@@ -384,9 +384,9 @@
                                                     <div class="person-header">
                                                         <div class="person-thumb person-toggle-modal"
                                                              data-thumb-title="{{ $friend->name }}"
-                                                             data-popup-trigger="#{{ str_replace(' ', '-', strtolower($friend->name)) }}">
+                                                             data-popup-trigger="#{{ str_replace(' ', '-', strtolower($friend->id)) }}">
                                                             <img
-                                                                src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg"
+                                                                src="{{ $friend->user_img }}"
                                                                 alt="{{ $friend->name }}">
                                                         </div>
                                                         <p class="person-description-title paragraph-medium person-toggle-modal"
@@ -449,9 +449,8 @@
 
 @section('popup-user')
     @foreach($friends as $friend)
-{{--        @dd($resultIds)--}}
         @if(in_array($friend->id, $resultIds))
-            <div class="popup" id="{{ str_replace(' ', '-', strtolower($friend->name)) }}">
+            <div class="popup" id="{{ str_replace(' ', '-', strtolower($friend->id)) }}">
                 <div class="popup-bg"></div>
                 <div class="popup-box">
                     <div class="popup-box-close" data-popup-close></div>
@@ -462,8 +461,8 @@
                                     <div class="person-header">
                                         <div class="person-thumb __80" data-thumb-title="{{ $friend->name }}">
                                             <img
-                                                src="https://cdn.stocksnap.io/img-thumbs/280h/urban-female_COOWAKH2W5.jpg"
-                                                alt="Charmaine Delarosa">
+                                                src="{{ $friend->user_img }}"
+                                                alt="{{ $friend->name }}">
                                         </div>
                                         <p class="person-description-title paragraph-medium">{{ $friend->name }}</p>
                                     </div>
@@ -497,7 +496,6 @@
                                 {{--                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
                                 {{--                                    </div>--}}
                                 {{--                                </div>--}}
-
                                 <div class="person-action" data-user-id="{{ $friend->id }}">
                                     <form action="{{ route('deleteFriends', $friend->id) }}" method="POST">
                                         @csrf
@@ -524,12 +522,5 @@
 @endsection
 
 @section('custom-js')
-
-    {{--    <script>--}}
-    {{--        $('.add-to-friends').on('click', () => {--}}
-    {{--            let thisId = $(this).parent().data('user-id');--}}
-    {{--            console.log(thisId);--}}
-    {{--        });--}}
-    {{--    </script>--}}
 
 @endsection

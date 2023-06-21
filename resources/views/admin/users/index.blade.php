@@ -73,10 +73,10 @@
                                             {{ $user->user_bio }}
                                         </td>
                                         <td>
-                                            @php
-                                            $sex = \App\Models\Sex::find($user->sex_id)->title;
-                                             @endphp
-                                            {{ $sex }}
+{{--                                            @php--}}
+{{--                                            $sex = \App\Models\Sex::find($user->sex_id)->title;--}}
+{{--                                             @endphp--}}
+{{--                                            {{ $sex }}--}}
                                         </td>
                                         <td class="project-actions text-right d-flex">
                                             <a class="btn btn-info btn-sm" href="{{ route('user.edit', $user->id) }}">

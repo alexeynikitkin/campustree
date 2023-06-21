@@ -108,7 +108,7 @@
                                         </div>
                                         <label class="input-container">
                                             <input type="text" name="name" class="branch-name input input-transparent"
-                                                   placeholder="Events Search">
+                                                   placeholder="Events Search" value="@if(request()->get('title')){{request()->get('title')}} @endif">
                                             <span class="input-container-icon">
 												<svg class="svg svg__24">
 													<use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
@@ -219,25 +219,25 @@
                                                 <fieldset class="fieldset" data-fieldset-list="branch-time">
                                                     <label class="input-container">
                                                         <input type="radio" name="time" value="1 week"
-                                                               class="input input-radio">
+                                                               class="input input-radio" @if(request()->get('event_date') == '1 week')checked @endif>
                                                         <span class="input-radio-icon"></span>
                                                         <span class="input-radio-title">Week</span>
                                                     </label>
                                                     <label class="input-container">
                                                         <input type="radio" name="time" value="1 month"
-                                                               class="input input-radio">
+                                                               class="input input-radio" @if(request()->get('event_date') == '1 month')checked @endif>
                                                         <span class="input-radio-icon"></span>
                                                         <span class="input-radio-title">Month</span>
                                                     </label>
                                                     <label class="input-container">
                                                         <input type="radio" name="time" value="3 month"
-                                                               class="input input-radio">
+                                                               class="input input-radio" @if(request()->get('event_date') == '3 month')checked @endif>
                                                         <span class="input-radio-icon"></span>
                                                         <span class="input-radio-title">Quarter</span>
                                                     </label>
                                                     <label class="input-container">
                                                         <input type="radio" name="time" value="1 year"
-                                                               class="input input-radio">
+                                                               class="input input-radio"@if(request()->get('event_date') == '1 year')checked @endif>
                                                         <span class="input-radio-icon"></span>
                                                         <span class="input-radio-title">Year</span>
                                                     </label>
@@ -248,7 +248,7 @@
                                                         class="input-container input-container-datepicker __bottom __right">
                                                         <input type="text" name="date"
                                                                class="branch-bydate input input-datepicker"
-                                                               placeholder="Date" readonly="readonly">
+                                                               placeholder="Date" readonly="readonly" value="@if(request()->get('date')){{request()->get('date')}} @endif">
                                                         <span class="input-container-icon __16 __right">
 																<svg class="svg svg__16">
 																	<use
@@ -305,7 +305,7 @@
                                                                             xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
                                                                     </svg>
                                                                 </div>
-                                                                <div class="date-label">{{ $post->created_at }}</div>
+                                                                <div class="date-label">{{ $post->event_date }} {{ $post->event_time }}</div>
                                                             </div>
                                                             <div class="event-description-location location">
                                                                 <div class="location-icon">
@@ -558,37 +558,41 @@
 @section('custom-js')
 
     <!-- Submit last step -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js" integrity="sha512-Fhm8fcAQhENO1HmU1JjbnNm6ReszFIiJvkHdnuGZBznaaM6vakH4YEPO7v8M3PbGR03R/dur0QP5vZ5s4YaN7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
 
-
-
+        $(document).ready(function(){
             $(document).on('click', '.reset-btn', function (){
                 history.pushState(null, null, "?" + '');
+                window.location.reload();
             });
 
-            $(document).on('keyup', '.branch-name', function () {
+            $(document).on('change', '.branch-name', function () {
                 let query = $(this).val();
                 const urlParams = new URLSearchParams(window.location.search);
                 urlParams.set('title', query);
                 history.pushState(null, null, "?" + urlParams.toString());
+                window.location.reload();
             });
+
             $(document).on('change', '[data-fieldset-list="branch-time"] input', function () {
                 let query = $(this).val();
                 const urlParams = new URLSearchParams(window.location.search);
-
                 urlParams.set('event_date', query);
                 history.pushState(null, null, "?" + urlParams.toString());
-
+                window.location.reload();
             });
-            $(document).on('change', '.branch-bydate', function () {
-                let query = $(this).val();
-                const urlParams = new URLSearchParams(window.location.search);
+            // $(document).on('change', '.input-datepicker', function () {
+            //     console.log('sddsd');
+            //     let query = $(this).val();
+            //     const urlParams = new URLSearchParams(window.location.search);
+            //     urlParams.set('date', query);
+            //     history.pushState(null, null, "?" + urlParams.toString());
+            // });
 
-                urlParams.set('date', query);
-                history.pushState(null, null, "?" + urlParams.toString());
-            });
 
-        $(window).change(function () {
+        });
+        $.address.change(function () {
             let urlParams = window.location.search;
             $.ajax({
                 type: 'GET',

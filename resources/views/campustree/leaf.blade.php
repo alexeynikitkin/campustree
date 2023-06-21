@@ -8,21 +8,23 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="box-banner">
-                                <img data-src="\{{ $leaf->img }}" alt="English Leaf">
+                                <img
+                                    data-src="\{{ $leaf->img }}"
+                                alt="English Leaf">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-4 order-xl-2">
                             <div class="event-detail">
-                                <div class="event-description-date date" data-calendar-date="{{ $leaf->created_at }}">
+                                <div class="event-description-date date" data-calendar-date="{{ $leaf->event_date }}">
                                     <div class="date-icon">
                                         <svg class="svg svg__24">
                                             <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
                                         </svg>
                                     </div>
                                     <div class="date-label">
-                                        <div class="date-label-lg">{{ $leaf->created_at }}</div>
+                                        <div class="date-label-lg">{{ $leaf->event_date }} {{ $leaf->event_time }}</div>
                                     </div>
                                 </div>
 {{--                                <div class="event-description-location location"--}}
@@ -224,8 +226,16 @@
                                                     </label>
                                                     <div class="scroll-wrap">
                                                         @if(Auth::user())
-                                                            @foreach($friends as $friend)
-{{--                                                                @foreach(\App\Models\User::find($friend->id)->participations as $item)--}}
+                                                            @foreach($resultIds as $friend)
+                                                                @php
+                                                                    $user = App\Models\User::find($friend);
+                                                                    $part = App\Models\Participation::where('user_id', $friend)->where('leaf_id', $leaf->id)->get();
+                                                                    $partIds = [];
+                                                                    foreach ($part as $i) {
+                                                                        array_push($partIds, $i->user_id);
+                                                                    }
+                                                                @endphp
+                                                                @if(in_array($user->id,$partIds))
                                                                     <div class="person">
                                                                         <div class="person-checkbox">
                                                                             <label
@@ -241,21 +251,19 @@
                                                                             </label>
                                                                         </div>
                                                                         <div class="person-thumb"
-                                                                             data-thumb-title="{{ $friend->name }}">
+                                                                             data-thumb-title="{{ $user->name }}">
                                                                             <img
-                                                                                src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                                                                                alt="{{ $friend->name }}">
+                                                                                src="@if($user->user_img) {{ '/'.$user->user_img }} @endif"
+                                                                                alt="{{ $user->name }}">
                                                                         </div>
                                                                         <div class="person-description">
                                                                             <p class="person-description-title paragraph-medium">
-                                                                                {{ $friend->name }}</p>
+                                                                                {{ $user->name }}</p>
                                                                             <p class="person-description-item paragraph-md">
-                                                                                {{ $friend->user_bio }}</p>
+                                                                                {{ $user->user_bio }}</p>
                                                                         </div>
                                                                     </div>
-{{--                                                                @endforeach--}}
-
-
+                                                                @endif
                                                             @endforeach
                                                         @else
                                                             <p>Please login for inviting friends</p>
@@ -278,39 +286,53 @@
                                                     </label>
                                                     <div class="scroll-wrap">
                                                         @if(Auth::user())
-                                                            <form id="already-going">
-                                                                @foreach($friends as $friend)
-                                                                    <fieldset data-alert-trigger="friends-already-going"
-                                                                              data-alert-label="friends selected"
-                                                                              data-alert-label-single="friend selected">
-                                                                        <div class="person">
-                                                                            <div class="person-checkbox">
-                                                                                <label
-                                                                                    class="input-container input-container-checkbox">
-                                                                                    <input type="checkbox"
-                                                                                           class="input input-checkbox input-checkbox-sm">
-                                                                                    <span class="input-checkbox-icon">
+                                                            <form id="already-going" action="/leaf-to-friend" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" data-checked="" name="ongoing">
+                                                                <input type="hidden" value="{{ $leaf->id }}" name="eventid">
+                                                                @foreach($resultIds as $friend)
+                                                                    @php
+                                                                        $user = App\Models\User::find($friend);
+                                                                        $part = App\Models\Participation::where('user_id', $friend)->where('leaf_id', $leaf->id)->get();
+                                                                        $partIds = [];
+                                                                        foreach ($part as $i) {
+                                                                            array_push($partIds, $i->user_id);
+                                                                        }
+                                                                    @endphp
+                                                                    @if(in_array($friend, $partIds))
+                                                                        @else
+                                                                        <fieldset data-alert-trigger="friends-already-going"
+                                                                                  data-alert-label="friends selected"
+                                                                                  data-alert-label-single="friend selected">
+                                                                            <div class="person">
+                                                                                <div class="person-checkbox">
+                                                                                    <label
+                                                                                        class="input-container input-container-checkbox">
+                                                                                        <input type="checkbox"
+                                                                                               class="going input input-checkbox input-checkbox-sm" data-value="{{ $user->id }}">
+                                                                                        <span class="input-checkbox-icon">
                                                                             <svg class="svg svg__16">
                                                                                 <use
                                                                                     xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
                                                                             </svg>
                                                                         </span>
-                                                                                </label>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="person-thumb"
+                                                                                     data-thumb-title="{{ $user->name }}">
+                                                                                    <img
+                                                                                        src="@if($user->user_img) {{ '/'.$user->user_img }} @endif"
+                                                                                        alt="{{ $user->name }}">
+                                                                                </div>
+                                                                                <div class="person-description">
+                                                                                    <p class="person-description-title paragraph-medium">
+                                                                                        {{ $user->name }}</p>
+                                                                                    <p class="person-description-item paragraph-md">
+                                                                                        {{ $user->user_bio }}</p>
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="person-thumb"
-                                                                                 data-thumb-title="{{ $friend->name }}">
-                                                                                <img
-                                                                                    src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                                                                                    alt="{{ $friend->name }}">
-                                                                            </div>
-                                                                            <div class="person-description">
-                                                                                <p class="person-description-title paragraph-medium">
-                                                                                    {{ $friend->name }}</p>
-                                                                                <p class="person-description-item paragraph-md">
-                                                                                    {{ $friend->user_bio }}</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </fieldset>
+                                                                        </fieldset>
+                                                                    @endif
                                                                 @endforeach
                                                             </form>
                                                         @else
@@ -337,7 +359,7 @@
                                                                 <div class="person-thumb"
                                                                      data-thumb-title="{{ $comment->user->name }}">
                                                                     <img
-                                                                        src="https://images.unsplash.com/photo-1624298357597-fd92dfbec01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                                                                        src="@if($comment->user->user_img) {{ '/'.$comment->user->user_img }} @endif"
                                                                         alt="{{ $comment->user->name }}">
                                                                 </div>
                                                                 <div class="person-description">
@@ -356,7 +378,7 @@
                                                             <div class="person-thumb"
                                                                  data-thumb-title="{{ Auth::user()->name }}">
                                                                 <img
-                                                                    src="https://images.unsplash.com/photo-1636041282858-351171ff944c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                                                                    src="@if(Auth::user()->user_img ) {{ '/'.Auth::user()->user_img  }} @endif"
                                                                     alt="{{ Auth::user()->name }}">
                                                             </div>
                                                             <label class="input-container">
@@ -391,4 +413,28 @@
     </div>
 @endsection
 
+@section('custom-js')
+    <script>
+        let arr = [];
+        $('#already-going .going').each(function(){
+            $(this).click(function () {
+                if($(this).prop('checked')) {
+                    let thisVal = $(this).data('value');
+                    arr.push(thisVal);
+                } else {
+                    let thisVal = $(this).data('value');
+                    arr = arr.filter(function(elem){
+                        return elem != thisVal;
+                    });
+                }
+                $('form#already-going input[data-checked]').attr('value', arr.join(','));
+            })
+
+        });
+        $(document).on('click', 'button#invite', function (){
+            console.log('submitted');
+            $('form#already-going').submit();
+        })
+    </script>
+@endsection
 

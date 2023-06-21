@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Participation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -86,20 +87,42 @@ class UserController extends Controller
     }
 // Store User
     public function store(Request $request){
-        $formFields = $request->validate([
-            'name' => ['required','min:3'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'confirmed', 'min:6']
-        ]);
-        // Hash password
-        $formFields['password'] = bcrypt($formFields['password']);
-        $user = User::create($formFields);
+//        $formFields = $request->validate([
+//            'name' => ['required','min:3'],
+//            'email' => ['required', 'email', Rule::unique('users', 'email')],
+//            'password' => ['required', 'confirmed', 'min:6'],
+//            'sex_id' => ['required'],
+//        ]);
+//        // Hash password
+//        $formFields['password'] = bcrypt($formFields['password']);
+//        $formFields['user_bio'] = $request->user_bio;
+//        $formFields['user_img'] = $request->user_img;
+//        $user = User::create($formFields);
+        $user = new User;
+        $user->name = $request->fname. ' ' .$request->lname;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->user_bio = $request->description;
+        $user->user_birth = $request->birthday;
+        $user->user_img = $request->user_img;
+        $user->sex_id = $request->sex;
+        $user->user_img = $request->user_img;
+
+        $user->save();
+
+        $arrayItems = explode("-", rtrim($request->leaves, "-"));
+        foreach ($arrayItems as $item) {
+            $part = new Participation;
+            $part->leaf_id = intval($item);
+            $part->user_id = $user->id;
+            $part->save();
+        }
+
         $user->assignRole('user');
-
         //Login
-        auth()->login($user);
+//        auth()->login($user);
 
-        return redirect('/')->with('message', 'User Created And Logged In');
+        return redirect('/')->with('message', 'User Created');
     }
 
     // Logout
@@ -112,7 +135,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'You have been logged out!');
     }
 
-    //Sow loginForm
+    //Show loginForm
     public function login(){
         return view('users.login');
     }

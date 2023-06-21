@@ -37,7 +37,7 @@
                                                 </div>
                                             </div>
                                         </div>
-{{--                                        <div class="personal-header-action">--}}
+                                        <div class="personal-header-action">
 {{--                                            <div class="social">--}}
 {{--                                                <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">--}}
 {{--                                                    <svg class="svg svg__24">--}}
@@ -55,10 +55,12 @@
 {{--                                                    </svg>--}}
 {{--                                                </a>--}}
 {{--                                            </div>--}}
-{{--                                            <a href="events-on-review.html" class="btn btn-md">--}}
-{{--                                                <span class="btn-title">Events on review</span>--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
+                                            @if( Auth::user()->hasRole('admin') )
+                                                <a href="{{ url('/') }}/admin_panel/" target="_blank" class="btn btn-md">
+                                                    <span class="btn-title">Admin Panel</span>
+                                                </a>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="leaves personal-box">
                                         <div class="box box-bg">
@@ -112,31 +114,7 @@
 {{--                                                                    </a>--}}
 {{--                                                                </div>--}}
 {{--                                                            </div>--}}
-{{--                                                            <div class="mb-3">--}}
-{{--                                                                <p class="paragraph paragraph-medium">Tags</p>--}}
-{{--                                                                <div class="tags">--}}
-{{--                                                                    <div class="tags-list">--}}
-{{--                                                                        <div class="tags-item tag tag-events">Events</div>--}}
-{{--                                                                        <div class="tags-item tag tag-majors">Majors</div>--}}
-{{--                                                                        <div class="tags-item tag tag-clubs">Clubs</div>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="mb-3">--}}
-{{--                                                                <p class="paragraph paragraph-medium">Password</p>--}}
-{{--                                                                <p class="paragraph paragraph-md password-mask">userPassword1234</p>--}}
-{{--                                                            </div>--}}
                                                         </div>
-{{--                                                        <div class="box-body-action">--}}
-{{--                                                            <a href="personal-tree-edit.html" class="btn btn-outline btn-md">--}}
-{{--															<span class="btn-icon">--}}
-{{--																<svg class="svg svg__16">--}}
-{{--																		<use xlink:href="/campustree/images/sprite/sprite.svg#edit"></use>--}}
-{{--																	</svg>--}}
-{{--															</span>--}}
-{{--                                                                <span class="btn-title">Edit</span>--}}
-{{--                                                            </a>--}}
-{{--                                                        </div>--}}
                                                     </div>
                                                 </div>
                                                 <div class="tabs-content-item" data-tab-content="1" data-tab-segment="0">
@@ -147,14 +125,15 @@
                                                                     $count = 1;
                                                                 @endphp
                                                                 @foreach($branches as $branch)
-                                                                    @php
-                                                                        $posts_count = count($branch->posts->take(3));
-                                                                    @endphp
-                                                                    @if($posts_count)
-                                                                        @foreach($branch->posts->take(3) as $leaf)
+{{--                                                                    @php--}}
+{{--                                                                        $posts_count = count($branch->posts->take(3));--}}
+{{--                                                                    @endphp--}}
+{{--                                                                    @if($posts_count)--}}
+                                                                        @foreach($branch->posts->all() as $leaf)
+                                                                            @if(in_array($leaf->id, $arr))
                                                                             <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
                                                                                 <div class="event-thumb">
-                                                                                    <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">
+                                                                                    <img src="/{{ $leaf->img }}" alt="{{ $leaf->title }}">
                                                                                 </div>
                                                                                 <div class="event-description">
                                                                                     <p class="event-description-title">{{ $leaf->title }}</p>
@@ -170,74 +149,18 @@
                                                                                                 <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
                                                                                             </svg>
                                                                                         </div>
-                                                                                        <div class="date-label">{{ $leaf->created_at }}</div>
+                                                                                        <div class="date-label">{{ $leaf->event_date }} {{ $leaf->event_time }}</div>
                                                                                     </div>
                                                                                     <p class="event-description-item paragraph-md">{{ strip_tags($leaf->text) }}</p>
                                                                                 </div>
                                                                             </a>
+                                                                            @endif
                                                                             @php
                                                                                 $count++;
                                                                             @endphp
+
                                                                         @endforeach
-                                                                        {{--                                                    @elseif($posts_count == 2)--}}
-                                                                        {{--                                                        @foreach($branch->posts as $leaf)--}}
-                                                                        {{--                                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">--}}
-                                                                        {{--                                                                <div class="event-thumb">--}}
-                                                                        {{--                                                                    <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">--}}
-                                                                        {{--                                                                </div>--}}
-                                                                        {{--                                                                <div class="event-description">--}}
-                                                                        {{--                                                                    <p class="event-description-title">{{ $leaf->title }}</p>--}}
-                                                                        {{--                                                                    @if(isset($leaf->category->title ))--}}
-                                                                        {{--                                                                        <div class="event-description-categories">--}}
-                                                                        {{--                                                                            <p class="tag tag-alumni">{{ $leaf->category->title }}</p>--}}
-                                                                        {{--                                                                        </div>--}}
-                                                                        {{--                                                                    @endif--}}
-
-                                                                        {{--                                                                    <div class="event-description-date date">--}}
-                                                                        {{--                                                                        <div class="date-icon">--}}
-                                                                        {{--                                                                            <svg class="svg svg__16">--}}
-                                                                        {{--                                                                                <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>--}}
-                                                                        {{--                                                                            </svg>--}}
-                                                                        {{--                                                                        </div>--}}
-                                                                        {{--                                                                        <div class="date-label">{{ $leaf->created_at }}</div>--}}
-                                                                        {{--                                                                    </div>--}}
-                                                                        {{--                                                                    <p class="event-description-item paragraph-md">{{ strip_tags($leaf->text) }}</p>--}}
-                                                                        {{--                                                                </div>--}}
-                                                                        {{--                                                            </a>--}}
-                                                                        {{--                                                            @php--}}
-                                                                        {{--                                                                $count++;--}}
-                                                                        {{--                                                            @endphp--}}
-                                                                        {{--                                                        @endforeach--}}
-                                                                        {{--                                                    @elseif($posts_count == 1)--}}
-                                                                        {{--                                                        @foreach($branch->posts as $leaf)--}}
-                                                                        {{--                                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">--}}
-                                                                        {{--                                                                <div class="event-thumb">--}}
-                                                                        {{--                                                                    <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">--}}
-                                                                        {{--                                                                </div>--}}
-                                                                        {{--                                                                <div class="event-description">--}}
-                                                                        {{--                                                                    <p class="event-description-title">{{ $leaf->title }}</p>--}}
-                                                                        {{--                                                                    @if(isset($leaf->category->title ))--}}
-                                                                        {{--                                                                        <div class="event-description-categories">--}}
-                                                                        {{--                                                                            <p class="tag tag-alumni">{{ $leaf->category->title }}</p>--}}
-                                                                        {{--                                                                        </div>--}}
-                                                                        {{--                                                                    @endif--}}
-
-                                                                        {{--                                                                    <div class="event-description-date date">--}}
-                                                                        {{--                                                                        <div class="date-icon">--}}
-                                                                        {{--                                                                            <svg class="svg svg__16">--}}
-                                                                        {{--                                                                                <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>--}}
-                                                                        {{--                                                                            </svg>--}}
-                                                                        {{--                                                                        </div>--}}
-                                                                        {{--                                                                        <div class="date-label">{{ $leaf->created_at }}</div>--}}
-                                                                        {{--                                                                    </div>--}}
-                                                                        {{--                                                                    <p class="event-description-item paragraph-md">{{ strip_tags($leaf->text) }}</p>--}}
-                                                                        {{--                                                                </div>--}}
-                                                                        {{--                                                            </a>--}}
-                                                                        {{--                                                            @php--}}
-                                                                        {{--                                                                $count++;--}}
-                                                                        {{--                                                            @endphp--}}
-                                                                        {{--                                                        @endforeach--}}
-                                                                    @endif
+{{--                                                                    @endif--}}
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -252,7 +175,7 @@
                                 <div class="tree tree-disable-branches" data-tab-content="2" data-tab-segment="1">
                                     <div class="tree-links">
                                         <a href="branch.html" data-transition="branch" id="branch-link"></a>
-                                        <a href="index.html" data-transition="pagination" id="pagination-link"></a>
+                                        <a href="/" data-transition="pagination" id="pagination-link"></a>
                                     </div>
                                     <div class="tree-title">
                                         <h1 class="h-1">My Personal Tree</h1>
@@ -263,7 +186,6 @@
                                                 <svg class="svg svg__32">
                                                     <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
                                                 </svg>
-                                                {{ $branch->title }}
                                             </a>
                                         @endforeach
                                     </div>
@@ -272,39 +194,14 @@
                                             $count = 1;
                                         @endphp
                                         @foreach($branches as $branch)
-
-                                            @php
-                                                $posts_count = count($branch->posts->take(3));
-                                            @endphp
-                                            @if($posts_count == 3)
-                                                @foreach($branch->posts->take(3) as $leaf)
+                                                @foreach($branch->posts->take(18) as $leaf)
+                                                    @if(in_array($leaf->id, $arr))
                                                     <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
+                                                    @endif
                                                     @php
                                                         $count++;
                                                     @endphp
                                                 @endforeach
-                                            @elseif($posts_count == 2)
-                                                @foreach($branch->posts as $leaf)
-                                                    <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
-                                                    @php
-                                                        $count++;
-                                                    @endphp
-                                                @endforeach
-                                                <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
-                                            @elseif($posts_count == 1)
-                                                @foreach($branch->posts as $leaf)
-                                                    <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
-                                                    @php
-                                                        $count++;
-                                                    @endphp
-                                                @endforeach
-                                                <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
-                                                <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
-                                            @else
-                                                <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
-                                                <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
-                                                <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
-                                            @endif
                                         @endforeach
                                     </div>
                                     <svg viewBox="0 0 892 701" class="tree-svg" fill="none">

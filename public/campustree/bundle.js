@@ -4637,7 +4637,15 @@
                             format: "dd/mm/yyyy",
                             autohide: !0
                         }), t[e].addEventListener("changeDate", (function () {
-                            t[e].parentNode.classList.remove("has-error")
+                            t[e].parentNode.classList.remove("has-error");
+                            if(this.classList.contains('branch-bydate')) {
+                                let query = this.value;
+                                const urlParams = new URLSearchParams(window.location.search);
+                                urlParams.set('date', query);
+                                history.pushState(null, null, "?" + urlParams.toString());
+                                window.location.reload();
+                            }
+
                         }))
                     }, i = 0; i < t.length; i++) e(i)
                 };

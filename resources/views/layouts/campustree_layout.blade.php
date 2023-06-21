@@ -55,7 +55,7 @@
                         @csrf
                         <div class="search">
                             <label class="input-container dropdown">
-                                <input type="text" class="input input-transparent input-search" name="search">
+                                <input type="text" class="input input-transparent input-search" name="search" value="@if(request()->get('search')){{request()->get('search')}} @endif">
                                     <span class="input-container-icon">
                                     <svg class="svg svg__24">
                                         <use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
@@ -63,8 +63,8 @@
                                 </span>
                             </label>
                         </div>
-{{--                        <div class="header-panel-filters">--}}
-{{--                            <div class="filters">--}}
+                        <div class="header-panel-filters">
+                            <div class="filters">
 {{--                                <div class="filters-item">--}}
 {{--                                    <div class="link" id="toggle-header-mobile-filters">--}}
 {{--                                        <div class="link-icon">--}}
@@ -75,219 +75,69 @@
 {{--                                        <div class="link-title">Filters</div>--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
-{{--                                <div class="filters-item d-none d-xl-flex">--}}
-{{--                                    <div class="dropdown">--}}
-{{--                                        <input type="text" data-fieldset-trigger="filter-branches" name="filter-branches"--}}
-{{--                                               hidden>--}}
-{{--                                        <p class="dropdown-trigger-label">Branches</p>--}}
-{{--                                        <p class="dropdown-trigger dropdown-trigger-title" data-fieldset-label="filter-branches"--}}
-{{--                                           data-label="Select branch">Select branch</p>--}}
-{{--                                        <div class="dropdown-body">--}}
-{{--                                            <div class="dropdown-body-item">--}}
-{{--                                                <fieldset class="fieldset" data-fieldset-list="filter-branches">--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="all" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">All</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="1" data-value="Greek Life"--}}
-{{--                                                               class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Greek Life</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="1" data-value="Alumni"--}}
-{{--                                                               class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Alumni</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="2" data-value="Local"--}}
-{{--                                                               class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Local</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="3" data-value="Events"--}}
-{{--                                                               class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Events</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="4" data-value="Majors"--}}
-{{--                                                               class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Majors</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="5" data-value="Clubs"--}}
-{{--                                                               class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Clubs</span>--}}
-{{--                                                    </label>--}}
-{{--                                                </fieldset>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="filters-item d-none d-xl-flex">--}}
-{{--                                    <div class="dropdown">--}}
-{{--                                        <input type="text" data-fieldset-trigger="filter-interests" name="filter-branches"--}}
-{{--                                               hidden>--}}
-{{--                                        <p class="dropdown-trigger-label">Interests</p>--}}
-{{--                                        <p class="dropdown-trigger dropdown-trigger-title"--}}
-{{--                                           data-fieldset-label="filter-interests" data-label="Select interest">Select--}}
-{{--                                            interest</p>--}}
-{{--                                        <div class="dropdown-body">--}}
-{{--                                            <div class="dropdown-body-item">--}}
-{{--                                                <fieldset class="fieldset" data-fieldset-list="filter-interests">--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="all" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">All</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Greek Life" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Greek Life</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Alumni" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Alumni</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Local" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Local</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Events" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Events</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Majors" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Majors</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Clubs" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Clubs</span>--}}
-{{--                                                    </label>--}}
-{{--                                                </fieldset>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="filters-item d-none d-xl-flex">--}}
-{{--                                    <label class="input-container">--}}
-{{--                                        <input type="checkbox" class="input input-checkbox input-checkbox-sm">--}}
-{{--                                        <span class="input-checkbox-icon">--}}
-{{--									<svg class="svg svg__16">--}}
-{{--										<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--									</svg>--}}
-{{--								</span>--}}
-{{--                                        <span class="input-checkbox-title">Only with my friends</span>--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                                <div class="filters-item">--}}
-{{--                                    <div class="link close-filters">--}}
-{{--                                        <div class="link-icon">--}}
-{{--                                            <svg class="svg svg__16">--}}
-{{--                                                <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>--}}
-{{--                                            </svg>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                                <div class="filters-item d-none d-xl-flex">
+                                    <div class="dropdown">
+                                        <input type="text" data-fieldset-trigger="filter-branches" name="filter-branches"
+                                               hidden>
+                                        <p class="dropdown-trigger-label">Branches</p>
+                                        <p class="dropdown-trigger dropdown-trigger-title" data-fieldset-label="filter-branches"
+                                           data-label="Select branch">Select branch</p>
+                                        <div class="dropdown-body">
+                                            <div class="dropdown-body-item">
+                                                <fieldset class="fieldset" data-fieldset-list="filter-branches">
+                                                    <label class="input-container">
+                                                        <input type="checkbox" value="all" class="input input-checkbox">
+                                                        <span class="input-checkbox-icon">
+													<svg class="svg svg__16">
+														<use
+                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+													</svg>
+												</span>
+                                                        <span class="input-checkbox-title">All</span>
+                                                    </label>
+                                                    @php
+                                                    $branches = \App\Models\Category::all();
+                                                    $new = [];
+                                                    if(request()->get('filter-branches')) {
+                                                        $new = explode(', ', request()->get('filter-branches'));
+                                                    }
+                                                     @endphp
+                                                    @foreach($branches as $branch)
+                                                        <label class="input-container">
+                                                            <input type="checkbox" value="{{ $branch->id }}" data-value="{{ $branch->id }}"
+                                                                   class="input input-checkbox" @if(in_array(strval($branch->id), $new)) checked @endif>
+                                                            <span class="input-checkbox-icon">
+                                                            <svg class="svg svg__16">
+                                                                <use
+                                                                    xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
+                                                            </svg>
+                                                        </span>
+                                                            <span class="input-checkbox-title">{{ $branch->title }}</span>
+                                                        </label>
+                                                    @endforeach
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="filters-item">
+                                    <input class="btn-title" type="submit" value="Search"/>
+                                </div>
+                                <div class="filters-item">
+                                    <div class="link close-filters">
+                                        <div class="link-icon">
+                                            <svg class="svg svg__16">
+                                                <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 {{--                        <div class="header-panel-filters __mobile" id="header-mobile-filters">--}}
 {{--                            <div class="row pb-4">--}}
-{{--                                <div class="col-6 d-flex align-items-center">--}}
-{{--                                    <label class="input-container">--}}
-{{--                                        <input type="checkbox" class="input input-checkbox input-checkbox-sm">--}}
-{{--                                        <span class="input-checkbox-icon">--}}
-{{--									<svg class="svg svg__16">--}}
-{{--										<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--									</svg>--}}
-{{--								</span>--}}
-{{--                                        <span class="input-checkbox-title">Only with my friends</span>--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-6">--}}
+{{--                                <div class="col-12">--}}
 {{--                                    <div class="d-flex justify-content-end">--}}
 {{--                                        <button class="btn reset-btn" data-reset-box="#header-mobile-filters">--}}
 {{--                                            <span class="btn-title">Reset filter</span>--}}
@@ -380,96 +230,13 @@
 {{--                                            </div>--}}
 {{--                                        </div>--}}
 {{--                                    </div>--}}
-{{--                                    <div class="dropdown dropdown-static">--}}
-{{--                                        <p class="dropdown-trigger-label">Interests</p>--}}
-{{--                                        <p class="dropdown-trigger dropdown-trigger-title"--}}
-{{--                                           data-fieldset-label="filter-interests-mobile" data-label="Select interest">Select--}}
-{{--                                            interest</p>--}}
-{{--                                        <div class="dropdown-body">--}}
-{{--                                            <div class="dropdown-body-item">--}}
-{{--                                                <fieldset class="fieldset" data-fieldset-list="filter-interests-mobile">--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="all" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">All</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Greek Life" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Greek Life</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Alumni" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Alumni</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Local" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Local</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Events" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Events</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Majors" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Majors</span>--}}
-{{--                                                    </label>--}}
-{{--                                                    <label class="input-container">--}}
-{{--                                                        <input type="checkbox" value="Clubs" class="input input-checkbox">--}}
-{{--                                                        <span class="input-checkbox-icon">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use--}}
-{{--                                                            xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                        <span class="input-checkbox-title">Clubs</span>--}}
-{{--                                                    </label>--}}
-{{--                                                </fieldset>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
                     </form>
-
                 </div>
                 <div class="header-panel-nav">
-                        <a data-router-disabled href="{{ route('allUsers') }}" class="link">
+                        <a data-router-disabled href="{{ route('allFriends') }}" class="link">
 						<span class="link-icon">
 							<svg class="svg svg__24">
 								<use xlink:href="/campustree/images/sprite/sprite.svg#friends"></use>
@@ -514,19 +281,48 @@
                                     <div class="notification-list">
                                         <div class="scroll-wrap">
                                             @foreach($notifications as $item)
-                                                <div class="notification-list-item">
-                                                    <div class="notification-avatar">
-                                                        <img src="https://images.pexels.com/photos/1117256/pexels-photo-1117256.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="Avatar">
-                                                        <div class="notification-avatar-label">
-                                                            <svg class="svg svg__16">
-                                                                <use xlink:href="/campustree/images/sprite/sprite.svg#graduation"></use>
-                                                            </svg>
+                                                @if($item->type == 'add-to-friend')
+                                                    <form action="{{ route('deleteNotification', $item->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <div class="notification-list-item">
+                                                            <div class="notification-avatar">
+                                                                <img src="https://images.pexels.com/photos/1117256/pexels-photo-1117256.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="Avatar">
+                                                                <div class="notification-avatar-label">
+                                                                    <svg class="svg svg__16">
+                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#graduation"></use>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                            <div class="notification-description">
+                                                                <p><a href="/personal/{{ $item->user_id }}">{{ \App\Models\User::where('id', $item->user_id)->first()->name }}</a> add you as friend</p>
+                                                            </div>
+                                                            <div>
+                                                                <input type="submit" value="Delete"/>
+                                                            </div>
                                                         </div>
+                                                    </form>
+
+                                                    @elseif($item->type == 'add-to-leaf')
+                                                    <form action="{{ route('deleteNotification', $item->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    <div class="notification-list-item">
+                                                        <div class="notification-avatar">
+                                                            <img src="https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="Avatar">
+                                                            <div class="notification-avatar-label">
+                                                                <svg class="svg svg__16">
+                                                                    <use xlink:href="/campustree/images/sprite/sprite.svg#lamp"></use>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="notification-description">
+                                                            <p>You’ve been invited by <a href="/personal/{{ $item->user_id }}">{{ \App\Models\User::where('id', $item->user_id)->first()->name }}</a> to <a href="/events/{{ $item->leaf_id }}">{{ \App\Models\Post::where('id', $item->leaf_id)->first()->title }}</a></p>
+                                                        </div>
+                                                        <div><input type="submit" value="Delete"/></div>
                                                     </div>
-                                                    <div class="notification-description">
-                                                        <p><a href="/personal/{{ $item->user_id }}">{{ \App\Models\User::where('id', $item->user_id)->first()->name }}</a> add you as friend</p>
-                                                    </div>
-                                                </div>
+                                                    </form>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>

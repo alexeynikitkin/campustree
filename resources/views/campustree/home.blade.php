@@ -55,7 +55,7 @@
                                                                                 <use xlink:href="/campustree/images/sprite/sprite.svg#calendar"></use>
                                                                             </svg>
                                                                         </div>
-                                                                        <div class="date-label">{{ $leaf->created_at }}</div>
+                                                                        <div class="date-label">{{ $leaf->event_date }} {{ $leaf->event_time }}</div>
                                                                     </div>
                                                                     <p class="event-description-item paragraph-md">{{ strip_tags($leaf->text) }}</p>
                                                                 </div>

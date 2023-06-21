@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Campustree\FriendsController;
 use App\Http\Controllers\Campustree\CampusHomeController;
 use App\Http\Controllers\Campustree\CommentsController;
+use App\Http\Controllers\Campustree\NotificationsController;
 use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::get('/', [CampusHomeController::class, 'index'])->name('campus.home');
 // Leaf Page
 
 Route::get('/events/{leaf}', [CampusHomeController::class, 'showLeaf'])->name('showLeaf');
+Route::post('/leaf-to-friend', [CampusHomeController::class, 'leaftofriend']);
+
+
 Route::post('/events/{leaf}', [CampusHomeController::class, 'addLeafToUser'])->name('addLeafToUser');
 Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser');
 
@@ -34,17 +38,16 @@ Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUse
 
 Route::get('/branch/{id}', [CampusHomeController::class, 'showBranch'])->name('showBranch');
 
-//Route::get('/branch/{id}', [CampusHomeController::class, 'showBranchFilter']);
-
-
 // Users and Friends
 
-Route::middleware(['role:admin', 'auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/users', [CampusHomeController::class, 'allUsers'])->name('allUsers');
     Route::get('/friends', [CampusHomeController::class, 'allFriends'])->name('allFriends');
     Route::get('/friends_request', [CampusHomeController::class, 'friendsRequest'])->name('friendsRequest');
     Route::post('/users', [FriendsController::class, 'store'])->name('addFriends');
     Route::delete('/users', [FriendsController::class, 'destroy'])->name('deleteFriends');
+
+    Route::delete('/notifications/{id}', [NotificationsController::class, 'destroy'])->name('deleteNotification');
 
     Route::post('/friends_request', [FriendsController::class, 'acceptFriend'])->name('acceptFriend');
     Route::delete('/friends_request', [FriendsController::class, 'declineFriend'])->name('declineFriend');

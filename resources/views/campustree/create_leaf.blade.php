@@ -115,28 +115,28 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
-{{--                                        <div class="col-lg-6">--}}
-{{--                                            <label class="input-container input-container-group input-container-datepicker __top __right">--}}
-{{--                                                <input  type="text" name="date" class="input input-datepicker" placeholder="Date" readonly="readonly" required>--}}
-{{--                                                <span class="input-container-icon __16 __right">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use xlink:href="/campustree/images/sprite/sprite.svg#calendar-xs"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                <span class="input-message __error">This field is required!</span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-6">--}}
-{{--                                            <label class="input-container input-container-group">--}}
-{{--                                                <input type="text" name="date" class="input input-timepicker" placeholder="Time" readonly="readonly" required>--}}
-{{--                                                <span class="input-container-icon __16 __right">--}}
-{{--													<svg class="svg svg__16">--}}
-{{--														<use xlink:href="/campustree/images/sprite/sprite.svg#clock"></use>--}}
-{{--													</svg>--}}
-{{--												</span>--}}
-{{--                                                <span class="input-message __error">This field is required!</span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
+                                        <div class="col-lg-6">
+                                            <label class="input-container input-container-group input-container-datepicker __top __right">
+                                                <input  type="text" name="event_date" class="input input-datepicker" placeholder="Date" readonly="readonly" required>
+                                                <span class="input-container-icon __16 __right">
+													<svg class="svg svg__16">
+														<use xlink:href="/campustree/images/sprite/sprite.svg#calendar-xs"></use>
+													</svg>
+												</span>
+                                                <span class="input-message __error">This field is required!</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="input-container input-container-group">
+                                                <input type="text" name="event_time" class="input input-timepicker" placeholder="Time" readonly="readonly" required>
+                                                <span class="input-container-icon __16 __right">
+													<svg class="svg svg__16">
+														<use xlink:href="/campustree/images/sprite/sprite.svg#clock"></use>
+													</svg>
+												</span>
+                                                <span class="input-message __error">This field is required!</span>
+                                            </label>
+                                        </div>
 {{--                                        <div class="col-lg-6">--}}
 {{--                                            <label class="input-container input-container-group">--}}
 {{--                                                <input type="text" class="input" placeholder="Location" required>--}}
@@ -165,28 +165,20 @@
 {{--                                        </div>--}}
                                         <div class="col-12">
                                             <div class="upload-container">
-{{--                                                <label class="input-container input-container-file">--}}
-{{--                                                    <span class="upload-file">--}}
-{{--                                                        <input name="img" type="file" class="input" hidden required>--}}
-{{--                                                        <span class="person-thumb __event">--}}
-{{--                                                            <img src="https://images.unsplash.com/photo-1651158600074-27309fd0d793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="Joey Tribbiani">--}}
-{{--                                                            <span class="person-thumb-upload">--}}
-{{--                                                                <svg class="svg svg__16">--}}
-{{--                                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>--}}
-{{--                                                                </svg>--}}
-{{--                                                            </span>--}}
-{{--                                                        </span>--}}
-{{--                                                    </span>--}}
+                                                <label class="input-container input-container-file">
+                                                    <input class="form-control"  type="hidden" id="feature_image1" name="img" value="" readonly required>
+                                                    <span class="person-thumb">
+                                                            <img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
+                                                            <span class="person-thumb-upload">
+                                                                <svg class="svg svg__16">
+                                                                  <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
+                                                                </svg>
+                                                              </span>
 
-{{--                                                    <span class="upload-text h-4">Upload a photo</span>--}}
-{{--                                                    <span class="input-message __error">This field is required!</span>--}}
-{{--                                                </label>--}}
-                                                <div class="form-group">
-                                                    <label for="feature_image">Leaf Image</label>
-                                                    <img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
-                                                    <input class="form-control"  type="hidden" id="feature_image" name="img" value="" readonly>
-                                                    <a href="" class="popup_selector btn btn-primary mt-2" data-inputid="feature_image">Select Image</a>
-                                                </div>
+                                                        </span>
+                                                    <a href="" class="popup_selector upload-text h-4" data-inputid="feature_image1">Upload a photo</a>
+                                                    <span class="input-message __error">This field is required!</span>
+                                                </label>
 {{--                                                <label class="input-container input-container-checkbox">--}}
 {{--                                                    <input type="checkbox" name="ongoing" class="input input-checkbox">--}}
 {{--                                                    <span class="input-checkbox-switcher"></span>--}}
