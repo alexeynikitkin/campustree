@@ -715,6 +715,7 @@
                                     </form>
                                 </div>
                                 <div data-register-step="3" class="steps-content">
+                                    <div class="errors" style="color: red"></div>
                                     <form id="registration-step-3-form">
                                         @csrf
                                         <div class="steps-content-wrapper">
@@ -751,7 +752,7 @@
                                                 <label class="input-container input-container-file">
                                                     <input class="form-control"  type="hidden" id="feature_image1" name="user_img" value="" readonly required>
                                                     <span class="person-thumb">
-                                                            <img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
+                                                            <img src="" alt="" class="img-uploaded toimage" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
                                                             <span class="person-thumb-upload">
                                                                 <svg class="svg svg__16">
                                                                   <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
@@ -799,6 +800,7 @@
                                     </form>
                                 </div>
                                 <div data-register-step="4" class="steps-content">
+
                                     <div class="steps-content-wrapper">
                                         <div class="section-title">
                                             <p class="h-3">Sign Up</p>
@@ -859,25 +861,32 @@
 
     <!-- Submit last step -->
     <script>
+        let image = $('#feature_image1');
+        let toImage = $('.toimage');
+        image.bind("change paste keyup", function() {
+            toImage.attr('src', image.val());
+            toImage.css('display', 'block');
+        });
         $(document).on('submit', '#registration-step-3-form', function (e) {
             e.preventDefault();
             const errors = $('#registration-step-3-form .has-error');
             if (!errors.length) {
-                setTimeout(() => {
-                    $('.steps-content.active').removeClass('active');
-                    $('[data-register-step="4"]').addClass('active');
-                }, 1000);
+
                 const items = {...localStorage};
-                let one = JSON.parse(items['registration-step-0']);
-                let two = JSON.parse(items['registration-step-1']);
-                console.log(one);
                 let str = '';
-                one.forEach((i) => {
-                    str+=i.value + '-';
-                });
-                two.forEach((i) => {
-                    str+=i.value + '-';
-                });
+                let one, two;
+                if(items['registration-step-0']) {
+                    let one = JSON.parse(items['registration-step-0']);
+                    one.forEach((i) => {
+                        str+=i.value + '-';
+                    });
+                }
+                if(items['registration-step-1']) {
+                    let two = JSON.parse(items['registration-step-1']);
+                    two.forEach((i) => {
+                        str+=i.value + '-';
+                    });
+                }
                 var a = [ ...JSON.parse(items['registration-step-2']), ...JSON.parse(items['registration-step-3'])];
                 a.push({name: "leaves" , value: str});
                 console.log(a);
@@ -887,10 +896,14 @@
                     url: '/users1',
                     data: data,
                     success: function(response) {
-                        console.log('Дані збережено успішно!');
+                        setTimeout(() => {
+                            $('.steps-content.active').removeClass('active');
+                            $('[data-register-step="4"]').addClass('active');
+                        }, 1000);
                     },
-                    error: function(xhr, status, error) {
-                        console.log('Сталася помилка: ' + error);
+                    error: function(xhr, status, error  ) {
+                        console.log(xhr);
+                        $('.errors').append(xhr.responseJSON.message);
                     }
                 });
             }
