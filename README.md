@@ -2,7 +2,7 @@ README.md - Syntax
 
 # CampusTree
 
-**Side - Front-end or Back-end**
+**Side - Front-end and Back-end**
 
 **Station - Office and Remote**
 
