@@ -110,7 +110,7 @@ class UserController extends Controller
         $user->facebook = $request->facebook;
         $user->save();
         $user->assignRole('user');
-        if(count($request->leaves) > 0) {
+        if($request->leaves) {
             $arrayItems = explode("-", rtrim($request->leaves, "-"));
             foreach ($arrayItems as $item) {
                 $part = new Participation;
