@@ -58,8 +58,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="box-banner box-banner-drop">
-                                    <label class="input-container input-container-file">
-                                        <input type="file" name="banner" class="input" hidden required/>
+                                    <label data-inputid="feature_image2" class="popup_selector input-container input-container-file">
                                         <span class="person-thumb-upload">
 											<svg class="svg svg__16">
 												<use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
@@ -67,11 +66,9 @@
 										</span>
                                         <span class="paragraph paragraph-medium paragraph-lg">For the best results on all devices, use an image that’s at least 2048 x 1152 pixels and 6MB or less.</span>
                                         <span class="input-message __error">This field is required!</span>
-                                        <img src="https://images.unsplash.com/photo-1651150538959-004f6ccecdb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" alt="">
+                                        <img src="" alt="">
                                     </label>
-                                    <div class="btn btn-md mt-2" id="change-banner">
-                                        <span class="btn-title">Change banner</span>
-                                    </div>
+                                    <input class="form-control"  type="hidden" id="feature_image2" name="banner" class="input" readonly required/>
                                 </div>
                             </div>
                         </div>
@@ -137,18 +134,18 @@
                                                 <span class="input-message __error">This field is required!</span>
                                             </label>
                                         </div>
-{{--                                        <div class="col-lg-6">--}}
-{{--                                            <label class="input-container input-container-group">--}}
-{{--                                                <input type="text" class="input" placeholder="Location" required>--}}
-{{--                                                <span class="input-message __error">This field is required!</span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-6">--}}
-{{--                                            <div class="input-container input-container-group">--}}
-{{--                                                <input type="text" class="input" placeholder="Google map link" required>--}}
-{{--                                                <span class="input-message __error">This field is required!</span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+                                        <div class="col-lg-6">
+                                            <label class="input-container input-container-group">
+                                                <input type="text" class="input" name="location" placeholder="Location" required>
+                                                <span class="input-message __error">This field is required!</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-container input-container-group">
+                                                <input type="text" name="map" class="input" placeholder="Google map link">
+                                                <span class="input-message __error">This field is required!</span>
+                                            </div>
+                                        </div>
 {{--                                        <div class="col-12">--}}
 {{--                                            <div class="input-tags input-container">--}}
 {{--                                                <ul class="input-tags-results"></ul>--}}
@@ -168,22 +165,16 @@
                                                 <label class="input-container input-container-file">
                                                     <input class="form-control"  type="hidden" id="feature_image1" name="img" value="" readonly required>
                                                     <span class="person-thumb">
-                                                            <img src="" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
+                                                            <img src="" alt="" class="img-uploaded toimage" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
                                                             <span class="person-thumb-upload">
                                                                 <svg class="svg svg__16">
                                                                   <use xlink:href="/campustree/images/sprite/sprite.svg#upload"></use>
                                                                 </svg>
                                                               </span>
-
                                                         </span>
                                                     <a href="" class="popup_selector upload-text h-4" data-inputid="feature_image1">Upload a photo</a>
                                                     <span class="input-message __error">This field is required!</span>
                                                 </label>
-{{--                                                <label class="input-container input-container-checkbox">--}}
-{{--                                                    <input type="checkbox" name="ongoing" class="input input-checkbox">--}}
-{{--                                                    <span class="input-checkbox-switcher"></span>--}}
-{{--                                                    <span class="input-checkbox-title">Ongoing</span>--}}
-{{--                                                </label>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +186,7 @@
                                         <button class="btn">
                                             <span class="btn-title">Create</span>
                                         </button>
-                                        <a href="{{ route('campus.home') }}" class="btn btn-outline">
+                                        <a data-router-disabled href="{{ route('campus.home') }}" class="btn btn-outline">
                                             <span class="btn-title">Cancel</span>
                                         </a>
                                     </div>
@@ -208,4 +199,26 @@
         </div>
     </div>
 @endsection
+
+
+    @section('custom-js')
+        <script>
+            $(document).ready(function(){
+                let banner = $('#feature_image2');
+                let toBanner = $('[data-inputid="feature_image2"] img');
+                banner.bind("change paste keyup", function() {
+                    toBanner.attr('src', banner.val());
+                });
+
+                let image = $('#feature_image1');
+                let toImage = $('.toimage');
+                image.bind("change paste keyup", function() {
+                    toImage.attr('src', image.val());
+                    toImage.css('display', 'block');
+                });
+            });
+        </script>
+
+    @endsection
+
 

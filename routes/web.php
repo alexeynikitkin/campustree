@@ -28,11 +28,12 @@ Route::get('/', [CampusHomeController::class, 'index'])->name('campus.home');
 // Leaf Page
 
 Route::get('/events/{leaf}', [CampusHomeController::class, 'showLeaf'])->name('showLeaf');
+
 Route::post('/leaf-to-friend', [CampusHomeController::class, 'leaftofriend']);
 
 
 Route::post('/events/{leaf}', [CampusHomeController::class, 'addLeafToUser'])->name('addLeafToUser');
-Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser');
+
 
 // Branch Page
 
@@ -41,6 +42,8 @@ Route::get('/branch/{id}', [CampusHomeController::class, 'showBranch'])->name('s
 // Users and Friends
 
 Route::middleware(['auth'])->group(function () {
+    Route::delete('/events/{leaf}', [CampusHomeController::class, 'deleteLeafFromUser'])->name('deleteLeafFromUser');
+
     Route::get('/users', [CampusHomeController::class, 'allUsers'])->name('allUsers');
     Route::get('/friends', [CampusHomeController::class, 'allFriends'])->name('allFriends');
     Route::get('/friends_request', [CampusHomeController::class, 'friendsRequest'])->name('friendsRequest');
@@ -51,22 +54,35 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/friends_request', [FriendsController::class, 'acceptFriend'])->name('acceptFriend');
     Route::delete('/friends_request', [FriendsController::class, 'declineFriend'])->name('declineFriend');
+    // Personal Page
+    Route::get('/personal/{id}', [CampusHomeController::class, 'personal'])->name('personal');
+
+    //Events on Review
+    Route::get('/events_on_review', [CampusHomeController::class, 'eventsOnReview'])->name('events_on_review');
+    Route::post('/events_on_review', [CampusHomeController::class, 'changeStatus'])->name('changeStatus');
+    //Search
+    Route::get('/search', [CampusHomeController::class, 'search']);
+
+    // Create Comments on events pages
+    Route::post('/', [CommentsController::class, 'store'])->name('commentCreate');
 });
 
-// Create Events
-Route::middleware(['role:admin', 'auth'])->group(function (){
-    Route::get('/create', [CampusHomeController::class, 'createLeaf'])->name('createLeaf');
-    Route::post('/events', [CampusHomeController::class, 'storeLeaf'])->name('storeLeaf');
-});
+    // Create Events
+    Route::middleware(['auth'])->group(function (){
+        Route::get('/create', [CampusHomeController::class, 'createLeaf'])->name('createLeaf');
 
-Route::get('/search', [CampusHomeController::class, 'search']);
-// Create Comments in events pages
+        Route::post('/events', [CampusHomeController::class, 'storeLeaf'])->name('storeLeaf');
 
-Route::post('/', [CommentsController::class, 'store'])->name('commentCreate');
+        Route::get('/edit/{id}', [CampusHomeController::class, 'editLeaf'])->name('editLeaf');
+        Route::patch('/edit/{id}', [CampusHomeController::class, 'updateLeaf'])->name('updateLeaf');
 
-// Personal Page
+    });
 
-Route::get('/personal/{id}', [CampusHomeController::class, 'personal'])->name('personal')->middleware('auth');
+
+
+
+
+
 
 //Save registered user data by ajax from LocalStorage
 

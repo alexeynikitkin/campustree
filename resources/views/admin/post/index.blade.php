@@ -33,19 +33,31 @@
                             <table class="table table-striped projects">
                                 <thead>
                                 <tr>
-                                    <th style="width: 20%">
+                                    <th style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 5%">
+                                        By
+                                    </th>
+                                    <th style="width: 10%">
                                         Leaf Name
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 10%">
                                         Leaf Branch
                                     </th>
-                                    <th style="width: 20%">
-                                        Post Leaf
+                                    <th style="width: 10%">
+                                        Post Image
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 10%">
+                                        Post Banner
+                                    </th>
+                                    <th style="width: 10%">
+                                        Post date
+                                    </th>
+                                    <th style="width: 5%">
+                                        Post Status
+                                    </th>
+                                    <th style="width: 10%">
 
                                     </th>
                                 </tr>
@@ -55,6 +67,9 @@
                                     <tr>
                                         <td>
                                             {{$post->id}}
+                                        </td>
+                                        <td>
+                                            {{$post->user->name}}
                                         </td>
                                         <td>
                                             <a href="{{ route('showLeaf', $post->id) }}" target="_blank">
@@ -70,6 +85,16 @@
                                         </td>
                                         <td>
                                             <img src="{{ asset($post->img) }}" alt="{{ $post->title }}" width="100px" height="100px" />
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset($post->banner) }}" alt="{{ $post->title }}" width="100px" height="100px" />
+                                        </td>
+                                        <td>
+                                            {{ $post->event_date }} {{ $post->event_time }} <br> {{ $post->location }}
+                                            <br> {{ $post->map }}
+                                        </td>
+                                        <td>
+                                            @if($post->status == 0) Approved @else Declined @endif
                                         </td>
                                         <td class="project-actions text-right d-flex">
                                             <a class="btn btn-info btn-sm" href="{{ route('post.edit', $post->id) }}">
@@ -91,6 +116,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex">
+                                <div class="mt-5">
+                            {{ $posts->links() }}
+                                </div>
+                            </div>
                         </div>
 
                     </div>

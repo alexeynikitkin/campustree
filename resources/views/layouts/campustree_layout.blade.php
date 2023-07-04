@@ -42,6 +42,26 @@
 <main id="wrapper">
 
 {{--    <x-header />--}}
+    @if(Session::has('message'))
+        <div class="success-message">
+            <h2>{{Session::get('message')}}</h2>
+        </div>
+        <style>
+
+            #wrapper {
+                position: relative;
+            }
+            .success-message {
+                padding: 100px;
+                background: #49B34F;
+                position: absolute;
+                top: 0px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10000;
+            }
+        </style>
+    @endif
     <header class="header">
         <div class="container">
             <div class="header-panel">
@@ -55,7 +75,7 @@
                         @csrf
                         <div class="search">
                             <label class="input-container dropdown">
-                                <input type="text" class="input input-transparent input-search" name="search" value="@if(request()->get('search')){{request()->get('search')}} @endif">
+                                <input type="text" class="input input-transparent input-search" name="search" value="@if(request()->get('search')){{request()->get('search')}}@endif">
                                     <span class="input-container-icon">
                                     <svg class="svg svg__24">
                                         <use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
@@ -358,7 +378,7 @@
                         </a>
                     @endif
                     @if(Auth::user())
-                        @if( Auth::user()->hasRole('admin') )
+{{--                        @if( Auth::user()->hasRole('admin') )--}}
                             <a data-router-disabled href="{{ route('createLeaf') }}" class="btn d-none d-md-inline-flex">
                             <span class="btn-icon">
                                 <svg class="svg svg__32">
@@ -367,7 +387,7 @@
                             </span>
                                 <span class="btn-title">Create a leaf</span>
                             </a>
-                        @endif
+{{--                        @endif--}}
                     @endif
 
                     <div class="burger">
@@ -951,23 +971,15 @@
 <script src="/campustree/validation.js"></script>
 <script src="{{ asset('admin/dist/js/jquery.colorbox-min.js') }}"></script>
 <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js" integrity="sha512-Fhm8fcAQhENO1HmU1JjbnNm6ReszFIiJvkHdnuGZBznaaM6vakH4YEPO7v8M3PbGR03R/dur0QP5vZ5s4YaN7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/campustree/campustreejs.js"></script>
 @yield('custom-js')
 <script>
-    // $('.input-search').on('change keyup paste',function () {
-    //     let thisVal = $(this).val();
-    //     console.log(thisVal);
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/search',
-    //         data: thisVal,
-    //         success: function(response) {
-    //             console.log('Дані збережено успішно!');
-    //         },
-    //         error: function(xhr, status, error) {
-    //             console.log('Сталася помилка: ' + error);
-    //         }
-    //     });
-    // });
+    $(document).ready(function(){
+        setTimeout(function() {
+            $('.success-message').css('display', 'none');
+        },2000);
+    });
 </script>
 <script src="https://cdn.tiny.cloud/1/s2wox67b49yyyur1t1ibqrqc1zrjb0lniiry5tb3bkcdmg58/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </body>

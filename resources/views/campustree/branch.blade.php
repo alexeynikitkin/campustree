@@ -10,7 +10,7 @@
                             <div class="section-title">
                                 <div class="breadcrumbs">
                                     <div class="breadcrumbs-item">
-                                        <a href="{{ route('campus.home') }}" class="breadcrumbs-item-link">Back to
+                                        <a data-router-disabled href="{{ route('campus.home') }}" class="breadcrumbs-item-link">Back to
                                             Campus tree</a>
                                     </div>
                                 </div>
@@ -32,52 +32,6 @@
 											</span>
                                             <span class="link-title">Filters</span>
                                         </button>
-                                    </div>
-                                    <div class="filters-item">
-                                        <div class="dropdown">
-                                            <p class="dropdown-trigger-label">Sort by</p>
-                                            <p class="dropdown-trigger dropdown-trigger-title"
-                                               data-fieldset-label="filter-sort" data-label="Popular">Popular</p>
-                                            <div class="dropdown-body">
-                                                <div class="dropdown-body-item">
-                                                    <fieldset class="fieldset" data-fieldset-list="filter-sort">
-                                                        <label class="input-container">
-                                                            <input type="radio" name="sort" value="Popular"
-                                                                   class="input input-checkbox" checked="checked">
-                                                            <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use
-                                                                        xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                            <span class="input-checkbox-title">Popular</span>
-                                                        </label>
-                                                        <label class="input-container">
-                                                            <input type="radio" name="sort" value="Name"
-                                                                   class="input input-checkbox">
-                                                            <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use
-                                                                        xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                            <span class="input-checkbox-title">Name</span>
-                                                        </label>
-                                                        <label class="input-container">
-                                                            <input type="radio" name="sort" value="Date"
-                                                                   class="input input-checkbox">
-                                                            <span class="input-checkbox-icon">
-																<svg class="svg svg__16">
-																	<use
-                                                                        xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-																</svg>
-															</span>
-                                                            <span class="input-checkbox-title">Date</span>
-                                                        </label>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -108,157 +62,65 @@
                                         </div>
                                         <label class="input-container">
                                             <input type="text" name="name" class="branch-name input input-transparent"
-                                                   placeholder="Events Search" value="@if(request()->get('title')){{request()->get('title')}} @endif">
+                                                   placeholder="Events Search" value="@if(request()->get('name')){{request()->get('name')}}@endif">
                                             <span class="input-container-icon">
 												<svg class="svg svg__24">
 													<use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
 												</svg>
 											</span>
                                         </label>
+
                                     </div>
                                     <hr class="hr">
                                     <div class="box-body">
-                                        <div class="row">
-                                            {{--                                            <div class="col-sm-6">--}}
-                                            {{--                                                <p class="paragraph paragraph-medium">Interests</p>--}}
-                                            {{--                                                <fieldset class="fieldset" data-fieldset-list="branch-interest">--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="all" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">All</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Art" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Art</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Computer Science and Cybernetics" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Computer Science and Cybernetics</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Economics" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Economics</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Geography" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Geography</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="History" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">History</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Law" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Law</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Mechanics and Mathematics" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Mechanics and Mathematics</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Philosophy" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Philosophy</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                    <label class="input-container">--}}
-                                            {{--                                                        <input type="checkbox" value="Physics" class="input input-checkbox">--}}
-                                            {{--                                                        <span class="input-checkbox-icon">--}}
-                                            {{--																<svg class="svg svg__16">--}}
-                                            {{--																	<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>--}}
-                                            {{--																</svg>--}}
-                                            {{--															</span>--}}
-                                            {{--                                                        <span class="input-checkbox-title">Physics</span>--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                </fieldset>--}}
-                                            {{--                                            </div>--}}
-                                            <div class="col-sm-12">
-                                                <p class="paragraph paragraph-medium">Time Rage</p>
-                                                <fieldset class="fieldset" data-fieldset-list="branch-time">
-                                                    <label class="input-container">
-                                                        <input type="radio" name="time" value="1 week"
-                                                               class="input input-radio" @if(request()->get('event_date') == '1 week')checked @endif>
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Week</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="time" value="1 month"
-                                                               class="input input-radio" @if(request()->get('event_date') == '1 month')checked @endif>
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Month</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="time" value="3 month"
-                                                               class="input input-radio" @if(request()->get('event_date') == '3 month')checked @endif>
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Quarter</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="time" value="1 year"
-                                                               class="input input-radio"@if(request()->get('event_date') == '1 year')checked @endif>
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Year</span>
-                                                    </label>
-                                                </fieldset>
-                                                <p class="paragraph paragraph-medium">Date</p>
-                                                <fieldset class="fieldset">
-                                                    <label
-                                                        class="input-container input-container-datepicker __bottom __right">
-                                                        <input type="text" name="date"
-                                                               class="branch-bydate input input-datepicker"
-                                                               placeholder="Date" readonly="readonly" value="@if(request()->get('date')){{request()->get('date')}} @endif">
-                                                        <span class="input-container-icon __16 __right">
+
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <p class="paragraph paragraph-medium">Time Rage</p>
+                                                    <fieldset class="fieldset" data-fieldset-list="branch-time">
+                                                        <label class="input-container">
+                                                            <input type="radio" name="event_date" value="1 week"
+                                                                   class="input input-radio" @if(request()->get('event_date') == '1 week')checked @endif>
+                                                            <span class="input-radio-icon"></span>
+                                                            <span class="input-radio-title">Week</span>
+                                                        </label>
+                                                        <label class="input-container">
+                                                            <input type="radio" name="event_date" value="1 month"
+                                                                   class="input input-radio" @if(request()->get('event_date') == '1 month')checked @endif>
+                                                            <span class="input-radio-icon"></span>
+                                                            <span class="input-radio-title">Month</span>
+                                                        </label>
+                                                        <label class="input-container">
+                                                            <input type="radio" name="event_date" value="3 month"
+                                                                   class="input input-radio" @if(request()->get('event_date') == '3 month')checked @endif>
+                                                            <span class="input-radio-icon"></span>
+                                                            <span class="input-radio-title">Quarter</span>
+                                                        </label>
+                                                        <label class="input-container">
+                                                            <input type="radio" name="event_date" value="1 year"
+                                                                   class="input input-radio"@if(request()->get('event_date') == '1 year')checked @endif>
+                                                            <span class="input-radio-icon"></span>
+                                                            <span class="input-radio-title">Year</span>
+                                                        </label>
+                                                    </fieldset>
+                                                    <p class="paragraph paragraph-medium">Date</p>
+                                                    <fieldset class="fieldset">
+                                                        <label
+                                                            class="input-container input-container-datepicker __bottom __right">
+                                                            <input type="text" name="date"
+                                                                   class="branch-bydate input input-datepicker"
+                                                                   placeholder="Date" readonly="readonly" value="@if(request()->get('date')){{request()->get('date')}} @endif">
+                                                            <span class="input-container-icon __16 __right">
 																<svg class="svg svg__16">
 																	<use
                                                                         xlink:href="/campustree/images/sprite/sprite.svg#calendar-xs"></use>
 																</svg>
 															</span>
-                                                    </label>
-                                                </fieldset>
+                                                        </label>
+                                                    </fieldset>
+                                                </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +129,7 @@
                             <div class="tree">
                                 <div class="tree-links">
                                     <a href="leaf.html" id="leaf-link"></a>
-                                    <a href="index.html" data-transition="pagination" id="pagination-link"></a>
+                                    <a data-router-disabled href="/" data-transition="pagination" id="pagination-link"></a>
                                 </div>
                                 <div class="tree-labels">
                                     <div class="tree-labels-item">Title</div>
@@ -283,7 +145,7 @@
                                     @foreach($posts as $post)
                                         <div class="tree-events-item tree-modal-toggle" data-event-id="{{ $count }}">
                                             <span class="leaf-title">{{ $post->title }}</span>
-                                            <a href="{{ route('showLeaf', $post->id) }}" class="leaf-link"></a>
+                                            <a data-router-disabled href="{{ route('showLeaf', $post->id) }}" class="leaf-link"></a>
                                             <div class="tree-modal">
                                                 <div class="box">
                                                     <div class="box-thumb">
@@ -294,7 +156,7 @@
                                                             <div>
                                                                 <p class="event-description-title h-3">{{ $post->title }}</p>
                                                                 <div class="event-description-categories">
-                                                                    <p class="tag tag-events">{{ $post->category->title }}</p>
+                                                                    <p class="tag {{ $post->category->color }}">{{ $post->category->title }}</p>
                                                                 </div>
                                                             </div>
                                                             <p class="event-description-item paragraph-md">{{ strip_tags($post->text) }}</p>
@@ -321,7 +183,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="box-action">
-                                                        <a href="{{ route('showLeaf', $post->id) }}"
+                                                        <a data-router-disabled href="{{ route('showLeaf', $post->id) }}"
                                                            class="btn btn-outline fullwidth">
 												<span class="btn-icon">
 													<svg class="svg svg__32">
@@ -558,21 +420,20 @@
 @section('custom-js')
 
     <!-- Submit last step -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js" integrity="sha512-Fhm8fcAQhENO1HmU1JjbnNm6ReszFIiJvkHdnuGZBznaaM6vakH4YEPO7v8M3PbGR03R/dur0QP5vZ5s4YaN7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
 
-        $(document).ready(function(){
-            $(document).on('click', '.reset-btn', function (){
+        $(document).ready(function() {
+            $(document).on('click', '.reset-btn', function () {
                 history.pushState(null, null, "?" + '');
-                window.location.reload();
+                location.reload();
             });
 
             $(document).on('change', '.branch-name', function () {
                 let query = $(this).val();
                 const urlParams = new URLSearchParams(window.location.search);
-                urlParams.set('title', query);
+                urlParams.set('name', query);
                 history.pushState(null, null, "?" + urlParams.toString());
-                window.location.reload();
+                location.reload();
             });
 
             $(document).on('change', '[data-fieldset-list="branch-time"] input', function () {
@@ -580,33 +441,7 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 urlParams.set('event_date', query);
                 history.pushState(null, null, "?" + urlParams.toString());
-                window.location.reload();
-            });
-            // $(document).on('change', '.input-datepicker', function () {
-            //     console.log('sddsd');
-            //     let query = $(this).val();
-            //     const urlParams = new URLSearchParams(window.location.search);
-            //     urlParams.set('date', query);
-            //     history.pushState(null, null, "?" + urlParams.toString());
-            // });
-
-
-        });
-        $.address.change(function () {
-            let urlParams = window.location.search;
-            $.ajax({
-                type: 'GET',
-                url: '/branch/{{ $branch->id }}',
-                data: {
-                    'query': urlParams
-                },
-                success: function (response) {
-                    $('.tree-events').html('');
-                    $('.tree-events').append(response);
-                },
-                error: function (xhr, status, error) {
-                    console.log('An error occured: ' + error);
-                }
+                location.reload();
             });
         });
     </script>

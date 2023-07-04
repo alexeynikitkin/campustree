@@ -38,23 +38,27 @@
                                             </div>
                                         </div>
                                         <div class="personal-header-action">
-{{--                                            <div class="social">--}}
-{{--                                                <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">--}}
-{{--                                                    <svg class="svg svg__24">--}}
-{{--                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>--}}
-{{--                                                    </svg>--}}
-{{--                                                </a>--}}
-{{--                                                <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
-{{--                                                    <svg class="svg svg__24">--}}
-{{--                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>--}}
-{{--                                                    </svg>--}}
-{{--                                                </a>--}}
-{{--                                                <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
-{{--                                                    <svg class="svg svg__24">--}}
-{{--                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>--}}
-{{--                                                    </svg>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
+                                            <div class="social">
+                                                <a href="{{ $user->linkedin }}" target="_blank" class="social-link">
+                                                    <svg class="svg svg__24">
+                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>
+                                                    </svg>
+                                                </a>
+                                                <a href="{{ $user->instagram }}" target="_blank" class="social-link">
+                                                    <svg class="svg svg__24">
+                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>
+                                                    </svg>
+                                                </a>
+                                                <a href="{{ $user->facebook }}" target="_blank" class="social-link">
+                                                    <svg class="svg svg__24">
+                                                        <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <a data-router-disabled href="{{ route('events_on_review') }}" class="btn btn-md">
+                                                <span class="btn-title">Events on review</span>
+                                            </a>
+                                            <hr>
                                             @if( Auth::user()->hasRole('admin') )
                                                 <a href="{{ url('/') }}/admin_panel/" target="_blank" class="btn btn-md">
                                                     <span class="btn-title">Admin Panel</span>
@@ -86,34 +90,38 @@
                                                                 <p class="paragraph paragraph-medium">Birth Date</p>
                                                                 <p class="paragraph paragraph-md">{{ $user->user_birth }}</p>
                                                             </div>
-{{--                                                            <div class="mb-3">--}}
-{{--                                                                <p class="paragraph paragraph-medium">Faculty</p>--}}
-{{--                                                                <p class="paragraph paragraph-md">Philology</p>--}}
-{{--                                                            </div>--}}
+                                                            <div class="mb-3">
+                                                                <p class="paragraph paragraph-medium">Faculty</p>
+                                                                <p class="paragraph paragraph-md">{{ $user->faculty->title }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <p class="paragraph paragraph-medium">Years</p>
+                                                                <p class="paragraph paragraph-md">{{ $user->year->title }}</p>
+                                                            </div>
                                                             <div class="mb-3">
                                                                 <p class="paragraph paragraph-medium">E-mail</p>
                                                                 <p class="paragraph paragraph-md">{{ $user->email }}</p>
                                                             </div>
-{{--                                                            <div class="mb-3">--}}
-{{--                                                                <p class="paragraph paragraph-medium">Socials Networks</p>--}}
-{{--                                                                <div class="social">--}}
-{{--                                                                    <a href="https://www.linkedin.com/feed/" target="_blank" class="social-link">--}}
-{{--                                                                        <svg class="svg svg__24">--}}
-{{--                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>--}}
-{{--                                                                        </svg>--}}
-{{--                                                                    </a>--}}
-{{--                                                                    <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
-{{--                                                                        <svg class="svg svg__24">--}}
-{{--                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>--}}
-{{--                                                                        </svg>--}}
-{{--                                                                    </a>--}}
-{{--                                                                    <a href="https://www.instagram.com/" target="_blank" class="social-link">--}}
-{{--                                                                        <svg class="svg svg__24">--}}
-{{--                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>--}}
-{{--                                                                        </svg>--}}
-{{--                                                                    </a>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
+                                                            <div class="mb-3">
+                                                                <p class="paragraph paragraph-medium">Socials Networks</p>
+                                                                <div class="social">
+                                                                    <a href="{{ $user->linkedin }}" target="_blank" class="social-link">
+                                                                        <svg class="svg svg__24">
+                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#linkedin"></use>
+                                                                        </svg>
+                                                                    </a>
+                                                                    <a href="{{ $user->instagram }}" target="_blank" class="social-link">
+                                                                        <svg class="svg svg__24">
+                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#instagram"></use>
+                                                                        </svg>
+                                                                    </a>
+                                                                    <a href="{{ $user->facebook }}" target="_blank" class="social-link">
+                                                                        <svg class="svg svg__24">
+                                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#facebook"></use>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -125,13 +133,9 @@
                                                                     $count = 1;
                                                                 @endphp
                                                                 @foreach($branches as $branch)
-{{--                                                                    @php--}}
-{{--                                                                        $posts_count = count($branch->posts->take(3));--}}
-{{--                                                                    @endphp--}}
-{{--                                                                    @if($posts_count)--}}
                                                                         @foreach($branch->posts->all() as $leaf)
                                                                             @if(in_array($leaf->id, $arr))
-                                                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
+                                                                            <a data-router-disabled href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
                                                                                 <div class="event-thumb">
                                                                                     <img src="/{{ $leaf->img }}" alt="{{ $leaf->title }}">
                                                                                 </div>
@@ -139,7 +143,7 @@
                                                                                     <p class="event-description-title">{{ $leaf->title }}</p>
                                                                                     @if(isset($leaf->category->title ))
                                                                                         <div class="event-description-categories">
-                                                                                            <p class="tag tag-alumni">{{ $leaf->category->title }}</p>
+                                                                                            <p class="tag {{ $leaf->category->color }}">{{ $leaf->category->title }}</p>
                                                                                         </div>
                                                                                     @endif
 
@@ -158,9 +162,7 @@
                                                                             @php
                                                                                 $count++;
                                                                             @endphp
-
                                                                         @endforeach
-{{--                                                                    @endif--}}
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -175,14 +177,14 @@
                                 <div class="tree tree-disable-branches" data-tab-content="2" data-tab-segment="1">
                                     <div class="tree-links">
                                         <a href="branch.html" data-transition="branch" id="branch-link"></a>
-                                        <a href="/" data-transition="pagination" id="pagination-link"></a>
+                                        <a data-router-disabled href="/" data-transition="pagination" id="pagination-link"></a>
                                     </div>
                                     <div class="tree-title">
                                         <h1 class="h-1">My Personal Tree</h1>
                                     </div>
                                     <div class="tree-categories">
                                         @foreach($branches as $branch)
-                                            <a href="{{ route('showBranch', $branch->id) }}" class="tree-categories-item">
+                                            <a data-router-disabled href="{{ route('showBranch', $branch->id) }}" class="tree-categories-item">
                                                 <svg class="svg svg__32">
                                                     <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
                                                 </svg>

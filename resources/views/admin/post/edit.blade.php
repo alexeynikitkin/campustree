@@ -32,6 +32,12 @@
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="feature_image">Leaf Banner</label>
+                                    <img src="/{{ $post->banner }}" alt="" class="img-uploaded" width="100px" height="100px" style="display: block; margin-bottom: 10px"/>
+                                    <input class="form-control"  type="text" id="feature_image10" name="banner" value="" readonly>
+                                    <a href="" class="popup_selector btn btn-primary mt-2" data-inputid="feature_image10">Select Image</a>
+                                </div>
+                                <div class="form-group">
                                     <label for="title">Leaf Title - {{ $post->title }}</label>
                                     <input type="text" value="{{ $post->title }}" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter Leaf Title" required>
                                 </div>
@@ -45,6 +51,36 @@
                                 </div>
                                 <div class="form-group">
                                     <textarea name="text" class="editor form-control">{{ $post->text }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-container input-container-group input-container-datepicker __top __right">
+                                        <input  type="text" value="{{ $post->event_date }}" name="event_date"  class="input" placeholder="Date" required>
+                                        <span class="input-container-icon __16 __right">
+													<svg class="svg svg__16">
+														<use xlink:href="/campustree/images/sprite/sprite.svg#calendar-xs"></use>
+													</svg>
+												</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-container input-container-group">
+                                        <input type="text" value="{{ $post->event_time }}" name="event_time" class="input" placeholder="Time" required>
+                                        <span class="input-container-icon __16 __right">
+													<svg class="svg svg__16">
+														<use xlink:href="/campustree/images/sprite/sprite.svg#clock"></use>
+													</svg>
+												</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-container input-container-group">
+                                        <input type="text" class="input" value="{{ $post->location }}" name="location" placeholder="Location" required>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-container input-container-group">
+                                        <input type="text" name="map" class="input" value="{{ $post->map }}" placeholder="Google map link">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="feature_image">Leaf Image</label>

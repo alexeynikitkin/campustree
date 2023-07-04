@@ -33,10 +33,10 @@
                             <div class="filters-panel">
                                 <div class="filters-panel-item">
                                     <label class="input-container">
-                                        <input type="text" class="input input-transparent" placeholder="Events Search">
+                                        <input type="text" value="@if(request()->get('name')){{request()->get('name')}}@endif" name="name" class="user-name input input-transparent" placeholder="Friends Search">
                                         <span class="input-container-icon">
 											<svg class="svg svg__24">
-												<use xlink:href="../images/sprite/sprite.svg#search"></use>
+												<use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
 											</svg>
 										</span>
                                     </label>
@@ -47,7 +47,7 @@
                                             <button class="link toggle-filters" data-filter-id="#people-filter">
 												<span class="link-icon">
 													<svg class="svg svg__24">
-														<use xlink:href="../images/sprite/sprite.svg#filter"></use>
+														<use xlink:href="/campustree/images/sprite/sprite.svg#filter"></use>
 													</svg>
 												</span>
                                                 <span class="link-title">Filters</span>
@@ -62,8 +62,7 @@
                                                             <rect width="7.11111" height="7.11111" rx="2"/>
                                                             <rect y="8.88867" width="7.11111" height="7.11111" rx="2"/>
                                                             <rect x="8.88892" width="7.11111" height="7.11111" rx="2"/>
-                                                            <rect x="8.88892" y="8.88867" width="7.11111"
-                                                                  height="7.11111" rx="2"/>
+                                                            <rect x="8.88892" y="8.88867" width="7.11111" height="7.11111" rx="2"/>
                                                         </svg>
                                                     </div>
                                                     <div class="view-mode view-mode-list" data-view-trigger="list">
@@ -79,33 +78,27 @@
                                         <div class="filters-item">
                                             <div class="dropdown">
                                                 <p class="dropdown-trigger-label">Sort by</p>
-                                                <p class="dropdown-trigger dropdown-trigger-title"
-                                                   data-fieldset-label="filter-sort" data-label="Popular">New
-                                                    friends</p>
+                                                <p class="dropdown-trigger dropdown-trigger-title" data-fieldset-label="filter-sort" data-label="@if(request()->get('sort')) {{ request()->get('sort') }} @else Id @endif">@if(request()->get('sort')) {{ request()->get('sort') }} @else Id @endif</p>
                                                 <div class="dropdown-body">
                                                     <div class="dropdown-body-item">
                                                         <fieldset class="fieldset" data-fieldset-list="filter-sort">
                                                             <label class="input-container">
-                                                                <input type="radio" name="sort" value="New friends"
-                                                                       class="input input-checkbox" checked="checked">
+                                                                <input type="radio" name="sort" value="id" class="input input-checkbox" @if(request()->get('sort') == 'id') checked @else checked @endif>
                                                                 <span class="input-checkbox-icon">
 																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
+																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
 																	</svg>
 																</span>
-                                                                <span class="input-checkbox-title">New friends</span>
+                                                                <span class="input-checkbox-title">Id</span>
                                                             </label>
                                                             <label class="input-container">
-                                                                <input type="radio" name="sort" value="New friends 2"
-                                                                       class="input input-checkbox">
+                                                                <input type="radio" name="sort" value="name" class="input input-checkbox" @if(request()->get('sort') == 'name') checked @endif>
                                                                 <span class="input-checkbox-icon">
 																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
+																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
 																	</svg>
 																</span>
-                                                                <span class="input-checkbox-title">New friends 2</span>
+                                                                <span class="input-checkbox-title">Name</span>
                                                             </label>
                                                         </fieldset>
                                                     </div>
@@ -126,11 +119,10 @@
                                                 <button class="btn btn-md reset-btn" data-reset-box="#people-filter">
                                                     <span class="btn-title">Reset filters</span>
                                                 </button>
-                                                <div class="link ml-3 d-xl-none toggle-filters"
-                                                     data-filter-id="#people-filter">
+                                                <div class="link ml-3 d-xl-none toggle-filters" data-filter-id="#people-filter">
                                                     <div class="link-icon">
                                                         <svg class="svg svg__16">
-                                                            <use xlink:href="../images/sprite/sprite.svg#close"></use>
+                                                            <use xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -143,185 +135,45 @@
                                             <div class="col-sm-6">
                                                 <p class="paragraph paragraph-medium">Sex</p>
                                                 <fieldset class="fieldset" data-fieldset-list="people-sex">
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="male"
-                                                               class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Male</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="female"
-                                                               class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Female</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="Non-binary"
-                                                               class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Non-binary</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="Prefer not to say"
-                                                               class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Prefer not to say</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="radio" name="sex" value="Other"
-                                                               class="input input-radio">
-                                                        <span class="input-radio-icon"></span>
-                                                        <span class="input-radio-title">Other</span>
-                                                    </label>
+                                                    @foreach($sexes as $sex)
+                                                        <label class="input-container">
+                                                            <input type="radio" name="sex" @if(request()->get('sex') == $sex->id) checked @endif value="{{ $sex->id }}" class="input input-radio">
+                                                            <span class="input-radio-icon"></span>
+                                                            <span class="input-radio-title">{{ $sex->title }}</span>
+                                                        </label>
+                                                    @endforeach
                                                 </fieldset>
                                             </div>
                                             <div class="col-sm-6">
                                                 <p class="paragraph paragraph-medium">Years</p>
                                                 <fieldset class="fieldset" data-fieldset-list="people-time">
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="all" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
+                                                    <input class="facs" type="hidden" data-checked>
+                                                    @foreach($faculties as $fac)
+                                                        <label class="input-container">
+                                                            <input type="checkbox" value="{{ $fac->id }}" class="input input-checkbox" @if(str_contains(request()->get('faculties'), $fac->id)) checked @endif>
+                                                            <span class="input-checkbox-icon">
 																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
+																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
 																	</svg>
 																</span>
-                                                        <span class="input-checkbox-title">All</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Freshmen"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Freshmen</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="2d course"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">2d course</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="3d course"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">3d course</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Bachelors"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Bachelors</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Masters"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title">Masters</span>
-                                                    </label>
+                                                            <span class="input-checkbox-title">{{ $fac->title }}</span>
+                                                        </label>
+                                                    @endforeach
                                                 </fieldset>
                                                 <p class="paragraph paragraph-medium">Tags</p>
                                                 <fieldset class="fieldset" data-fieldset-list="people-branches">
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="all" class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-															<svg class="svg svg__16">
-																<use
-                                                                    xlink:href="../images/sprite/sprite.svg#check"></use>
-															</svg>
-														</span>
-                                                        <span class="input-checkbox-title">All</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Greek Life"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
+                                                    <input class="cats" type="hidden" data-checked>
+                                                    @foreach($cats as $cat)
+                                                        <label class="input-container">
+                                                            <input type="checkbox" value="{{ $cat->id }}" class="input input-checkbox" @if(str_contains(request()->get('branches'), $cat->id)) checked @endif>
+                                                            <span class="input-checkbox-icon">
 																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
+																		<use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
 																	</svg>
 																</span>
-                                                        <span class="input-checkbox-title color-greek-life-dark">Greek Life</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Alumni"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-alumni">Alumni</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Local"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-local">Local</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Events"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-events">Events</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Majors"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-majors">Majors</span>
-                                                    </label>
-                                                    <label class="input-container">
-                                                        <input type="checkbox" value="Clubs"
-                                                               class="input input-checkbox">
-                                                        <span class="input-checkbox-icon">
-																	<svg class="svg svg__16">
-																		<use
-                                                                            xlink:href="../images/sprite/sprite.svg#check"></use>
-																	</svg>
-																</span>
-                                                        <span class="input-checkbox-title color-clubs">Clubs</span>
-                                                    </label>
+                                                            <span class="input-checkbox-title @php echo str_replace('tag', 'color', $cat->color) @endphp">{{ $cat->title }}</span>
+                                                        </label>
+                                                    @endforeach
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -384,13 +236,13 @@
                                                     <div class="person-header">
                                                         <div class="person-thumb person-toggle-modal"
                                                              data-thumb-title="{{ $friend->name }}"
-                                                             data-popup-trigger="#{{ str_replace(' ', '-', strtolower($friend->id)) }}">
+                                                             data-popup-trigger="#{{ str_replace(' ', '-', strtolower($friend->name)) }}{{ str_replace(' ', '-', strtolower($friend->id)) }}">
                                                             <img
                                                                 src="{{ $friend->user_img }}"
                                                                 alt="{{ $friend->name }}">
                                                         </div>
                                                         <p class="person-description-title paragraph-medium person-toggle-modal"
-                                                           data-popup-trigger="#{{ str_replace(' ', '-', strtolower($friend->name)) }}">{{ $friend->name }}</p>
+                                                           data-popup-trigger="#{{ str_replace(' ', '-', strtolower($friend->name)) }}{{ str_replace(' ', '-', strtolower($friend->id)) }}">{{ $friend->name }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="people-row-item">
@@ -428,19 +280,13 @@
                             </div>
                         </div>
                     </div>
-                    {{--                    <div class="row">--}}
-                    {{--                        <div class="col-12">--}}
-                    {{--                            <div class="mt-5 d-flex justify-content-between align-items-center">--}}
-                    {{--                                <div class="pagination" data-total-count="35" data-visible-count="8">--}}
-                    {{--                                    <div class="pagination-list">--}}
-                    {{--                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
-                    {{--                                        <div class="pagination-list-numbers"></div>--}}
-                    {{--                                        <a href="#" class="pagination-list-item pagination-arrow" data-transition="pagination"></a>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mt-5 d-flex justify-content-between align-items-center">
+                                {{ $friends->appends(request()->query())->links('pagination.index') }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -448,9 +294,12 @@
 @endsection
 
 @section('popup-user')
-    @foreach($friends as $friend)
+    @php
+        $friends_all = App\Models\User::all();
+     @endphp
+    @foreach($friends_all as $friend)
         @if(in_array($friend->id, $resultIds))
-            <div class="popup" id="{{ str_replace(' ', '-', strtolower($friend->id)) }}">
+            <div class="popup" id="{{ str_replace(' ', '-', strtolower($friend->name)) }}{{ str_replace(' ', '-', strtolower($friend->id)) }}">
                 <div class="popup-bg"></div>
                 <div class="popup-box">
                     <div class="popup-box-close" data-popup-close></div>
@@ -522,5 +371,78 @@
 @endsection
 
 @section('custom-js')
+    <!-- Submit last step -->
+    <script>
 
+        $(document).ready(function(){
+            $(document).on('click', '.reset-btn', function (){
+                history.pushState(null, null, "?" + '');
+                window.location.reload();
+            });
+
+            $(document).on('change', '.user-name', function () {
+                let query = $(this).val();
+                console.log(query);
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('name', query);
+                history.pushState(null, null, "?" + urlParams.toString());
+                window.location.reload();
+            });
+
+            $(document).on('change', '[data-fieldset-list="people-sex"] input[name="sex"]', function () {
+                let query = $(this).val();
+                console.log(query);
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('sex', query);
+                history.pushState(null, null, "?" + urlParams.toString());
+                window.location.reload();
+            });
+
+            $(document).on('change', '[name="sort"]', function () {
+                let query = $(this).val();
+                console.log(query);
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('sort', query);
+                history.pushState(null, null, "?" + urlParams.toString());
+                window.location.reload();
+            });
+
+            let arr = [];
+            $(document).on('change', '[data-fieldset-list="people-time"] input', function () {
+                let thisVal = $(this).val();
+                if ($(this).prop('checked')) {
+                    arr.push(thisVal);
+                } else {
+                    arr = arr.filter(function (elem) {
+                        return elem != thisVal;
+                    });
+                }
+                $('input.facs').closest().attr('value', arr.join(','));
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('faculties', arr.join(','));
+                history.pushState(null, null, "?" + urlParams.toString());
+                window.location.reload();
+            });
+
+            let arr1 = [];
+            $(document).on('change', '[data-fieldset-list="people-branches"] input', function () {
+                let thisVal = $(this).val();
+                if ($(this).prop('checked')) {
+                    arr1.push(thisVal);
+                } else {
+                    arr1 = arr1.filter(function (elem) {
+                        return elem != thisVal;
+                    });
+                }
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('branches', arr1.join(','));
+                history.pushState(null, null, "?" + urlParams.toString());
+                $('input.cats').closest().attr('value', arr1.join(','));
+                window.location.reload();
+            });
+
+
+
+        });
+    </script>
 @endsection

@@ -33,22 +33,28 @@
                             <table class="table table-striped projects">
                                 <thead>
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 10%">
                                         User Name
                                     </th>
-                                    <th style="width: 15%">
-                                        User Email
+                                    <th style="width: 10%">
+                                        User Leaves
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 10%">
                                         Bio
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 5%">
                                         Sex
                                     </th>
+                                    <th style="width: 5%">
+                                        Photo
+                                    </th>
                                     <th style="width: 20%">
+                                        Info
+                                    </th>
+                                    <th style="width: 10%">
 
                                     </th>
                                 </tr>
@@ -64,19 +70,38 @@
                                             <br/>
                                             <small>
                                                 {{$user->created_at}}
-                                            </small>
+                                            </small><br>
+                                            Email: {{ $user->email }}
                                         </td>
                                         <td>
-                                            {{ $user->email }}
+                                            <ul>
+                                                @foreach($user->posts as $post)
+                                                    <li><a href="{{ route('showLeaf', $post->id) }}">{{ $post->title }}</a><br>Status:  @if($post->status == 0)Approved @else Declined @endif</li>
+                                                @endforeach
+                                            </ul>
+
                                         </td>
                                         <td>
                                             {{ $user->user_bio }}
                                         </td>
                                         <td>
-{{--                                            @php--}}
-{{--                                            $sex = \App\Models\Sex::find($user->sex_id)->title;--}}
-{{--                                             @endphp--}}
-{{--                                            {{ $sex }}--}}
+                                            @php
+                                            $sex = \App\Models\Sex::find($user->sex_id)->title;
+                                             @endphp
+                                            {{ $sex }}
+                                        </td>
+                                        <td>
+                                            <img src="\{{$user->user_img}}" alt="{{ $user->name }}" width="100px" height="100px">
+                                        </td>
+                                        <td>
+                                            Birth: {{ $user->user_birth }} <br>
+                                            Faculty: {{ \App\Models\Faculty::find($user->faculty_id)->title }} <br>
+                                            Years: {{ $user->year->title }} <br>
+                                            Phone: {{ $user->phone }} <br>
+                                            Socials<br>
+                                            instagram : {{$user->instagram}} <br>
+                                            linkedin : {{$user->linkedin}} <br>
+                                            facebook : {{$user->facebook}} <br>
                                         </td>
                                         <td class="project-actions text-right d-flex">
                                             <a class="btn btn-info btn-sm" href="{{ route('user.edit', $user->id) }}">

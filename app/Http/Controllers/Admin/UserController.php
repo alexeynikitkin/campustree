@@ -65,6 +65,12 @@ class UserController extends Controller
         $user->user_bio = $request->user_bio;
         $user->sex_id = $request->sex_id;
         $user->user_img = $request->user_img;
+        $user->faculty_id = $request->faculty_id;
+        $user->years_id = $request->years_id;
+        $user->phone = $request->phone;
+        $user->instagram = $request->instagram;
+        $user->linkedin = $request->linkedin;
+        $user->facebook = $request->facebook;
         $user->save();
         return redirect()->back()->withSuccess('User was updated');
     }
@@ -87,17 +93,7 @@ class UserController extends Controller
     }
 // Store User
     public function store(Request $request){
-//        $formFields = $request->validate([
-//            'name' => ['required','min:3'],
-//            'email' => ['required', 'email', Rule::unique('users', 'email')],
-//            'password' => ['required', 'confirmed', 'min:6'],
-//            'sex_id' => ['required'],
-//        ]);
-//        // Hash password
-//        $formFields['password'] = bcrypt($formFields['password']);
-//        $formFields['user_bio'] = $request->user_bio;
-//        $formFields['user_img'] = $request->user_img;
-//        $user = User::create($formFields);
+
         $user = new User;
         $user->name = $request->fname. ' ' .$request->lname;
         $user->email = $request->email;
@@ -106,22 +102,23 @@ class UserController extends Controller
         $user->user_birth = $request->birthday;
         $user->user_img = $request->user_img;
         $user->sex_id = $request->sex;
-        $user->user_img = $request->user_img;
-
+        $user->faculty_id = $request->faculty_id;
+        $user->years_id = $request->years_id;
+        $user->phone = $request->phone;
+        $user->instagram = $request->instagram;
+        $user->linkedin = $request->linkedin;
+        $user->facebook = $request->facebook;
         $user->save();
-
-        $arrayItems = explode("-", rtrim($request->leaves, "-"));
-        foreach ($arrayItems as $item) {
-            $part = new Participation;
-            $part->leaf_id = intval($item);
-            $part->user_id = $user->id;
-            $part->save();
-        }
-
         $user->assignRole('user');
-        //Login
-//        auth()->login($user);
-
+        if(count($request->leaves) > 0) {
+            $arrayItems = explode("-", rtrim($request->leaves, "-"));
+            foreach ($arrayItems as $item) {
+                $part = new Participation;
+                $part->leaf_id = intval($item);
+                $part->user_id = $user->id;
+                $part->save();
+            }
+        }
         return redirect('/')->with('message', 'User Created');
     }
 

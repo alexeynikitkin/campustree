@@ -33,11 +33,11 @@
                                                 @endphp
                                                 @foreach($branches as $branch)
                                                     @php
-                                                        $posts_count = count($branch->posts->take(3));
+                                                        $posts_count = count($branch->posts->where('status', '=', '0')->take(3));
                                                     @endphp
                                                     @if($posts_count)
-                                                        @foreach($branch->posts->take(3) as $leaf)
-                                                            <a href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
+                                                        @foreach($branch->posts->where('status', '=', '0')->take(3) as $leaf)
+                                                            <a data-router-disabled href="{{ route('showLeaf', $leaf->id ) }}" class="event splide__slide" data-event-id="{{ $count }}">
                                                                 <div class="event-thumb">
                                                                     <img src="{{ $leaf->img }}" alt="{{ $leaf->title }}">
                                                                 </div>
@@ -45,7 +45,7 @@
                                                                     <p class="event-description-title">{{ $leaf->title }}</p>
                                                                     @if(isset($leaf->category->title ))
                                                                         <div class="event-description-categories">
-                                                                            <p class="tag tag-alumni">{{ $leaf->category->title }}</p>
+                                                                            <p class="tag {{ $leaf->category->color }}">{{ $leaf->category->title }}</p>
                                                                         </div>
                                                                     @endif
 
@@ -134,14 +134,14 @@
                             <div class="tree" data-tab-content="0" data-tab-segment="0">
                                 <div class="tree-links">
                                     <!--									<a href="branch.html" data-transition="branch" id="branch-link"></a>-->
-                                    <a href="{{ route('campus.home') }}" data-transition="pagination" id="pagination-link"></a>
+                                    <a data-router-disabled href="{{ route('campus.home') }}" data-transition="pagination" id="pagination-link"></a>
                                 </div>
                                 <div class="tree-title">
                                     <h1 class="h-1">Campus Tree</h1>
                                 </div>
                                 <div class="tree-categories">
                                     @foreach($branches as $branch)
-                                        <a href="{{ route('showBranch', $branch->id) }}" class="tree-categories-item">
+                                        <a data-router-disabled href="{{ route('showBranch', $branch->id) }}" class="tree-categories-item">
                                             <svg class="svg svg__32">
                                                 <use xlink:href="/campustree/images/sprite/sprite.svg#leaf"></use>
                                             </svg>
@@ -156,17 +156,17 @@
                                     @foreach($branches as $branch)
 
                                     @php
-                                        $posts_count = count($branch->posts->take(3));
+                                        $posts_count = count($branch->posts->where('status', '=', '0')->take(3));
                                     @endphp
                                             @if($posts_count == 3)
-                                                @foreach($branch->posts->take(3) as $leaf)
+                                                @foreach($branch->posts->where('status', '=', '0')->take(3) as $leaf)
                                                     <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
                                                     @php
                                                         $count++;
                                                     @endphp
                                                 @endforeach
                                             @elseif($posts_count == 2)
-                                                @foreach($branch->posts as $leaf)
+                                                @foreach($branch->posts->where('status', '=', '0')->take(3) as $leaf)
                                                     <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
                                                     @php
                                                         $count++;
@@ -174,7 +174,7 @@
                                                 @endforeach
                                                     <p class="tree-events-item leaf-scroll"><span class="leaf-title"></span></p>
                                             @elseif($posts_count == 1)
-                                                @foreach($branch->posts as $leaf)
+                                                @foreach($branch->posts->where('status', '=', '0')->take(3) as $leaf)
                                                     <p class="tree-events-item leaf-scroll" data-event-id="{{ $count }}"><span class="leaf-title">{{ $leaf->title }}</span></p>
                                                     @php
                                                         $count++;

@@ -17,7 +17,6 @@ class CreateSexesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

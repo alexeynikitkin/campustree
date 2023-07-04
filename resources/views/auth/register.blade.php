@@ -1,120 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{--<div class="container">--}}
-    {{--    <div class="row justify-content-center">--}}
-    {{--        <div class="col-md-8">--}}
-    {{--            <div class="card">--}}
-    {{--                <div class="card-header">{{ __('Register') }}</div>--}}
-
-    {{--                <div class="card-body">--}}
-    {{--                    <form method="POST" action="{{ route('register') }}">--}}
-    {{--                        @csrf--}}
-
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>--}}
-
-    {{--                                @error('name')--}}
-    {{--                                    <span class="invalid-feedback" role="alert">--}}
-    {{--                                        <strong>{{ $message }}</strong>--}}
-    {{--                                    </span>--}}
-    {{--                                @enderror--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">--}}
-
-    {{--                                @error('email')--}}
-    {{--                                    <span class="invalid-feedback" role="alert">--}}
-    {{--                                        <strong>{{ $message }}</strong>--}}
-    {{--                                    </span>--}}
-    {{--                                @enderror--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">--}}
-
-    {{--                                @error('password')--}}
-    {{--                                    <span class="invalid-feedback" role="alert">--}}
-    {{--                                        <strong>{{ $message }}</strong>--}}
-    {{--                                    </span>--}}
-    {{--                                @enderror--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="user_bio" class="col-md-4 col-form-label text-md-end">{{ __('Bio') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="password" type="password" class="form-control @error('user_bio') is-invalid @enderror" name="user_bio" required autocomplete="new-password">--}}
-
-    {{--                                @error('user_bio')--}}
-    {{--                                <span class="invalid-feedback" role="alert">--}}
-    {{--                                        <strong>{{ $message }}</strong>--}}
-    {{--                                    </span>--}}
-    {{--                                @enderror--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="user_birth" class="col-md-4 col-form-label text-md-end">{{ __('user_birth') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="password" type="password" class="form-control @error('user_birth') is-invalid @enderror" name="user_birth" required autocomplete="new-password">--}}
-
-    {{--                                @error('user_birth')--}}
-    {{--                                <span class="invalid-feedback" role="alert">--}}
-    {{--                                        <strong>{{ $message }}</strong>--}}
-    {{--                                    </span>--}}
-    {{--                                @enderror--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="user_img" class="col-md-4 col-form-label text-md-end">{{ __('user_img') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="password" type="password" class="form-control @error('user_img') is-invalid @enderror" name="user_img" required autocomplete="new-password">--}}
-
-    {{--                                @error('user_img')--}}
-    {{--                                <span class="invalid-feedback" role="alert">--}}
-    {{--                                        <strong>{{ $message }}</strong>--}}
-    {{--                                    </span>--}}
-    {{--                                @enderror--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-
-
-    {{--                        <div class="row mb-3">--}}
-    {{--                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>--}}
-
-    {{--                            <div class="col-md-6">--}}
-    {{--                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-
-    {{--                        <div class="row mb-0">--}}
-    {{--                            <div class="col-md-6 offset-md-4">--}}
-    {{--                                <button type="submit" class="btn btn-primary">--}}
-    {{--                                    {{ __('Register') }}--}}
-    {{--                                </button>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </form>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    {{--</div>--}}
     <main class="wrapper-sign-in" id="wrapper">
         <div data-router-wrapper>
             <div data-router-view="authorization">
@@ -164,7 +50,10 @@
                                         <div class="steps-item">
                                             <div class="steps-item-left">
                                                 <div class="section-title">
-                                                    <p class="h-1">1.Clubs</p>
+                                                    @php
+                                                        $this1 = \App\Models\Category::where('id', 1)->first();
+                                                    @endphp
+                                                    <p class="h-1">1.{{ $this1->title }}</p>
                                                 </div>
                                                 <div class="section-description">
                                                     <p class="h-4">Select clubs leaves you want to join</p>
@@ -176,286 +65,11 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="filters-wrapper">
-                                            <div class="people-sign">
-                                                <div class="box box-bg" id="people-filter">
-                                                    <div class="box-header pb-3">
-                                                        <div class="box-header-row">
-                                                            <h3 class="h-3 color-primary">Filter</h3>
-                                                            <div class="box-header-action">
-                                                                <button class="btn btn-md reset-btn"
-                                                                        data-reset-box="#people-filter">
-                                                                    <span class="btn-title">Reset filters</span>
-                                                                </button>
-                                                                <div class="link ml-3 toggle-filters"
-                                                                     data-filter-id="#people-filter">
-                                                                    <div class="link-icon">
-                                                                        <svg class="svg svg__16">
-                                                                            <use
-                                                                                xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr">
-                                                    <div class="box-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <p class="paragraph paragraph-medium">Interests</p>
-                                                                <fieldset class="fieldset"
-                                                                          data-fieldset-list="people-faculty">
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="all"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span class="input-checkbox-title">All</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Chemistry"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span class="input-checkbox-title">Art</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox"
-                                                                               value="Computer Science and Cybernetics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span class="input-checkbox-title">Computer Science and Cybernetics</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Economics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Economics</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Geography"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Geography</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="History"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">History</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Law"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span class="input-checkbox-title">Law</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox"
-                                                                               value="Mechanics and Mathematics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span class="input-checkbox-title">Mechanics and Mathematics</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Philosophy"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Philosophy</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Physics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-      <svg class="svg svg__16">
-        <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-      </svg>
-    </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Physics</span>
-                                                                    </label>
-                                                                </fieldset>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <p class="paragraph paragraph-medium">Another Filter</p>
-                                                                <fieldset class="fieldset"
-                                                                          data-fieldset-list="people-sex">
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="male"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Week</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="female"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Month</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Non-binary"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Quarter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Prefer not to say"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Year</span>
-                                                                    </label>
-                                                                </fieldset>
-                                                                <p class="paragraph paragraph-medium">Time Rage</p>
-                                                                <fieldset class="fieldset"
-                                                                          data-fieldset-list="people-sex">
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="male"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="female"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Non-binary"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Prefer not to say"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="filters-panel">
-                                                <div class="filters-panel-item">
-                                                    <label class="input-container">
-                                                        <input type="text" class="input input-transparent"
-                                                               placeholder="Events Search">
-                                                        <span class="input-container-icon">
-																	<svg class="svg svg__24">
-																	  <use
-                                                                          xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
-																	</svg>
-																</span>
-                                                    </label>
-                                                </div>
-                                                <div class="filters-panel-item">
-                                                    <div class="filters">
-                                                        <div class="filters-item">
-                                                            <button class="link toggle-filters"
-                                                                    data-filter-id="#people-filter">
-																			<span class="link-icon">
-																			  <svg class="svg svg__24">
-																			    <use
-                                                                                    xlink:href="/campustree/images/sprite/sprite.svg#filter"></use>
-																			  </svg>
-																			</span>
-                                                                <span class="link-title">Filters</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="filters-item">
-                                                            <div class="dropdown">
-                                                                <p class="dropdown-trigger-label">Sort by</p>
-                                                                <p class="dropdown-trigger dropdown-trigger-title"
-                                                                   data-fieldset-label="filter-sort"
-                                                                   data-label="Popular">New friends</p>
-                                                                <div class="dropdown-body">
-                                                                    <div class="dropdown-body-item">
-                                                                        <fieldset class="fieldset"
-                                                                                  data-fieldset-list="filter-sort">
-                                                                            <label class="input-container">
-                                                                                <input type="radio" name="sort"
-                                                                                       value="New friends"
-                                                                                       class="input input-checkbox"
-                                                                                       checked="checked">
-                                                                                <span class="input-checkbox-icon">
-          <svg class="svg svg__16">
-            <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-          </svg>
-        </span>
-                                                                                <span class="input-checkbox-title">New friends</span>
-                                                                            </label>
-                                                                            <label class="input-container">
-                                                                                <input type="radio" name="sort"
-                                                                                       value="New friends 2"
-                                                                                       class="input input-checkbox">
-                                                                                <span class="input-checkbox-icon">
-          <svg class="svg svg__16">
-            <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-          </svg>
-        </span>
-                                                                                <span class="input-checkbox-title">New friends 2</span>
-                                                                            </label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="steps-branch tree">
                                             <div class="tree-events">
                                                 @php
                                                 $count = 1;
                                                 $this1 = \App\Models\Post::where('cat_id', 1)->get();
-                                                $this2 = \App\Models\Post::where('cat_id', 2)->get();
                                                 @endphp
                                                 @foreach($this1 as $post)
                                                     <label for="step-1-{{ $count }}" class="tree-events-item" data-event-id="{{ $count }}">
@@ -637,18 +251,9 @@
                                                 </defs>
                                             </svg>
                                         </div>
-                                        <div class="pagination-static">
-                                            <div class="pagination-list">
-                                                <a href="#" class="pagination-list-item pagination-arrow"></a>
-                                                <div class="pagination-list-numbers">
-                                                    <a href="#"
-                                                       class="pagination-list-item pagination-link is-active">1</a>
-                                                    <a href="#" class="pagination-list-item pagination-link">2</a>
-                                                    <a href="#" class="pagination-list-item pagination-link">3</a>
-                                                </div>
-                                                <a href="#" class="pagination-list-item pagination-arrow"></a>
-                                            </div>
-                                        </div>
+{{--                                        <div class="pagination-static">--}}
+{{--                                            {{ $this1->appends(request()->query())->links('pagination.index') }}--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="steps-buttons">
                                         <button data-register-go="1" class="btn trigger-obj trigger-mob">
@@ -716,7 +321,10 @@
                                         <div class="steps-item">
                                             <div class="steps-item-left">
                                                 <div class="section-title">
-                                                    <p class="h-1">2.Greek Life</p>
+                                                    @php
+                                                        $this2 = \App\Models\Category::where('id', 2)->first();
+                                                    @endphp
+                                                    <p class="h-1">2.{{ $this2->title }}</p>
                                                 </div>
                                                 <div class="section-description">
                                                     <p class="h-4">Select clubs leaves you want to join</p>
@@ -728,278 +336,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="filters-wrapper">
-                                            <div class="people-sign">
-                                                <div id="filter-next" class="box box-bg">
-                                                    <div class="box-header pb-3">
-                                                        <div class="box-header-row">
-                                                            <h3 class="h-3 color-primary">Filter</h3>
-                                                            <div class="box-header-action">
-                                                                <button class="btn btn-md reset-btn"
-                                                                        data-reset-box="#filter-next">
-                                                                    <span class="btn-title">Reset filters</span>
-                                                                </button>
-                                                                <div class="link ml-3 toggle-filters"
-                                                                     data-filter-id="#filter-next">
-                                                                    <div class="link-icon">
-                                                                        <svg class="svg svg__16">
-                                                                            <use
-                                                                                xlink:href="/campustree/images/sprite/sprite.svg#close"></use>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr">
-                                                    <div class="box-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <p class="paragraph paragraph-medium">Interests</p>
-                                                                <fieldset class="fieldset"
-                                                                          data-fieldset-list="people-faculty">
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="all"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span class="input-checkbox-title">All</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Chemistry"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span class="input-checkbox-title">Art</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox"
-                                                                               value="Computer Science and Cybernetics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span class="input-checkbox-title">Computer Science and Cybernetics</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Economics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Economics</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Geography"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Geography</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="History"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">History</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Law"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span class="input-checkbox-title">Law</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox"
-                                                                               value="Mechanics and Mathematics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span class="input-checkbox-title">Mechanics and Mathematics</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Philosophy"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Philosophy</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="checkbox" value="Physics"
-                                                                               class="input input-checkbox">
-                                                                        <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                        <span
-                                                                            class="input-checkbox-title">Physics</span>
-                                                                    </label>
-                                                                </fieldset>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <p class="paragraph paragraph-medium">Another Filter</p>
-                                                                <fieldset class="fieldset"
-                                                                          data-fieldset-list="people-sex">
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="male"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Week</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="female"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Month</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Non-binary"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Quarter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Prefer not to say"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Year</span>
-                                                                    </label>
-                                                                </fieldset>
-                                                                <p class="paragraph paragraph-medium">Time Rage</p>
-                                                                <fieldset class="fieldset"
-                                                                          data-fieldset-list="people-sex">
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="male"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex" value="female"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Non-binary"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                    <label class="input-container">
-                                                                        <input type="radio" name="sex"
-                                                                               value="Prefer not to say"
-                                                                               class="input input-radio">
-                                                                        <span class="input-radio-icon"></span>
-                                                                        <span class="input-radio-title">Filter</span>
-                                                                    </label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="filters-panel">
-                                                <div class="filters-panel-item">
-                                                    <label class="input-container">
-                                                        <input type="text" class="input input-transparent"
-                                                               placeholder="Events Search">
-                                                        <span class="input-container-icon">
-<svg class="svg svg__24">
-  <use xlink:href="/campustree/images/sprite/sprite.svg#search"></use>
-</svg>
-</span>
-                                                    </label>
-                                                </div>
-                                                <div class="filters-panel-item">
-                                                    <div class="filters">
-                                                        <div class="filters-item">
-                                                            <button class="link toggle-filters"
-                                                                    data-filter-id="#filter-next">
-<span class="link-icon">
-  <svg class="svg svg__24">
-    <use xlink:href="/campustree/images/sprite/sprite.svg#filter"></use>
-  </svg>
-</span>
-                                                                <span class="link-title">Filters</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="filters-item">
-                                                            <div class="dropdown">
-                                                                <p class="dropdown-trigger-label">Sort by</p>
-                                                                <p class="dropdown-trigger dropdown-trigger-title"
-                                                                   data-fieldset-label="filter-sort"
-                                                                   data-label="Popular">New friends</p>
-                                                                <div class="dropdown-body">
-                                                                    <div class="dropdown-body-item">
-                                                                        <fieldset class="fieldset"
-                                                                                  data-fieldset-list="filter-sort">
-                                                                            <label class="input-container">
-                                                                                <input type="radio" name="sort"
-                                                                                       value="New friends"
-                                                                                       class="input input-checkbox"
-                                                                                       checked="checked">
-                                                                                <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                                <span class="input-checkbox-title">New friends</span>
-                                                                            </label>
-                                                                            <label class="input-container">
-                                                                                <input type="radio" name="sort"
-                                                                                       value="New friends 2"
-                                                                                       class="input input-checkbox">
-                                                                                <span class="input-checkbox-icon">
-            <svg class="svg svg__16">
-              <use xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-            </svg>
-          </span>
-                                                                                <span class="input-checkbox-title">New friends 2</span>
-                                                                            </label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="steps-branch tree">
                                             <div class="tree-events">
                                                 @php
@@ -1188,18 +525,18 @@
                                                 </defs>
                                             </svg>
                                         </div>
-                                        <div class="pagination-static">
-                                            <div class="pagination-list">
-                                                <a href="#" class="pagination-list-item pagination-arrow"></a>
-                                                <div class="pagination-list-numbers">
-                                                    <a href="#"
-                                                       class="pagination-list-item pagination-link is-active">1</a>
-                                                    <a href="#" class="pagination-list-item pagination-link">2</a>
-                                                    <a href="#" class="pagination-list-item pagination-link">3</a>
-                                                </div>
-                                                <a href="#" class="pagination-list-item pagination-arrow"></a>
-                                            </div>
-                                        </div>
+{{--                                        <div class="pagination-static">--}}
+{{--                                            <div class="pagination-list">--}}
+{{--                                                <a href="#" class="pagination-list-item pagination-arrow"></a>--}}
+{{--                                                <div class="pagination-list-numbers">--}}
+{{--                                                    <a href="#"--}}
+{{--                                                       class="pagination-list-item pagination-link is-active">1</a>--}}
+{{--                                                    <a href="#" class="pagination-list-item pagination-link">2</a>--}}
+{{--                                                    <a href="#" class="pagination-list-item pagination-link">3</a>--}}
+{{--                                                </div>--}}
+{{--                                                <a href="#" class="pagination-list-item pagination-arrow"></a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="steps-buttons space">
                                         <button data-register-go="2" class="btn trigger-obj trigger-mob">
@@ -1292,11 +629,21 @@
                                                         </label>
                                                         <label class="input-container">
                                                             <input name="instagram" placeholder="Instagram" type="url"
-                                                                   class="input">
+                                                                   class="input" required>
+                                                            <span
+                                                                class="input-message __error">This field is required!</span>
                                                         </label>
                                                         <label class="input-container">
                                                             <input name="linkedin" placeholder="Linkedin" type="url"
-                                                                   class="input">
+                                                                   class="input" required>
+                                                            <span
+                                                                class="input-message __error">This field is required!</span>
+                                                        </label>
+                                                        <label class="input-container">
+                                                            <input name="facebook" placeholder="Facebook" type="url"
+                                                                   class="input" required>
+                                                            <span
+                                                                class="input-message __error">This field is required!</span>
                                                         </label>
                                                     </div>
                                                     <div class="col-12 col-xl-6">
@@ -1313,25 +660,45 @@
                                                             <span
                                                                 class="input-message __error">This field is required!</span>
                                                         </label>
-{{--                                                        <label class="input-container">--}}
-{{--                                                            <input name="phone" placeholder="Phone Number" type="number"--}}
-{{--                                                                   class="input" required>--}}
-{{--                                                            <span--}}
-{{--                                                                class="input-message __error">This field is required!</span>--}}
-{{--                                                        </label>--}}
+                                                        <label class="input-container">
+                                                            <input name="phone" placeholder="Phone Number" type="number"
+                                                                   class="input" required>
+                                                            <span
+                                                                class="input-message __error">This field is required!</span>
+                                                        </label>
                                                         <div class="input-container input-container-select">
                                                             <select name="sex" class="select" required>
                                                                 <option value="1">Male</option>
                                                                 <option value="2">Female</option>
-                                                                <option value="3">Other</option>
+                                                                <option value="3">Non-Binary</option>
+                                                                <option value="4">Other</option>
                                                             </select>
                                                             <span
                                                                 class="input-message __error">This field is required!</span>
                                                         </div>
-                                                        <label class="input-container">
-                                                            <input name="facebook" placeholder="Facebook" type="url"
-                                                                   class="input">
-                                                        </label>
+
+                                                        <div class="input-container input-container-select">
+                                                            <select name="faculty_id" class="select" required>
+                                                                <option value="1">Mathematics</option>
+                                                                <option value="2">Physics</option>
+                                                                <option value="3">History</option>
+                                                                <option value="4">Foreign Languages</option>
+                                                            </select>
+                                                            <span
+                                                                class="input-message __error">This field is required!</span>
+                                                        </div>
+
+                                                        <div class="input-container input-container-select">
+                                                            <select name="years_id" class="select" required>
+                                                                <option value="1">Freshman</option>
+                                                                <option value="2">2nd Year</option>
+                                                                <option value="3">3rd Year</option>
+                                                                <option value="4">Bachelor</option>
+                                                                <option value="5">Master</option>
+                                                            </select>
+                                                            <span
+                                                                class="input-message __error">This field is required!</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1528,13 +895,5 @@
                 });
             }
         });
-
-
-
-
-
-        // Відправити дані на сервер
-
     </script>
-
 @endsection

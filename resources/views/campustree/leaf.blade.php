@@ -9,8 +9,8 @@
                         <div class="col-12">
                             <div class="box-banner">
                                 <img
-                                    data-src="\{{ $leaf->img }}"
-                                alt="English Leaf">
+                                    data-src="\{{ $leaf->banner }}"
+                                    alt="English Leaf">
                             </div>
                         </div>
                     </div>
@@ -27,15 +27,15 @@
                                         <div class="date-label-lg">{{ $leaf->event_date }} {{ $leaf->event_time }}</div>
                                     </div>
                                 </div>
-{{--                                <div class="event-description-location location"--}}
-{{--                                     data-calendar-location="Instytuts'ka St, 11, Khmelnytskyi, KNU">--}}
-{{--                                    <div class="location-icon">--}}
-{{--                                        <svg class="svg svg__24">--}}
-{{--                                            <use xlink:href="/campustree/images/sprite/sprite.svg#location"></use>--}}
-{{--                                        </svg>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="location-label">Instytuts'ka St, 11, Khmelnytskyi, KNU</div>--}}
-{{--                                </div>--}}
+                                <div class="event-description-location location"
+                                     data-calendar-location="{{ $leaf->location }}">
+                                    <div class="location-icon">
+                                        <svg class="svg svg__24">
+                                            <use xlink:href="/campustree/images/sprite/sprite.svg#location"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="location-label">{{ $leaf->location }}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 d-md-none">
@@ -66,11 +66,11 @@
                                                     data-calendar-title="{{ $leaf->title }}">{{ $leaf->title }}</h1>
                                                 @if(isset($leaf->category->title ))
                                                     <div class="event-description-categories">
-                                                        <p class="tag tag-alumni">{{ $leaf->category->title }}</p>
+                                                        <p class="tag {{ $leaf->category->color }}">{{ $leaf->category->title }}</p>
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="event-leaf color-majors">
+                                            <div class="event-leaf @php echo str_replace('tag', 'color', $leaf->category->color) @endphp">
                                                 <svg viewBox="0 0 182 180" fill="none">
                                                     <path
                                                         d="M104.741 147.64C103.361 142.992 107.455 138.593 112.222 139.607C116.813 140.584 122.226 142.121 125.575 144.365C125.575 144.365 119.663 131.916 136.205 137.366C136.205 137.366 132.029 132.906 149.902 128.02C149.902 128.02 142.025 126.233 141.756 117.675C141.756 117.675 126.143 113.586 130.36 109.023C134.578 104.461 151.04 100.667 151.04 100.667C151.04 100.667 137.41 94.0772 152.875 83.3724C152.875 83.3724 143.858 77.5846 154.849 68.9747C154.849 68.9747 144.695 71.4505 142.093 67.6959C142.093 67.6959 131.686 73.1458 130.204 62.2258L122.495 73.1179L118.295 71.138L116.327 74.4878C115.88 75.2472 115.151 75.8008 114.295 76.0293C113.44 76.2578 112.526 76.1431 111.752 75.7098C111.752 75.7098 118.23 50.9253 124.73 48.5569C124.73 48.5569 112.478 51.5655 114.626 41.6417C114.626 41.6417 111.275 39.6178 115.175 33.4927C115.175 33.4927 106.289 33.3653 109.843 19.3071C105.769 33.2238 98.0525 28.8055 98.0525 28.8055C98.3043 36.0683 94.39 36.1023 94.39 36.1023C91.2063 45.7412 82.1807 36.9095 82.1807 36.9095C86.5765 42.2622 79.5768 66.9021 79.5768 66.9021C78.6897 66.8807 77.8448 66.5142 77.2239 65.8815C76.603 65.2488 76.2556 64.4004 76.2566 63.5189L76.2613 59.6315L71.6401 59.1967L70.5291 45.8902C63.7104 54.5366 57.5156 44.5433 57.5156 44.5433C53.3703 46.4512 45.8839 39.1457 45.8839 39.1457C50.9826 52.1605 40.281 52.5513 40.281 52.5513C48.1653 69.6478 33.0843 68.3784 33.0843 68.3784C33.0843 68.3784 45.3341 80.031 46.6509 86.1092C47.9677 92.1873 32.4483 87.7534 32.4483 87.7534C27.8769 94.9838 20.1847 92.5119 20.1847 92.5119C33.0991 105.823 27.2357 107.538 27.2357 107.538C44.2501 111.271 32.8382 118.98 32.8382 118.98C36.8591 118.755 42.2987 120.19 46.7503 121.686C51.3704 123.241 52.6636 129.115 49.1153 132.414C45.7482 135.545 42.1104 138.177 42.1104 138.177C47.8184 136.191 60.129 139.068 60.129 139.068C67.5278 133.797 73.3958 132.939 73.3958 132.939L82.438 119.813L83.5621 135.722C83.5621 135.722 88.1802 139.451 91.876 147.758C91.876 147.758 103.937 151.553 107.844 156.171C107.848 156.171 106.049 152.053 104.741 147.64Z"
@@ -152,9 +152,11 @@
                                                             class="event-leaf-stroke"/>
                                                     </svg>
                                                 </div>
-                                                <p class="paragraph paragraph-medium paragraph-lg mb-4 mt-3">You successfully joined
+                                                <p class="paragraph paragraph-medium paragraph-lg mb-4 mt-3">You
+                                                    successfully joined
                                                     the event!</p>
-                                                <form action="{{ route('deleteLeafFromUser', $leaf->id) }}" method="POST">
+                                                <form action="{{ route('deleteLeafFromUser', $leaf->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -170,13 +172,15 @@
 
                                             </div>
 
-                                    @endif
+                                        @endif
                                     @else
                                         <div class="accept-event is-active">
                                             <div class="accept-event-tree pt-5 pb-4">
-                                                <img src="/campustree/images/tree.svg" class="fullwidth" alt="Campus Tree">
+                                                <img src="/campustree/images/tree.svg" class="fullwidth"
+                                                     alt="Campus Tree">
                                             </div>
-                                            <div class="text-center pt-3 pb-4 d-flex align-items-center justify-content-center">
+                                            <div
+                                                class="text-center pt-3 pb-4 d-flex align-items-center justify-content-center">
                                                 <form action="{{ route('addLeafToUser', $leaf->id) }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -190,7 +194,6 @@
                                 @else
                                     <p>Please login for accepting events</p>
                                 @endif
-
 
 
                             </div>
@@ -215,7 +218,8 @@
                                                 <div class="tabs-content-item" data-tab-content="0"
                                                      data-tab-segment="0">
                                                     <label class="input-container">
-                                                        <input type="text" class="input input-transparent mt-2 mb-2"
+                                                        <input type="text" name="going_name"
+                                                               class="input input-transparent mt-2 mb-2"
                                                                placeholder="Search who already going">
                                                         <span class="input-container-icon">
 															<svg class="svg svg__24">
@@ -240,14 +244,6 @@
                                                                         <div class="person-checkbox">
                                                                             <label
                                                                                 class="input-container input-container-checkbox">
-                                                                                <input type="checkbox"
-                                                                                       class="input input-checkbox input-checkbox-sm">
-                                                                                <span class="input-checkbox-icon">
-                                                                            <svg class="svg svg__16">
-                                                                                <use
-                                                                                    xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
-                                                                            </svg>
-                                                                        </span>
                                                                             </label>
                                                                         </div>
                                                                         <div class="person-thumb"
@@ -275,7 +271,7 @@
                                                 <div class="tabs-content-item" data-tab-content="1"
                                                      data-tab-segment="0">
                                                     <label class="input-container">
-                                                        <input type="text" class="input input-transparent mt-2 mb-2"
+                                                        <input type="text" name="already_name" class="input input-transparent mt-2 mb-2"
                                                                placeholder="Search yours friends">
                                                         <span class="input-container-icon">
 															<svg class="svg svg__24">
@@ -286,10 +282,16 @@
                                                     </label>
                                                     <div class="scroll-wrap">
                                                         @if(Auth::user())
-                                                            <form id="already-going" action="/leaf-to-friend" method="POST">
+                                                            <form id="already-going" action="/leaf-to-friend"
+                                                                  method="POST">
                                                                 @csrf
                                                                 <input type="hidden" data-checked="" name="ongoing">
-                                                                <input type="hidden" value="{{ $leaf->id }}" name="eventid">
+                                                                <input type="hidden" value="{{ $leaf->id }}"
+                                                                       name="eventid">
+                                                                <fieldset
+                                                                    data-alert-trigger="friends-already-going"
+                                                                    data-alert-label="friends selected"
+                                                                    data-alert-label-single="friend selected">
                                                                 @foreach($resultIds as $friend)
                                                                     @php
                                                                         $user = App\Models\User::find($friend);
@@ -300,17 +302,17 @@
                                                                         }
                                                                     @endphp
                                                                     @if(in_array($friend, $partIds))
-                                                                        @else
-                                                                        <fieldset data-alert-trigger="friends-already-going"
-                                                                                  data-alert-label="friends selected"
-                                                                                  data-alert-label-single="friend selected">
+                                                                    @else
+
                                                                             <div class="person">
                                                                                 <div class="person-checkbox">
                                                                                     <label
                                                                                         class="input-container input-container-checkbox">
                                                                                         <input type="checkbox"
-                                                                                               class="going input input-checkbox input-checkbox-sm" data-value="{{ $user->id }}">
-                                                                                        <span class="input-checkbox-icon">
+                                                                                               class="going input input-checkbox input-checkbox-sm"
+                                                                                               data-value="{{ $user->id }}">
+                                                                                        <span
+                                                                                            class="input-checkbox-icon">
                                                                             <svg class="svg svg__16">
                                                                                 <use
                                                                                     xlink:href="/campustree/images/sprite/sprite.svg#check"></use>
@@ -331,9 +333,10 @@
                                                                                         {{ $user->user_bio }}</p>
                                                                                 </div>
                                                                             </div>
-                                                                        </fieldset>
+
                                                                     @endif
                                                                 @endforeach
+                                                                </fieldset>
                                                             </form>
                                                         @else
                                                             <p>Please login for inviting friends</p>
@@ -385,7 +388,8 @@
                                                                 <input type="text" name="text" class="input"
                                                                        placeholder="Your Message">
                                                                 <input type="hidden" name="leaf_id" class="input"
-                                                                       value="{{ $leaf->id }}" placeholder="Your Message">
+                                                                       value="{{ $leaf->id }}"
+                                                                       placeholder="Your Message">
                                                                 <button
                                                                     class="input-container-icon __right __click-trigger">
                                                                     <svg class="svg svg__24">
@@ -415,26 +419,67 @@
 
 @section('custom-js')
     <script>
-        let arr = [];
-        $('#already-going .going').each(function(){
-            $(this).click(function () {
-                if($(this).prop('checked')) {
+        $(document).ready(function () {
+            let arr = [];
+            $(document).on('click', '#already-going .going', function () {
+                if ($(this).prop('checked')) {
                     let thisVal = $(this).data('value');
                     arr.push(thisVal);
                 } else {
                     let thisVal = $(this).data('value');
-                    arr = arr.filter(function(elem){
+                    arr = arr.filter(function (elem) {
                         return elem != thisVal;
                     });
                 }
                 $('form#already-going input[data-checked]').attr('value', arr.join(','));
-            })
+            });
+
+            $(document).on('click', 'button#invite', function () {
+                console.log('submitted');
+                $('form#already-going').submit();
+            });
+
+            $(document).on('keyup', '[name="going_name"]', function () {
+                let query = $(this).val();
+                console.log(query);
+                $.ajax({
+                    type: 'GET',
+                    url: '/events/{{ $leaf->id }}',
+                    data: {
+                        'query': query
+                    },
+                    success: function (response) {
+                        $('[data-tab-content="0"] .scroll-wrap').html('');
+                        $('[data-tab-content="0"] .scroll-wrap').append(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('An error occured: ' + error);
+                    }
+                });
+            });
+
+            $(document).on('keyup', '[name="already_name"]', function () {
+                let query1 = $(this).val();
+                console.log(query1);
+                $.ajax({
+                    type: 'GET',
+                    url: '/events/{{ $leaf->id }}',
+                    data: {
+                        'query1': query1
+                    },
+                    success: function (response) {
+                        $('[data-tab-content="1"] .scroll-wrap form fieldset').html('');
+                        $('[data-tab-content="1"] .scroll-wrap form fieldset').append(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('An error occured: ' + error);
+                    }
+                });
+            });
 
         });
-        $(document).on('click', 'button#invite', function (){
-            console.log('submitted');
-            $('form#already-going').submit();
-        })
+
+
     </script>
 @endsection
 

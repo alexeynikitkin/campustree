@@ -46,8 +46,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function post() {
-        return $this->hasMany(Post::class);
+    public function posts() {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'cat_id');
+    }
+
+    public function year(){
+        return $this->belongsTo(Year::class, 'years_id');
+    }
+
+    public function faculty(){
+        return $this->belongsTo(Faculty::class, 'faculty_id');
+    }
+
+    public function sex(){
+        return $this->belongsTo(Sex::class, 'sex_id');
     }
 
     public function friends()
@@ -67,8 +83,25 @@ class User extends Authenticatable
     public function notifications(){
         return $this->belongsTo(Notification::class, 'user_id');
     }
-    public function sexes(){
-        return $this->belongsTo(Sex::class, 'user_id');
+
+
+
+    public function scopeFilter($query, array $filters) {
+        if($filters['name'] ?? false) {
+            $query->where('name', 'LIKE', '%'. request('name') .'%');
+        }
+        if($filters['sex'] ?? false) {
+            $query->where('sex_id', '=', request('sex'));
+        }
+        if($filters['faculties'] ?? false) {
+            $query->where('faculty_id', '=', request('faculties'));
+        }
+        if($filters['branches'] ?? false) {
+            $query->where('cat_id', '=', request('branches'));
+        }
+        if($filters['sort'] ?? false) {
+            $query->orderBy(request('sort'));
+        }
     }
 
 }

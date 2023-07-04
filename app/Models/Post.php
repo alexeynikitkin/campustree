@@ -16,11 +16,18 @@ class Post extends Model
     public function notifications(){
         return $this->belongsTo(Notification::class, 'leaf_id');
     }
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 
     public function scopeFilter($query, array $filters) {
         if($filters['search'] ?? false) {
             $query->where('title', 'LIKE', '%'. request('search') .'%');
+        }
+
+        if($filters['name'] ?? false) {
+            $query->where('title', 'LIKE', '%'. request('name') .'%');
         }
         if($filters['filter-branches'] ?? false) {
             $new = explode(', ',request('filter-branches'));
@@ -36,6 +43,17 @@ class Post extends Model
 //                $count++;
 //            }
 
+        }
+        if($filters['sort'] ?? false) {
+            $query->orderBy(request('sort'));
+        }
+        if($filters['event_date'] ?? false) {
+            $query->where('event_date', '>', date("Y-m-d", strtotime("+" . request('event_date'))));
+        }
+        if($filters['date'] ?? false) {
+            $arr1 = explode('/', request('date'));
+            $newDate = $arr1[2] . '-' . $arr1[1] . '-' . $arr1[0];
+            $query->where('event_date', 'LIKE', $newDate);
         }
     }
 }
