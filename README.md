@@ -47,7 +47,7 @@ Add .env file with all necessary parameters, or keys.
 For database access:
 <ul>
     <li>DB_DATABASE=DB_NAME</li>
-    <li>B_USERNAME=USERNAME</li>
+    <li>DB_USERNAME=USERNAME</li>
     <li>DB_PASSWORD=PASSWORD</li>
 </ul>
 
