@@ -15,7 +15,7 @@ README.md - Syntax
 - **[Getting Started](#getting-started)**
 
 <h2 id="introduction">Introduction</h2>
-CampusTree project - a small social network for students. CampusTree allows to:
+<p>CampusTree project - a small social network for students. CampusTree allows to:</p>
 <ul>
     <li>Register on site</li>
     <li>Personal page for all users</li>
