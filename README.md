@@ -22,7 +22,6 @@ README.md - Syntax
     <li>Add people as friends</li>
     <li>Create and comment events for students and your friends</li>
     <li>Invite friends to events</li>
-    <li>And other</li>
 </ul>
 
 <h2 id="requirements">Requirements</h2>
